@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 
+		<img src=""/> 
+			절대경로 : 모든 경로
+			상대경로 : 현재 문서 (위치) 기준으로 상대적인 경로
+				1. 만약에 같은 폴더에 존재하면 : ./파일명		또는 파일명
+				2. 만약에 상위 폴더에 존재하면 : ../파일명
+				3. 만약에 상상위 폴더에 존재하면 : ../../파일명
+				4. 만약에 상위 폴더내 하위 폴더에 존재하면 : ../폴더명/파일명
+				
+	 -->
+	 <h6> 절대경로 </h6>
+	 <img src="C:\Users\504\eclipse-workspace\frontend\public/시바견.jpg"/>
+	 
+	 <h6> 상대경로 : 현재문서와 사진이 같은 폴더일때</h6>
+	 <img src="시바견.jpg"/> 
+	 
+	 <h6> 상대경로 : 현재문서와 같은 폴더내 사진일때 </h6>
+	 <img src="./이미지/시바견.jpg"/>
+	 
+	 <h6> 상대경로 : 현재문서의 상위 폴더내 사진일때 </h6>
+	 <img src="../img/시바견.jpg"/>
+	 
+	 <audio controls>
+	 	<source src="음악.mp3">
+	 </audio>
+	 
+	 <video controls>
+	 	<source src="영상.mp4">
+	 </video>
+	 
+	 <iframe width="560" height="315" src="https://www.youtube.com/embed/uVxfF2KHcIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8975.499795040509!2d126.87090186455569!3d37.31128531401312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b68c9f04dd5e3%3A0xf2ed930e42088cc1!2z6re866Gc67O17KeA6rO164uoIOyViOyCsOuzkeybkA!5e0!3m2!1sko!2skr!4v1686127374571!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+</body>
+</html>
