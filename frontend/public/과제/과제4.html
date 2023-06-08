@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+	   <h3> 이*학원 강의 만족도 조사 </h3> </br>
+	   <ul>
+	      <li> 성명 : <input type="text" placeholder="홍길동"></li>
+	      <li> 성별 :       
+	         <select>
+	            <option> 남자 </option>
+	            <option> 여자 </option>                  
+	         </select>
+			<li> 수업들은 강사명 :       
+			<select>
+			   <option> 이현수 </option>
+			   <option> 선우현수 </option> 
+			   <option> 고현수 </option>    
+			   <option> 강현수 </option>
+			   <option> 김현수 </option>
+			   <option> 김현슈 </option> 
+			   <option> 제갈현수 </option>           
+			</select>
+	         
+	      <li> 날짜 : <input type="date"></li>
+	   </ul>
+
+		<fieldset>
+			<legend>학원동기</legend>
+			<ol>
+				<li>학원 방문 경로는?(복수 응답 가능) <br/>
+					<input type="checkbox"> 자동차(자차)
+					<input type="checkbox"> 버스
+					<input type="checkbox"> 지하철
+					<input type="checkbox"> 도보
+					<input type="checkbox"> 자전거
+				</li> <br/>
+
+				<li>학원 방문 목적은?(복수 응답 가능) <br/>
+					<input type="checkbox"> 자격증
+					<input type="checkbox"> 취업
+					<input type="checkbox"> 창업
+					<input type="checkbox"> 프리랜서
+					<input type="checkbox"> 취미
+				</li>
+			</ol>
+		</fieldset> <br/>
+		
+		<fieldset>
+			<legend>학원 시설물</legend>
+			<ol>
+				<li>강의실 마우스 or 키보드는 청결했나요?<br/> 
+					매우아니다<input type="radio" name="clean1">
+					아니다<input type="radio" name="clean1">
+					보통이다<input type="radio" name="clean1">
+					그렇다<input type="radio" name="clean1">
+					매우그렇다<input type="radio" name="clean1">
+				</li><br/>
+				
+				<li>학원 화장실은 청결했나요?<br/>
+					매우아니다<input type="radio" name="clean2">
+					아니다<input type="radio" name="clean2">
+					보통이다<input type="radio" name="clean2">
+					그렇다<input type="radio" name="clean2">
+					매우그렇다<input type="radio" name="clean2">
+				</li><br/>
+
+				<li>컴퓨터의 사용은 어려웠나요?<br/>
+					매우아니다<input type="radio" name="clean3">
+					아니다<input type="radio" name="clean3">
+					보통이다<input type="radio" name="clean3">
+					그렇다<input type="radio" name="clean3">
+					매우그렇다<input type="radio" name="clean3">
+				</li> 
+			</ol>
+		</fieldset><br/>
+
+		<fieldset>
+			<legend> 강의 평가 </legend>
+			<ol>
+				<li>학업 수준에 적합하게 수업을 진행하였나요?</br>
+					매우아니다<input type="radio" name="study1">
+					아니다<input type="radio" name="study1">
+					보통이다<input type="radio" name="study1">
+					그렇다<input type="radio" name="study1">                           
+					매우그렇다<input type="radio" name="study1"> 
+				</li></br>                        
+
+				<li>강의 중에 불필요한 언행을 하지는 않았나요?</br>
+					매우아니다<input type="radio" name="study2">
+					아니다<input type="radio" name="study2">
+					보통이다<input type="radio" name="study2">
+					그렇다<input type="radio" name="study2">                           
+					매우그렇다<input type="radio" name="study2">
+				</li></br>
+				
+				<li> 강의 시간과 수업 시간은 잘 준수하였나요?</br>
+					매우아니다<input type="radio" name="study3">
+					아니다<input type="radio" name="study3">
+					보통이다<input type="radio" name="study3">
+					그렇다<input type="radio" name="study3">                           
+					매우그렇다<input type="radio" name="study3">
+				</li>                                        
+			</ol>      
+		</fieldset> <br/>
+   
+		<fieldset>
+	        <legend>학원 건의사항</legend>   
+	        <textarea rows="10" cols="100" style="resize: none" placeholder="ex) 고장난 키보드랑 마우스를 교체하여주세요, 차량운행 해주세요 등등..."></textarea>
+		</fieldset> <br/>
+	   
+	   <input type="reset" value="리셋">
+	   <input type="submit" value="전송">
+	</form>
+</body>
+</html>

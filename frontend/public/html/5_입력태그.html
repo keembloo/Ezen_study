@@ -34,20 +34,26 @@
 			4. disabled="disabled" : 사용금지모드
 			5. autofocus="autofocus" : 포커스[커서]
 			6. maxlength="최대문자길이"
+			7. placeholder="가이드라인 텍스트"
 			
 		<select> : 목록 상자
 		<option> : 목록 상자의 항목[아이템]
-		
 		<textarea> : 긴글 텍스트상자
 			rows: 행 글자수 cols: 열 글자수
-		
-				
+		<fieldset> : 입력상자들을 그룹
+			<legend> : 그룹제목
+
 	-->
+	
 	<form>
-		입력상자 : <input value="유재석" readonly="readonly"> <br/>
-		텍스트:<input type="text" value="인사과" disabled="disabled"> <br/>
-		패스워드:<input type="password" autofocus="autofocus"> <br/>
-		이메일:<input type="email" maxlength="5"> <br/>
+		<fieldset>
+			<legend>그룹제목</legend>
+			<input type="text" placeholder="부서번호">
+			입력상자 : <input value="유재석" readonly="readonly"> <br/>
+			텍스트:<input type="text" value="인사과" disabled="disabled"> <br/>
+			패스워드:<input type="password" autofocus="autofocus"> <br/>
+			이메일:<input type="email" maxlength="5"> <br/>
+		</fieldset>
 		
 		원형체크버튼[단일선택]:
 			<input type="radio" name="confirm">예 
@@ -60,6 +66,7 @@
 		첨부파일:
 			<input type="file"> <br/>
 			<input type="file" multiple="multiple"> <br/>
+		<hr/>
 			
 		색상:<input type="color"> <br/>
 		날짜:<input type="date"> <br/>
