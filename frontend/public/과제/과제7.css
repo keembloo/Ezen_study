@@ -1,0 +1,32 @@
+@charset "UTF-8";
+ * {
+ 	margin:0;
+ 	padding:0;
+ }
+.title-number {
+	font-size: 36px;
+	font-weight: 700;
+	color: orange;
+	display: inline-block;
+	margin: 12px 0;
+}
+
+.title-text {
+	display: inline-block;
+}
+
+.box {
+	width: 450px;
+	background-color: #0F6878;
+	color: white;
+	padding: 20px;
+}
+
+.main-text {
+	font-size: 14px;
+	line-height: 160%;
+}
+.text-impact {
+	color: orange;
+	font-weight: 700;
+}
