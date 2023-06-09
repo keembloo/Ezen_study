@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+*{ margin: 0; padding: 0; }
+
+input{ border: none;}
+
+
+.box-container {
+	width: 470px;
+	height: 500px;
+	border: 1px solid red;
+}
+
+.id-btn , .password-btn {
+	width: 400px;
+	border-bottom: 1px solid #979DB1;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 10px 0;
+	display: block;
+	color:#979DB1;
+}
+
+.login-btn {
+	width: 400px;
+	background-color: #FEE500;
+	padding: 10px 0;
+	display: block;
+}
+
+.qr-btn {
+	width: 400px;
+	background-color: #F0F0F0;
+	padding: 10px 0;
+	display: block;
+	margin-top: 15px;
+}
