@@ -6,21 +6,46 @@
 <link href="과제9.css" rel="stylesheet">
 </head>
 <body>
-
-	<img src="" alt="카카오 로고 이미지">
+	<div class="container">
 	
-	<form>
-		<fieldset class="box-container">
-			<input class="id-btn" type="text" placeholder="카카오메일 아이디,이메일,전화번호">
-			<input class="password-btn" type="password" placeholder="비밀번호">
-			<input type="radio" name="fix"> 로그인 상태 유지
-			<input class="login-btn" type="button" value="로그인">
-			<input class="qr-btn" type="button" value="QR코드 로그인">
-			<a href="">회원가입</a>
-			<a href="">계정 찾기</a>
-			<a href="">비밀번호 찾기</a>
-		</fieldset>
-	</form>
-
+		<img class="logo" src="카카오로고.svg" alt="카카오 로고 이미지">
+		
+		<form>
+			<fieldset class="box-container">
+				<input class="id-btn" type="text" placeholder="카카오메일 아이디, 이메일, 전화번호">
+				<input class="password-btn" type="password" placeholder="비밀번호">
+				<div class="fix-con">
+					<input class="fix" type="radio" name="fix">
+					<span> 로그인 상태 유지 </span>
+				</div>
+				<input class="login-btn" type="button" value="로그인">
+				<input class="qr-btn" type="button" value="QR코드 로그인">
+				<div class="link-box">
+					<a href="#">회원가입</a>
+					<span>|</span>
+					<a href="#">계정 찾기</a>
+					<span>|</span>
+					<a href="#">비밀번호 찾기</a>
+				</div>
+			</fieldset>
+		</form>
+			<div class="link-box2">
+				<a href="#">이용약관</a>
+				<a class="impact-text" href="#">개인정보 처리방침</a>
+				<a href="#">운영정책</a>
+				<a href="#">고객센터</a>
+				<a href="#">공지사항</a>
+				<a href="#">한국어</a>
+				<span class="border"></span>
+			</div>
+			<div class="copy">
+				Copyright &copy;
+				<span> Kakao Corp. </span>
+				All rights reserved.
+			</div>
+		<footer>
+			
+		</footer>
+	</div>
 </body>
 </html>
