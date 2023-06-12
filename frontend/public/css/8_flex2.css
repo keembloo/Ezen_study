@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+.container {
+	display: flex;
+}
+
+.box {
+	width: 10%;
+	height: 50%;
+	background-color: orange;
+	color: white;
+	border: 1px solid white;
+}
+
+/* 1. 정렬 */
+#flexbox1 {
+	justify-content: flex-start; /* 기본값: 왼쪽부터 배치*/
+}
+
+#flexbox2 {
+	justify-content: flex-end; /* 오른쪽부터 배치*/
+}
+
+#flexbox3 {
+	justify-content: center; /* 가운데부터 배치*/
+}
+
+#flexbox4 {
+	justify-content: space-between; /* 자동으로 균등배ㅣ */
+}
+
+#flexbox5 { /* 사이여백을 양끝은50% 균등배치*/
+	justify-content: space-around;
+}
+
+#flexbox6 { /* 사이여백을 양끝까지 균등배치*/
+	justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+
