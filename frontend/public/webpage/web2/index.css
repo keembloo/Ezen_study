@@ -1,1 +1,159 @@
 @charset "UTF-8";
+
+/* CSS 기본값 제거 */
+*{ margin: 0px; padding: 0px;} /* 여백제거 */
+li{ list-style-type: none; } /*글머리 제거*/
+
+/*웹폰트 : 눈누사이트 참고*/
+
+@font-face { /* 폰트추가 */
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#header {
+	width: 1200px;
+	margin: 15px auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo_img img {
+	width: 100px;
+}
+
+.top_menu {
+	font-size: 13px;
+	margin-bottom: 15px;
+	text-align: right;
+}
+
+
+/*헤더 메인메뉴*/
+.main_menu li {
+	display: inline-block;
+	margin-left: 120px;
+	font-weight: 700;
+	font-family: 'NanumSquareNeo-Variable';
+	font-size: 18px;
+}
+
+#main_img {
+	width: 100%;
+	height: 300px;
+	background-image: url("img/main_bg.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 30px 0px;
+}
+
+
+/*본문내용*/
+#content {
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 사이드바 */
+.side_bar {
+	width: 230px; /*상위 요소[1200px] 사이즈내*/
+}
+
+
+.side_bar h3 {
+	background-color: #0CA9A3;
+	color: white;
+	padding: 12px;
+	margin-bottom: 10px;
+}
+
+.side_bar_text {
+	font-size: 13px;
+	padding: 0 20px;
+	margin-bottom: 20px;
+	line-height: 150%; /*줄간격*/
+}
+
+
+.side_bar .search_text {
+	width: 150px;
+	height: 30px;
+	padding-left: 5px;
+	
+}
+
+.search_btn {
+	padding: 6px;
+	margin-left: 5px;
+}
+
+.side_bar h4 {
+	border-top: 2px solid black;
+	border-bottom: 1px solid #eeeeee;
+	margin-top: 20px;
+	padding: 13px;
+	font-size: 15px;
+}
+
+.side_bar li {
+	padding: 10px 15px;
+}
+
+
+
+/* 본문 */
+.main_content {
+	display: flex;
+	width: 930px;
+	justify-content: space-between;
+}
+
+/*왼쪽 내용*/
+
+.left_content {
+	width: 450px;
+}
+
+.left_content h3 {
+	font-size: 18px;
+	border-bottom: 2px solid black;
+	padding-bottom: 10px;
+}
+
+.board {
+	margin: 10px 0px 50px 0px;
+}
+
+.item {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+}
+
+
+
+
+
+
+.right_content {
+	width: 450px;
+}
+
+.right_content h3 {
+	font-size: 18px;
+	border-bottom: 2px solid black;
+	padding-bottom: 10px;
+}
+
+
+.class_img {
+	width: 200px;
+	height: 200px;
+	background-image: url("img/bread1.png");
+}
+
+
