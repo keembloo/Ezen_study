@@ -7,30 +7,31 @@
 </head>
 <body>
 	<div id="header"> <!-- 헤더 시작 -->
-      
-      <div class="h_logo"><!-- 상단로고 -->
-         <img src="img/logo.png">
-      </div>   <!-- 상단로고 end -->
-   
-      <div class="h_menu"> <!-- 헤더메뉴 -->
-         <div class="h_menus">
-            <div class="h_top_menu">
-               <input class="h_btn1" type="text" placeholder="찾으시는 상품을 입력해주세요">
-               <input class="h_btn" type="button" value="검색">
-            </div>
-            <div class="h_main_menu">
-               <input class="h_btn" type="button" value="로그인">
-               <input class="h_btn" type="button" value="장바구니">
-            </div>
-         </div>
-            <ul class="h_bottom_menu">
-               <li>제품소개</li>
-               <li>고객지원</li>
-               <li>AS신청</li>
-               <li>이벤트/멤버쉽</li>
-               <li>전체상품</li>
-            </ul>    
-      </div> <!-- 헤더메뉴 end -->   
+      <div class="header_container"> <!-- 헤더컨테이너 -->
+	      <div class="h_logo"><!-- 상단로고 -->
+	         <img src="img/logo.png">
+	      </div>   <!-- 상단로고 end -->
+	   
+	      <div class="h_menu"> <!-- 헤더메뉴 -->
+	         <div class="h_menus">
+	            <div class="h_top_menu">
+	               <input class="h_btn1" type="text" placeholder="찾으시는 상품을 입력해주세요">
+	               <input class="h_btn" type="button" value="검색">
+	            </div>
+	            <div class="h_main_menu">
+	               <input class="h_btn" type="button" value="로그인">
+	               <input class="h_btn" type="button" value="장바구니">
+	            </div>
+	         </div>
+	            <ul class="h_bottom_menu">
+	               <li>제품소개</li>
+	               <li>고객지원</li>
+	               <li>AS신청</li>
+	               <li>이벤트/멤버쉽</li>
+	               <li>전체상품</li>
+	            </ul>    
+	      </div> <!-- 헤더메뉴 end -->  
+      </div> <!-- 헤더컨테이너 end -->
    </div> <!-- 헤더 끝 -->
 
 	<div id="main"> <!-- 메인시작 규리 -->
@@ -43,12 +44,12 @@
 		<div class="main_container"> <!-- 메인컨테이너 -->
 			<div class="main_text"> <!-- 메인텍스트 -->
 				<p>매일하던 고민에서 벗어나세요! </p>
-				<p>여태까지 이런 벽은 없었다. </p>
+				<p>이태까지 이런 벽은 없었다. </p>
 				<h3> 분리수거 완. 벽. </h3>
 				<div></div>
 			</div> <!-- 메인텍스트 end -->
 			
-			<button class="click_btn">제품 신청하기 버튼 </button>
+			<button class="click_btn">제품 신청하기 버튼&nbsp&nbsp&nbsp> </button>
 			<div class="line_deco"></div> <!-- 데코라인 -->
 			
 			<div class="item_info"> <!-- 제품설명 -->
@@ -91,38 +92,41 @@
 	
 					<!--////////////// 기준시작 /////////////-->
 					
-	      <div id ="side_menu">
+	      <div id ="side_menu"> <!-- 사이드메뉴 -->
 	         <div class = "smile_girl">
-	         <img src ="img/smile.jpg">
+	         	<img src ="img/smile.jpg">
 	         </div>
-	         <div class="review">
+	         
+	         <div class="review"> <!-- 리뷰1개 -->
 	            <h3>&#60;후기&#62;</h3>
-	               <div>
+	        	<div class="review_box">
 	               <h4>여기 제품 확실하네요</h4>
-	                  <ul class="context">
-	                     <li> 재활용 하는데 집 밖에 나가지도 않고 얼마나 편한지 모르겠어요 무엇보다 다른 제품들에 비해 소음도 적고 냄새도 덜 나고 부모님 집에 하나 설치해드려야겠어요.</li>
-	                  </ul>         
-	               </div>
-	         </div>   
-	         <div class="review">
+                   <ul class="context">
+                     <li> 재활용 하는데 집 밖에 나가지도 않고 얼마나 편한지 모르겠어요 무엇보다 다른 제품들에 비해 소음도 적고 냄새도 덜 나고 부모님 집에 하나 설치해드려야겠어요.</li>
+	               </ul>         
+                </div>
+	         </div>   <!-- 리뷰1개 end -->
+	           
+	         <div class="review"> <!-- 리뷰1개 -->
 	            <h3>&#60;후기&#62;</h3>
-	               <div>
-	               <h4>집들이 선물로 딱이에요</h4>
-	                  <ul class="context">
-	                     <li> 친구가 이사를 했는데 마침 생일도 다가오고 있어서 친구들끼리 돈모아서 해줬는데 만족도가 정말 큰거 같아요. 선물 해준 저도 덩달아 신나네요. </li>
-	                  </ul>         
-	               </div>
-	         </div>
-	         <div class="review">
+	         	<div class="review_box">
+	                <h4>집들이 선물로 딱이에요</h4>
+	                <ul class="context">
+	                   <li> 친구가 이사를 했는데 마침 생일도 다가오고 있어서 친구들끼리 돈모아서 해줬는데 만족도가 정말 큰거 같아요. 선물 해준 저도 덩달아 신나네요. </li>
+	                </ul>         
+	            </div>
+	         </div>   <!-- 리뷰1개 end -->
+	         
+	         <div class="review"> <!-- 리뷰1개 -->
 	            <h3>&#60;후기&#62;</h3>
-	               <div>
+	         	<div class="review_box">
 	               <h4>스토리가 담긴 작품</h4>
-	                  <ul class="context">
-	                     <li>저는 올해 환경운동가로 일하고 있는 김현수 입니다. 이 제품의 취지가 좋아 사용 목적, 용도 꼼꼼히 체크했고 혹시나 다른 문제점은 없는지 살펴봤지만 처리과정도 깔끔했고 사용 또한 용이하였습니다. 후회없는 선택일 것 같네요. </li>
-	                  </ul>         
-	               </div>
-	         </div>   
-	      </div>
+	               <ul class="context">
+	                  <li>이 제품의 취지가 좋아 사용 목적, 용도 꼼꼼히 체크했고 혹시나 다른 문제점은 없는지 살펴봤지만 처리과정도 깔끔했고 사용 또한 용이하였습니다. 후회없는 선택일 것 같네요. </li>
+	               </ul>         
+               </div>
+	         </div>   <!-- 리뷰1개 end -->
+	      </div> <!-- 사이드메뉴 end -->
 	</div> <!-- 메인끝 -->
 	
      <div id="footer">                  <!-- 푸터 -->

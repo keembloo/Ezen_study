@@ -10,12 +10,19 @@ li{list-style-type: none;}
 
 /* 헤더 시작 */
 #header{
-   width: 1200px;
+/*    width: 1200px;
    margin: 0 auto;
    display: flex;
-   justify-content: space-between;
+   justify-content: space-between; */ /*기존 코드*/
    margin-top: 30px; 
    background-color: #046241;
+}
+
+.header_container { /* 태그 생성후 추가*/
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
 }
 
 .h_logo img{width: 75%;}
@@ -107,27 +114,28 @@ li{list-style-type: none;}
 }
 
 .click_btn {
-	width: 200px;
+	width: 300px;
 	height: 50px;
-	border: 2px solid blue;
+	border: 2px solid #046241;
 	border-radius: 25px;
-	color: blue;
+	color: #046241;
+	background-color: white;
 	padding: 10px;
 	font-size: 18px;
 	font-weight: 700;
 	display: block;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 .click_btn:hover {
-	background-color: blue;
+	background-color: #046241;
 	color: white;
 }
 
 .line_deco {
 	border-bottom: 1px solid #525252;
-	margin-top: 30px;
+	margin-top: 100px;
 }
 
 .item_info {
@@ -138,23 +146,30 @@ li{list-style-type: none;}
 
 .item_box {
 	width: 285px;
-	height: 350px;
+	height: 370px;
 	border: 1px solid #046241;
-	margin-top: 30px;
+	margin-top: 100px;
+	background-color: #046241;
+	color: white;
+	border-radius: 25px; /* 아이템 박스테두리 둥글게*/
 }
 
 .item_box img {
 	width: 285px;
+	border-top-left-radius: 25px; /*이미지 왼쪽 테두리 둥글게*/
+	border-top-right-radius: 25px; /*이미지 오른쪽 테두리 둥글게*/
 }
 
 .item_text {
 	text-align: center;
+	padding: 0 20px;
+	
 }
 
 .item_text h5 {
 	font-size: 22px;
 	font-weight: 800;
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
@@ -177,6 +192,7 @@ li{list-style-type: none;}
 }
 .smile_girl img{
    width:300px;
+   border-radius: 25px;
 }
 .review{
    width : 200px;
@@ -185,6 +201,7 @@ li{list-style-type: none;}
    border-left: solid 1px black;
    border-right: solid 1px black;
    border-bottom: solid 1px black;
+   border-radius: 25px; /* 테두리 둥글게 */
    }
 .review h3{
    background-color: #046241;
@@ -193,13 +210,17 @@ li{list-style-type: none;}
    font-size: 20px;
    padding: 15px;
    text-align: center;
+   border-top-left-radius: 25px; /* 왼쪽위 테두리 둥글게 */
+   border-top-right-radius: 25px; /* 오른쪽위 테두리 둥글게 */
 }
-.div{
+
+.div{ /* 오잉..? */
    height:240px;
 }
+
 .review h4{
    color: black;
-   font-size: 15px;
+   font-size: 17px;
    text-align: center;
 }
 .context{
@@ -209,6 +230,9 @@ li{list-style-type: none;}
    margin-top: 20px;
 }
 
+.review_box {
+	padding: 10px 15px;
+}
 
 
 
@@ -230,6 +254,7 @@ li{list-style-type: none;}
    width: 1200px; margin: 0 auto;
    color: white; padding: 30px;
    display: flex;
+   align-items: center;  /* 셀렉트박스 크기변경에 의해 세로 중앙정렬 */
 }
 
 .ft_box2{
@@ -256,6 +281,10 @@ li{list-style-type: none;}
    width: 100px;
 }
 
+.ft_box1 select {
+    width: 150px;
+    height: 30px;;
+}
 
 
 
