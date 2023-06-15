@@ -6,8 +6,34 @@ li{list-style-type: none;}
 a{color:black; text-decoration: none;}
 
 /*------------ 헤더 -------------*/
+#header {
+	width: 100%;
+	background-color: white;
+	position: sticky;
+	top: 0px;
+	z-index: 100;
+}
 
+.header_area {
+	width: 720px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 13px 0; /* 헤더 안쪽 여백 */
+}
+.logo img {
+	width: 100px;
+	height: 30px;
+}
 
+.top_menu { /*메뉴바*/
+	font-size: 12px;
+	font-weight: 700;
+	display: flex;
+	gap: 30px;
+
+}
 
 /*------------본문 -------------*/
 #content {
