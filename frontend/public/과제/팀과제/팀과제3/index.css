@@ -161,33 +161,83 @@ a{color:black; text-decoration: none;}
 
 
 /*------------------------ intro 페이지 --------------------------*/
-.next_area { 
+#intro_content { /* 본문내용 */
+	width: 100%;
+	position: relative;
+}
+
+.intro_box_bg { /* 정보박스 두번째 배경컬러 */
+	width: 100%;
+	height: 440px;
+	background-color : #eeeeee;
+	position: absolute;
+	bottom: 0px;
+}
+
+.next_area { /* 본문 메인 영역*/
 	width: 1200px;
 	margin: 0 auto;
 	position: relative;
 }
 
 
-.next_img2 img{ 
+.next_img2 img{  /* 대표 이미지 */
 	width: 100%;
 }
 
-.nextimg_info {
+.nextimg_info { /* 대표 이미지 텍스트 */
 	position: absolute;
 	top: 100px;
 	left: 500px;
 	color: #F9F5DB;
 	text-align: center;
-	line-height: 150%;
+	line-height: 180%;
 }
 
-.next_title {
+.next_title { 
 	font-size: 20px;
 }
 
 .next_text {
 	font-size: 12px;
 }
+
+.intro_box_area { /* 정보박스 구역*/
+	display: flex;
+	width: 900px;
+	gap: 20px;
+	margin: 0 auto;
+	padding: 80px;
+}
+
+.intro_box_area img { /* 정보박스 이미지*/
+	width: 420px;
+}
+
+.info_box { /* 정보박스 세부 텍스트*/
+	font-size: 14px;
+}
+
+
+.info_main_title {
+	font-size: 18px;
+	font-weight: 800;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+.info_sub_title {
+	font-weight: 800;
+	margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
 
 
 
