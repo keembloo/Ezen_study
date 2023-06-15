@@ -41,7 +41,20 @@ li { list-style-type: none;}
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 50px 0 30px;
+	padding: 0 50px 0 30px;
+	
+	position: sticky; /* 스크롤 내릴경우 고정*/
+	/*
+		sticky 사용조건
+			1. 상위 부모의 높이 사이즈 안에서 고정 vs fixed
+			2. top right left bottom 1개 이상 존재 필수!!
+			3. 부모요소 overflow 속성 사용금지
+	*/
+	
+	top: 0px; /*위에서부터 0에 고정*/
+	z-index: 1; /* 겹칠때 */
+	background-color: white;
+	opacity: 0.8; /* 투명도 */
 }
 
 /* 메뉴 */
@@ -82,13 +95,86 @@ li { list-style-type: none;}
 }
 
 
+/* --------------------- 드랍메뉴 --------------------- */
+.drop_menu {
+	position: relative; /*상대위치*/
+}
+
+.drop_menu .sub_menu {
+	position: absolute; /*절대위치*/
+	top: 15px; /*drop_menu 기준으로 이동*/
+	left: -40px; /*drop_menu 기준으로 이동*/
+	
+	display: none; /* 숨김 */
+	width: 115px; /* 드랍메뉴 사이즈 */
+	background-color: white; /* 드랍메뉴 배경색 */
+	padding: 25px 0 20px 0; /* 여백*/
+	text-align: center; /* 텍스트 정렬 */
+}
+
+.sub_menu a {
+	margin-top: 5px;
+}
+/* 해당 메뉴에 마우스를 올렸을때 */
+.drop_menu:hover .sub_menu {
+	display: block; /* 보이기 */
+}
+
+
+/* --------------------- 대표 이미지 --------------------- */
+
+#main_img {
+	width: 100%;
+}
+
+
+/* --------------------- 본문 --------------------- */
+
+#content {
+	width: 1600px;
+	margin: 0 auto;
+	padding: 50px 0 ;
+}
+
+#content .title {
+	font-size: 17px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#content .comment {
+	font-size: 12px;
+	text-align: center;
+	color: #999999;
+	margin: 20px 0;
+}
 
 
 
+/* --------------------- 제품 1개 --------------------- */
+.item{
+	width: 380px; 	/* 1600/4 = 400px 여백포함*/
+}
 
+.item img {
+	width: 100%;
+}
 
+/* 칼라 요소의 구역 */
+.color span { /* span 요소의 display: inline = width, height 사용불가 */
+	width: 10px; height: 10px;
+	display: inline-block;
+	border: 1px solid #DBDBDB;
+}
 
+.color_review {
+	display: flex;
+	justify-content: space-between;
+}
 
+.review {
+	color: #DBDBDB;
+}
 
 
 
