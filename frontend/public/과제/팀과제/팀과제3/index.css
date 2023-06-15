@@ -1,20 +1,95 @@
 @charset "UTF-8";
-
+/*------------ 전체 설정 -------------*/
 *{ margin: 0px; padding: 0px; }
 button {border: none;}
 li{list-style-type: none;}
 a{color:black; text-decoration: none;}
 
-/*------------본문-------------*/
-#main {
+/*------------ 헤더 -------------*/
+
+
+
+/*------------본문 -------------*/
+#content {
+	width:100%;
+}
+
+.main_area {
 	width: 1200px;
 	margin: 0 auto;
 }
 
-.main_img{
-	background-image: url("/");
-	
+.main_img {
+	width: 1200px;
 }
+.main_img img { 	/* 대표이미지 */
+	width: 100%;
+}
+
+/*------------ 본문 main 구역 -------------*/
+/*------------ 설명박스들 -------------*/
+
+.info_area {
+	width: 1200px;
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	margin: 50px 0;
+}
+
+
+.info { /* 메인설명 1개 */
+	display: flex;
+}
+
+.info_box1 img {
+	width: 50px;
+}
+
+.info_box2 {
+	margin-left: 30px;
+	width: 260px;
+}
+
+.info_text1 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.info_text2 {
+	font-size: 11px;
+	font-weight: 600;
+	margin-top: 8px;
+}
+
+
+
+/*------------ 본문 sub 구역 -------------*/
+.sub_area {
+	width: 100%;
+	background-color: #F9F9F9;
+	padding: 40px 0;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+
+.studio_sample img {
+	width: 200px;
+}
+
+.studio_name {
+	font-weight: 700;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+.studio_text {
+	font-size: 11px;
+	margin-top: 5px;
+}
+
 
 
 
@@ -81,4 +156,38 @@ a{color:black; text-decoration: none;}
 .insta {
 	background-image: url("img/instagram.png");
 }
+
+
+
+
+/*------------------------ intro 페이지 --------------------------*/
+.next_area { 
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+.next_img2 img{ 
+	width: 100%;
+}
+
+.nextimg_info {
+	position: absolute;
+	top: 100px;
+	left: 500px;
+	color: #F9F5DB;
+	text-align: center;
+	line-height: 150%;
+}
+
+.next_title {
+	font-size: 20px;
+}
+
+.next_text {
+	font-size: 12px;
+}
+
+
 
