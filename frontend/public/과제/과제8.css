@@ -1,61 +1,146 @@
 @charset "UTF-8";
 
-*{ margin: 0; padding: 0;}
+*{ margin: 0; padding: 0; }
+input{ border: none;}
+a { color: black; text-decoration: none; }
+
+
+
 .container {
-	width: 480px;
-	border: 1px solid #e8e8e8;
+	width: 570px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.logo {
+	width: 85px;
+	margin-top: 110px;
+}
+
+.box-container {
+	height: 460px;
+	border: 1px solid #d3d3d3;
 	margin-top: 30px;
 }
 
-.img-area {
-	overflow: hidden;
-	border-bottom: 1px solid #e8e8e8;
+.box-container input{
+	display: block;
 }
 
-.pineapple {
-	width: 400px;
-	margin-top: 30px;
-	margin-bottom: 20px;
-	margin-left: 15px;
-}
-
-.text-title {
-	width: 300px;
-	font-size: 20px;
-	font-weight: 700;
-	overflow: hidden; /* 보이지 않게 처리 */
-	text-overflow: ellipsis; /* 크기보다 글자수 넘어가면 생략부호(...)처리*/
-    white-space: nowrap; /* 줄넘어가지 않고 한줄로 나오게 처리 */
-	padding-top: 20px;
-}
-
-.text-price {
-	font-size: 18px;
-	font-weight: 600;
-	margin-bottom: 16px;
-}
-
-.text-main {
+.id-btn , .password-btn {
 	width: 450px;
-	font-size: 18px;
+	border-bottom: 1px solid #d3d3d3;
+	font-weight: 600;
+	font-size: 16px;
+	padding: 10px 0;
+	color:#d3d3d3;
+	margin: 15px auto;
+}
+
+.id-btn {
+	margin-top: 70px;
+}
+
+.fix-con {
+	width: 450px;
+	margin: 25px auto;
+	display: flex;
+}
+
+.fix {
+	width: 20px;
+	height: 20px;
+}
+
+.fix-con span {
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.login-btn {
+	width: 450px;
+	background-color: #FEE500;
+	padding: 15px 0;
+	margin: 40px auto 0px;
+	font-size: 16px;
+	letter-spacing: -0.5px;
+	border-radius: 5px;
+}
+
+.qr-btn {
+	width: 450px;
+	background-color: #F0F0F0;
+	padding: 15px 0;
+	margin: 20px auto;
+	font-size: 16px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.link-box {
+	width: 450px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	font-size: 12px;
+	margin: 30px auto;
+	letter-spacing: -0.5px;
+}
+
+.link-box span {
+	color: #e8e8e8;
+}
+
+.link-box2 {
+	font-size: 12px;
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	letter-spacing: -0.5px;
+}
+
+.link-box2 a {
+	margin-left: 18px;	
+}
+
+.impact-text {
+	font-weight: 800;
+}
+
+.border {
+	width: 6px;
+	height: 6px;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+	rotate: 225deg;
+	margin-left: 5px;
+	top: 2px;
+	position: relative;
+}
+
+.copy {
 	margin-top: 10px;
-	line-height: 150%; 
+	font-size: 12px;
+	color: #979DB1;
+	letter-spacing: -0.5px;
 }
 
-.text-review {
-	margin-top: 10px;
-	line-height: 150%;
-	margin-bottom: 15px;
+.copy span {
+	color: black;
 }
 
-.no {
-	color: orange;
-}
 
-li { 
-	padding: 5px 20px;
-	list-style-type: none; /* list 글머리 제거 */
-}
+
+
+
+
+
+
+
+
+
+
 
 
 
