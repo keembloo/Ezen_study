@@ -22,9 +22,14 @@ a{color:black; text-decoration: none;}
 	align-items: center;
 	padding: 13px 0; /* 헤더 안쪽 여백 */
 }
-.logo img {
-	width: 100px;
-	height: 30px;
+
+.logo span {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.logo_impact {
+	color: #3870C2;
 }
 
 .top_menu { /*메뉴바*/
