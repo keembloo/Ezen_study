@@ -1,0 +1,83 @@
+@charset "EUC-KR";
+/* 폰트 불러오기*/
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+
+/* CSS 초기 세팅*/
+*{ margin:0; padding:0; font-family:'S-CoreDream-3Light';}
+a{color:black; text-decoration: none;}
+li{list-style-type: none;}
+
+
+
+
+/*-------------------STARTUP 본문 -------------------*/
+
+#startup_content { 
+	width: 1500px; 	/*본문 가로길이*/
+	margin: 0 auto;	/*본문 중앙정렬*/
+}
+
+.startup_main_title{
+	height: 270px;
+	border: 1px solid red;
+}
+
+
+.startup_main_title h3 { /* 창업문의 텍스트 */
+	font-weight: bold;
+	font-size: 50px;
+}
+
+.startup_main_title p {
+	font-size: 16px;
+	line-height: 180%;
+	margin-top: 10px;
+}
+
+.startup_main_title span {
+	font-weight: bold;
+}
+
+.startup_category {
+	text-align: right;
+	display: inline-block;
+	width: 1500px;
+	font-size: 14px;
+}
+
+.startup_menu {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.startup_menu_order , .startup_menu_qna {
+	margin-left : 20px;
+	padding-bottom: 4px;
+	/* color: #878787;  회색 */
+	color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
