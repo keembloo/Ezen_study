@@ -34,7 +34,6 @@ li{list-style-type: none;}
 
 .startup_main_title{
 	height: 270px;
-	border: 1px solid red;
 }
 
 
@@ -64,7 +63,6 @@ li{list-style-type: none;}
 	font-size: 24px;
 	font-weight: bold;
 	padding-bottom: 50px;
-	border: 1px solid blue;
 }
 
 .startup_menu_form {
@@ -85,10 +83,11 @@ li{list-style-type: none;}
 
 #startup_form {
 	width: 1250px; 
-	border: 1px solid orange;
 	margin: 0 auto;
 	display: flex;
     box-sizing: border-box; /* 박스 사이징 설정 */
+    margin-bottom: 100px; /* 폼양식 하단 여백*/
+    flex-wrap: wrap;   /* 양식 / 동의 부분 세로 정렬*/
 }
 
 #startup_form select { /* 셀렉트 태그 디자인 */
@@ -286,5 +285,21 @@ li{list-style-type: none;}
 .startup_text_count > span {
 	color: #de121c;
 }
+
+
+
+
+/*--------------------약관영역----------------*/
+/*--- 동의부분 ---*/
+
+
+
+
+
+
+
+
+
+
 
 
