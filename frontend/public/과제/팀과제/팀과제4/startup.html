@@ -20,14 +20,130 @@
       		<p class="startup_category">HOME > <span>창업문의</span></p>
       	</div>	<!-- 메인타이틀 end-->
       
-      	<div class="startup_menu">
+      	<div class="startup_menu"> <!-- 중간 메뉴 -->
       		<a href="#"><span class="startup_menu_form">창업 상담 신청</span></a>
       		<a href="#"><span class="startup_menu_order">창업 절차</span></a>
       		<a href="#"><span class="startup_menu_qna">자주 묻는 질문</span></a>
+      	</div>	<!-- 중간 메뉴 end -->
+      
+      	<form id="startup_form">	<!-- 본문 입력양식 -->
       		
-      	</div>
+      		<div class="startup_title_area"> <!-- 입력양식 영역 -->
+      		
+      		
+   
+      			<div class="startup_input_box"> <!-- 입력박스1 -->
+		      		<div class="startup_input_title">브랜드 선택<span>*</span></div> 
+	      			<select class="startup_brand_nation">
+	      				<option>국내</option>
+	      				<option>해외</option>
+	      			</select>
+	      			<select class="startup_brand_title">
+	      				<option>브랜드를 선택해 주세요.</option>
+	      				<option>고투웍</option>
+	      				<option>돌배기집</option>
+	      				<option>롤링파스타</option>
+	      				<option>리춘시장</option>
+	      				<option>막이오름</option>
+	      				<option>미정국수0410</option>
+	      				<option>백스비어</option>
+	      			</select>
+      			</div> <!-- 입력박스1 end -->
+       			
+       			
+      			<div class="startup_input_box"> <!-- 입력박스2 -->
+		      		<div class="startup_input_title">이름<span>*</span></div> 
+	 				<input class="startup_input" type="text" maxlength="10">
+ 				</div> <!-- 입력박스2 end -->
+ 				
+ 				
+      			<div class="startup_input_box"> <!-- 입력박스3 -->
+		      		<div class="startup_input_title">휴대폰 번호<span>*</span></div> 
+	      			<select class="startup_brand_phone">
+	      				<option>010</option>
+	      				<option>011</option>
+	      				<option>016</option>
+	      				<option>017</option>
+	      				<option>018</option>
+	      				<option>019</option>
+	      			</select>
+	 				<input class="startup_input_number" type="text" maxlength="4">
+	 				<input class="startup_input_number" type="text" maxlength="4">
+ 				</div> <!-- 입력박스3 end -->
+ 				
+ 				
+      			<div class="startup_input_box"> <!-- 입력박스4 -->
+		      		<div class="startup_input_title">이메일</div> 
+	 				<input class="startup_input_email" type="text">
+	 				<span>@</span>
+	 				<input class="startup_input_email" type="text">
+	      			<select class="startup_input_emailbox">
+	      				<option>직접입력</option>
+	      				<option>네이버</option>
+	      				<option>다음</option>
+	      				<option>구글</option>
+	      			</select>
+ 				</div> <!-- 입력박스4 end -->
+ 				
+ 				<div class="startup_line_cut"></div>
+ 				
+ 				
+      			<div class="startup_input_box"> <!-- 입력박스5 -->
+		      		<div class="startup_input_title">창업희망지역<span>*</span></div> 
+					<select class="startup_input_zone1">
+	      				<option>지역선택</option>
+	      				<option>서울특별시</option>
+	      				<option>경기도</option>
+	      				<option>인천광역시</option>
+	      				<option>대전광역시</option>
+	      			</select>
+	      			<select class="startup_input_zone2">
+	      				<option>시/구선택</option>
+	      				<option>강남구</option>
+	      				<option>강동구</option>
+	      				<option>강북구</option>
+	      				<option>강서구</option>
+	      				<option>관악구</option>
+	      				<option>광진구</option>
+	      				<option>구로구</option>
+	      			</select>
+ 				</div> <!-- 입력박스5 end -->
+ 				
+      			<div class="startup_input_box"> <!-- 입력박스6 -->
+		      		<div class="startup_input_title">입점희망 점포<span>*</span></div> 
+	 				<input id="radio_btn1" name="want" type="radio" value="없음">
+	 				<label for="radio_btn1">없음</label>
+	 				<input id="radio_btn2" name="want" type="radio" checked="checked">
+	 				<label for="radio_btn2">있음</label>
+ 				</div> <!-- 입력박스6 end -->
+ 				
+ 				
+ 				<div class="startup_input_box">	<!-- 입력박스7 -->
+	 				<button class="startup_find_btn">우편번호 찾기</button> 
+	 				<input class="startup_input_adress" type="text"> 	<!-- 주소입력창 -->
+	 				<input class="startup_input_adress" type="text">	<!-- 주소입력창 -->
+ 				</div>	<!-- 입력박스7 end-->
+ 				
+ 				
+      			<div class="startup_input_box"> <!-- 입력박스8 -->
+		      		<div class="startup_input_title">추가 정보 입력<span>*</span></div> 
+					<div class="startup_textarea">
+						<textarea rows="2" cols="105" placeholder="점포를 보유하셨거나 입점희망 점포에 대한 사전정보가 있을 경우, 점포의 평수/임대료 등 구체적인 정보를 남겨주시면 조금 더 정확한 상담이 가능합니다. 그 외, 추가문의 사항이 있는 경우 남겨주세요!"></textarea>
+					</div>
+ 				</div> <!-- 입력박스8 end -->
+ 				
+				<div class="startup_text_count">현재 <span>0</span> / 최대 200byte (한글100자, 영문200자)</div>
+					
+ 				
+      		</div> <!-- 입력양식 영역 end -->
+      		
       
+
+
+
       
+      	
+      	</form> <!-- 본문 입력양식 end-->
       
       
       

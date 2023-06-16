@@ -1,11 +1,20 @@
 @charset "EUC-KR";
 /* 폰트 불러오기*/
+/*에스코어드림*/
 @font-face {
      font-family: 'S-CoreDream-3Light';
      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
      font-weight: normal;
      font-style: normal;
 }
+
+/*노토산스*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
 
 
 /* CSS 초기 세팅*/
@@ -60,7 +69,7 @@ li{list-style-type: none;}
 
 .startup_menu_form {
 	border-bottom: 2px solid #de121c;
-}
+} 
 
 
 .startup_menu_order , .startup_menu_qna {
@@ -70,20 +79,212 @@ li{list-style-type: none;}
 }
 
 
+/*--------------------------- 본문 입력양식 ---------------------------*/
 
 
 
+#startup_form {
+	width: 1250px; 
+	border: 1px solid orange;
+	margin: 0 auto;
+	display: flex;
+    box-sizing: border-box; /* 박스 사이징 설정 */
+}
+
+#startup_form select { /* 셀렉트 태그 디자인 */
+	  border: none; /* 셀렉트 태그 보더 디자인 제거 */
+	  border-bottom: 1px solid #888; /* 보더 하단에 추가*/
+      color: #888;
+      padding: 15px;
+      outline: none; /* 셀렉트 태그 아웃라인 제거 */
+}
+
+
+/*--- 인풋 타이틀영역 ---*/
+
+
+.startup_input_box {
+	display: flex;
+	margin: 20px 0;
+	align-items: center; /* 세로 중앙 정렬 */
+}
+
+.startup_input_title { /* 양식 질문 타이틀*/
+	font-size: 18px;
+	width: 340px;
+}
+
+.startup_input_title > span { /* 양식 질문 안에 * */
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #de121c;
+	font-weight: bold;
+	position: relative;
+	top: -3px;
+	margin-left: 5px;
+}
+
+/*--- 입력박스1 ---*/
+.startup_brand_nation , .startup_input_zone1 { /*입력박스5 추가*/
+	width: 420px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+.startup_brand_title , .startup_input_zone2 {	/*입력박스5 추가*/
+	width: 420px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 50px;
+}
+
+
+/*--- 입력박스2 ---*/
+.startup_input {
+	width: 300px;
+	padding: 15px;
+	border: none; /* 기존 보더 삭제 */
+	border-bottom: 1px solid #888; /* 인풋 보더 추가*/
+	outline: none; /*아웃라인 삭제 */
+	color: #888;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/*--- 입력박스3 ---*/
+.startup_brand_phone {
+	width: 100px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+}
+
+.startup_input_number {
+	width: 100px;
+	padding: 15px;
+	border: none; /* 기존 보더 삭제 */
+	border-bottom: 1px solid #888; /* 인풋 보더 추가*/
+	outline: none; /*아웃라인 삭제 */
+	color: #888;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	margin-left: 40px;
+}
 
 
 
+/*--- 입력박스4 ---*/
+.startup_input_email {
+	width: 250px;
+	padding: 15px;
+	border: none; /* 기존 보더 삭제 */
+	border-bottom: 1px solid #888; /* 인풋 보더 추가*/
+	outline: none; /*아웃라인 삭제 */
+	color: #888;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+}
+
+.startup_input_box > span {
+	color: #888;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.startup_input_emailbox {
+	width: 250px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	color: #888;
+	margin-left: 70px;
+}
 
 
 
+.startup_line_cut {
+	margin-bottom: 100px;
+}
 
 
+/*--- 입력박스5는  입력박스1에 같이 입력함---*/
+/*--- 입력박스6 ---*/
+
+#radio_btn1 , #radio_btn2{
+    accent-color: #de121c;  /* radio 버튼 색상 변경 */
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	color: #888;
+	width: 23px;
+	height: 23px;
+}
+
+#radio_btn2 {
+	margin-left : 30px;
+}
 
 
+.startup_input_box > label {
+	margin-left : 10px;
+}
+
+/* 우편번호 찾기 버튼 */
+
+.startup_find_btn {
+	background-color: #8d8d8d;
+	border: none;
+	width: 150px;
+	height: 50px;
+	display: inline-block;
+	border-radius: 5px;
+	color: white;
+	font-weight: 700;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	margin-left: 340px;
+}
 
 
+/* 주소입력창 */
+.startup_input_adress {
+	width: 310px;
+	padding: 15px;
+	border: none; /* 기존 보더 삭제 */
+	border-bottom: 1px solid #888; /* 인풋 보더 추가*/
+	outline: none; /*아웃라인 삭제 */
+	color: #888;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	margin-left: 20px;
+}
+
+
+/*--- 입력박스8 ---*/
+
+.startup_textarea {
+	width: 1000px;
+	height: 90px;
+	display: block;
+}
+
+.startup_textarea > textarea {
+	padding : 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	border: none;
+	border-bottom: 1px solid #888;
+}
+
+.startup_text_count {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	color: #888;
+	font-weight: bold;
+	margin-left: 340px;
+}
+
+.startup_text_count > span {
+	color: #de121c;
+}
 
 
