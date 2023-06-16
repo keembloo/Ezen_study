@@ -56,11 +56,11 @@ li{list-style-type: none;}
 	font-weight: bold;
 }
 
-.startup_menu_order , .startup_qna {
+.startup_menu_order , .startup_menu_qna {
 	margin-left : 20px;
 	padding-bottom: 4px;
-	/* color: #878787;  회색 */
-	color: blue;
+	color: #878787;  /* 회색 */
+
 }
 
 
