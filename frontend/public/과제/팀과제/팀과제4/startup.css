@@ -232,7 +232,7 @@ li{list-style-type: none;}
 /*--- 입력박스5는  입력박스1에 같이 입력함---*/
 /*--- 입력박스6 ---*/
 
-#radio_btn1 , #radio_btn2{
+.radio_btn1 , .radio_btn2{
     accent-color: #de121c;  /* radio 버튼 색상 변경 */
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 16px;
@@ -241,7 +241,7 @@ li{list-style-type: none;}
 	height: 23px;
 }
 
-#radio_btn2 {
+.radio_btn2 {
 	margin-left : 30px;
 }
 
