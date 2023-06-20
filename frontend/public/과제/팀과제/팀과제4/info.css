@@ -1,0 +1,472 @@
+@charset "UTF-8";
+
+*{padding: 0px; margin: 0px; font-family: 'S-CoreDream-3Light';}
+
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+*{
+   padding: 0px; margin: 0px; font-size: 12px;
+}
+/* a기본값 제거 */
+a{
+   color: black; text-decoration: none;
+}
+/* 글머리 */
+li{
+   list-style-type: none;
+}
+
+/* ----------헤더--------- */
+#main_header{
+   width: 1500px;
+   height: 100px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+}
+#main_header a{
+	font-size: 14px;
+}
+.main_logo{
+   width: 200px;
+   height: 48px;
+   padding-top: 20px;
+}
+.main_site{
+   width: 180px;
+   height: 25px;
+   padding-top: 34px;
+}
+#main_header ul{
+   padding-top: 17px;
+   display: flex;
+}
+#main_header li{
+   margin: 20px;
+   display: flex;
+   font-size: 16px;
+   font-weight: bold;
+}
+/* -------헤더 end --------*/
+
+/* ----------본문--------- */
+
+/* ---------------------본문--------------------------------*/
+/* 본문 전체 구역 */
+.info_section{
+   background-color: #f7f7f7;
+   padding-bottom: 75px;
+}
+
+/* 본문 위쪽 구역 */
+.info_main_top{
+   width: 100%;
+   background-color: white;
+}
+
+/* 본문 위쪽 구역 박스 */
+.info_top_box{
+   width: 1500px;
+   margin: 0 auto;
+}
+
+/* 본문 위쪽 텍스트 */
+.info_top_box h3{
+   padding-top: 60px;
+   padding-bottom: 15px;
+   font-size: 50px;
+}
+
+.info_top_box p{
+   font-size: 16px;;
+   line-height: 30px;
+   font-weight: 300;
+   color: #000;
+   margin-bottom: 20px;
+}
+
+/* HOME>창업설명회 텍스트*/
+.info_top_text{
+   text-align: right;
+   font-size: 14px;
+   font-weight: 300;
+   color: #878787;
+   margin-bottom: 20px;
+   padding-bottom: 40px;
+}
+
+.info_top_text b{
+   color: #000;
+   font-weight: bold;
+}
+
+
+/* 본문 아래쪽 */
+.info_main_bottom{
+   width: 1500px;
+   margin: 0 auto;
+}
+
+.info_bottom_title{
+   display: flex;
+   justify-content: flex-start;
+   margin-top: 80px;
+   margin-bottom: 35px; 
+}
+
+.info_bottom_title a{
+   margin: 0px 15px;
+   font-size: 1.625rem;
+   font-weight: 500;
+   color: #878787;
+   border-bottom: 1px solid #f7f7f7;
+}
+
+.info_bottom_title a:visited{
+   color: #000;
+   border-bottom: 1px solid #de121c;
+}
+
+/* 본문 아래 전체 하얀색 박스 */
+.info_bottom_box{
+   width: 100%;
+   background-color: white;
+   margin: 0 auto;
+}
+
+/* 본문 아래 전체 하얀색 박스 크기 조절 */
+.info_bottom_whbox{
+   width: 1150px;
+   margin: 0 auto;
+}
+
+/* 지역 이름 박스 */
+.info_city_box{
+   width: 100%; height: 50px;
+   display: flex;
+   justify-content: flex-start;
+   color: #878787;
+   font-size: 13px;
+   font-weight: 500;
+   padding-top: 60px;
+   padding-bottom: 80px;
+   background-color: white;
+}
+
+.info_city_box a{
+   background-color: white;
+}
+
+.info_all{
+   width: 16.6%;
+   border-left: 1px solid #ddd;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   text-align: center;
+   padding-top: 15px;
+   color: #878787;
+}
+
+.info_all:visited{   /* 해당 요소를 클릭한적이 있으면 css */
+   color: white;
+   background-color: red;
+}
+
+.info_seoul{
+   width: 16.6%;
+   border-left: 1px solid #ddd;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   text-align: center;
+   padding-top: 15px;
+}
+
+.info_dajeon{
+   width: 16.6%;
+   border-left: 1px solid #ddd;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   text-align: center;
+   padding-top: 15px;
+}
+
+.info_gwangju{
+   width: 16.6%;
+   border-left: 1px solid #ddd;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   text-align: center;
+   padding-top: 15px;
+}
+
+.info_busan{
+   width: 16.6%;
+   border-left: 1px solid #ddd;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   text-align: center;
+   padding-top: 15px;
+}
+
+.info_dagu{
+   width: 16.6%;
+   border-left: 1px solid #ddd;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+   text-align: center;
+   padding-top: 15px;
+}
+
+/* 월 선택 박스 */
+.info_date_box{
+   margin-bottom: 30px;
+}
+
+/* 월 선택 */
+.info_date{
+   position: relative;
+   text-align: center;
+   padding-bottom: 20px;
+}
+
+.info_date span{
+   display: inline-block;
+}
+
+/* 전 월 선택 이미지 */
+.info_preimg{
+   position: absolute;
+   top: 0;
+   left: 410px;
+   z-index: 2;
+}
+
+/* 후 월 선택 이미지 */
+.info_nextimg{
+   position: absolute;
+   top: 0;
+   right: 410px;
+   z-index: 2;
+}
+
+.info_date p{
+   font-weight: bold;
+   font-size: 30px;
+   color: #000;
+}
+
+/* 업체 선택 셀렉트 태그 */
+.info_select{
+   width: 190px; height: 45px;
+   border: 1px solid #d9d9d9;
+   padding-left: 15px;
+   font-weight: bold;
+   font-size: 15px;
+   color: #888;
+   position: absolute;
+   top: 0;
+   right: 0;
+   z-index: 2;
+}
+
+
+/* 본문 내용 */
+.info_image_box{
+   width: 100%; height: 100%;
+}
+
+
+
+/* 본문 내용 리스트 박스 */
+.info_image_list{
+   width: 33%;
+   display: inline-block;
+   
+}
+
+.info_list_box{
+   height: 100%;
+   position: relative;
+   margin: 0px 6px 20px 6px;
+}
+
+
+.info_image_list:hover { border: 1px solid red;}
+
+/* 본문 이미지 박스 */
+.info_logo_box{
+   background-color:  #f7f7f7;
+   text-align: center;
+   margin: 25px;
+   position: relative;
+}
+
+/* 본문 이미지 */
+.info_image_box img{
+   margin: 15px;
+   padding: 60px 0;
+}
+
+/* 본문 이미지 아래 텍스트 박스 */
+.info_text_box{
+   margin: 0px 25px;
+   padding-bottom: 30px;
+}
+
+
+.info_image_city{
+   font-size: 12px;
+   font-weight: bold;
+   color: #dd0b15;
+   margin-bottom: 10px;
+}
+
+.info_image_title{
+   font-size: 25px;
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+
+.info_image_text1{
+   font-size: 14px;
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+
+.info_image_text2{
+   font-size: 12px;
+   font-weight: bold;
+   color: #878787;
+   margin-bottom: 20px;
+}
+
+.info_image_text3{
+   font-size: 12px;
+   font-weight: bold;
+   color: #878787;
+   margin-bottom: -10px;
+}
+
+.info_soldsell{
+   padding-bottom: 30px;
+}
+
+/* 마감 하이퍼링크 박스 */
+.info_sold{
+   border: 1px solid #878787;
+   background-color: #878787;
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 20px;
+   color: white;
+   
+   margin: 0px 25px;
+   padding: 10px 80px;
+}
+
+/* 신청가능 하이퍼링크 박스 */
+.info_sell{
+   border: 1px solid #de121c;
+   background-color: #de121c;
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 20px;
+   color: white;
+   
+   margin: 0px 25px;
+   padding: 10px 65px;
+}
+
+
+.info_deadline{
+   position: absolute;
+   border: 1px solid #de121c;
+   background-color: #de121c;
+   font-size: 13px;
+   color: white;
+   padding: 5px 15px;
+   z-index: 2;
+   right: 25px;
+   top: 0;
+}
+/* 픽스드 설정 */
+/* 전체 구역 */
+#brand_popup_wrap{position: fixed; right: 50px; top: 90px;}
+
+.brand_popup_item{position: relative;}
+
+/* 동그라미 지정 */
+#brand_popup_wrap li{ /* 아이콘 구역 */
+   width: 120px; height: 120px; background-color: #BD1D1D; 
+   padding: 10px; border: 1px solid #BD1D1D; border-radius :400px;
+   text-align: center; box-shadow: 0 0 8px;
+   position: fixed; right: 50px; 
+   }
+
+/* 글자 위치 */
+.brand_popup_point{
+    position: relative;
+    right: 25px;
+    top: 100px;
+}
+/* 창업문의 글자 수정 */
+.brand_popup_point1 {font-size: 15px; color:white; font-weight: bold;}
+
+/* 노트 모양 이미지 */
+
+#brand_popup_wrap img {position: absolute; top: 35px;}
+/* 픽스드 끝 */
+
+
+/* 푸터 */
+#main_footer{
+   width: 100%;
+   height: 180px;
+   background-color: #363636;
+}
+.main_footerbox{
+   width: 1500px;
+   height: 180px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+}
+.main_footerbox h3{
+   font-size:15px;
+   font-weight: bold;
+   color: #C0C2C4;
+   padding-top: 33px;
+   margin: 0px 0px 10px 0px;
+}
+.main_footerbox p{
+   color: #A5A5A5;
+   font-weight: bold;
+   margin: 3px 0px 3px 0px;
+}
+.main_ftbutton{
+   width: 245px;
+   height: 40px;
+   border: 1px solid #A5A5A5;
+   color: #A5A5A5;
+   text-align: center;
+   font-size: 16px;
+   margin-top: 60px;
+   padding-top: 16px;
+}
+.main_ftbutton select{
+   display: none;
+}
+.main_ftbutton select:active{
+   display: block;
+}
+/* 푸터end */
+
+
+
+
+/* ----------푸터--------- */
