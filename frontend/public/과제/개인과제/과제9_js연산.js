@@ -16,8 +16,6 @@ let min = 0;
 				정수3 < min ? min=정수3 : min=min //min
 
 
-
-정수1 < 정수2 && 정수1 <정수3 ? min=정수1 : 정수2 < 정수3 ? min=정수2 : 정수1 > 정수3 ? min=정수3 : min=정수1 // min
 max > 정수1 && 정수1>min ? mid=정수1 : 
 		max > 정수2 && 정수2>min ? mid=정수2 :
 				max > 정수3 && 정수3>min ? mid=정수3 : mid=정수1  //mid
@@ -28,8 +26,8 @@ console.log('최대값'+ max +'중간값' + mid + '최소값' + min)
 
 
 //문제12
-let player1 = Number(prompt('플레이어1의 값 0, 1, 2 중 입력하세요'))
-let	player2 = Number(prompt('플레이어2의 값 0, 1, 2 중 입력하세요'))
+let player1 = prompt('플레이어1의 값 0, 1, 2 중 입력하세요')
+let	player2 = prompt('플레이어2의 값 0, 1, 2 중 입력하세요')
 
 
 player1 == player2 ? console.log('무승부입니다') : 
