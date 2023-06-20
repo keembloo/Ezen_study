@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+*{
+   padding: 0px; margin: 0px; font-size: 12px
+}
+/* a기본값 제거 */
+a{
+   color: black; text-decoration: none;
+}
+/* 글머리 */
+li{
+   list-style-type: none;
+}
+
+/* 헤더시작 */
+#main_header{
+   width: 1500px;
+   height: 100px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+}
+#main_header a{
+	font-size: 14px;
+}
+.main_logo{
+   width: 200px;
+   height: 48px;
+   padding-top: 20px;
+}
+.main_site{
+   width: 180px;
+   height: 25px;
+   padding-top: 34px;
+}
+#main_header ul{
+   padding-top: 17px;
+   display: flex;
+}
+#main_header li{
+   margin: 20px;
+   display: flex;
+   font-size: 16px;
+   font-weight: bold;
+}
+
+
+/* ---------- 브랜드 페이지 시작 합니다!!---------- */
+
+/* 브랜드 첫번째 시작 */
+/* 브랜드 첫번째 백그라운드 */
+#brand_background1{ height: 300px;}
+            
+/* 브랜드 레이아웃 / 영역 지정 */
+.brand_info{width: 1500px; margin: 0 auto; padding-top:70px;}
+
+/* home>브랜드 오른쪽 정렬*/
+.brand_home{text-align: right;}
+
+/* '브랜드' 글자 속성 */
+.brand_info h3{ font-size: 35px; font-size:  50px;}
+
+/* '더본~' 글자 속성 */
+.brand_info li{ font-size: 16px; padding: 5px 0px;}
+
+/* '더본~' 각 글자 포인트(span) */
+.brand_font1{font-weight: bold; font-size: 16px;}
+
+.brand_font2{color: gray; font-size: 12px; padding: 0px 3px;}
+
+.brand_font3{font-weight: bold; font-size: 13px;}
+
+/* 브랜드 첫번째 끝*/
+
+
+/* 브랜드 두번째 시작 */
+#brand_background2{ background-color: #F7F7F7; height: 1000px; padding-bottom: 200px;}
+
+/* 이미지 구역 240 , 290 */
+
+.brand_content{width: 1500px; display: flex; 
+margin: 0 auto; 
+flex-wrap: wrap; padding-top: 100px; padding-bottom: 50px; height: 500px;}
+
+/* +창업정보~ 오른쪽 정렬 */
+.brand_start {text-align: right;}
+
+/* 브랜드 설명 첫째줄 글자 수정 */
+.brand_cont_font1{font-size: 16px; padding: 5px 15px; }
+
+.brand_cont_font2{font-size: 15px; color: #7B8284; text-align: right; padding-bottom: 15px; padding-right: 10px;}
+
+/* 로고 사이즈 지정 */
+.brand_logo{width: 350px; height: 50px; }
+
+/* 컨텐츠 레이아웃 설정 */
+.brand_cont1{
+   width: 350px; background-color: white; 
+    border: 1px solid #f7f7f7;
+   margin: 40px 10px;   height: 1\0px;
+}
+
+/* 컨텐츠 1번 이미지 사이즈 지정 */
+.brand_cont_img img{width: 100%; height: 220px; }
+
+/* 마우스 오버 설정 */
+.brand_cont1:hover { border: 1px solid red; filter: drop-shadow(8px 3px 3px #c3c3c3); }
+
+
+/* 픽스드 설정 */
+/* 전체 구역 */
+#brand_popup_wrap{position: fixed; right: 50px; top: 90px;}
+
+.brand_popup_item{position: relative;}
+
+/* 동그라미 지정 */
+#brand_popup_wrap li{ /* 아이콘 구역 */
+   width: 120px; height: 120px; background-color: #BD1D1D; 
+   padding: 10px; border: 1px solid #BD1D1D; border-radius :400px;
+   text-align: center; box-shadow: 0 0 8px;
+   position: fixed; right: 50px; 
+   }
+
+/* 글자 위치 */
+.brand_popup_point{
+    position: relative;
+    right: 25px;
+    top: 100px;
+}
+/* 창업문의 글자 수정 */
+.brand_popup_point1 {font-size: 15px; color:white; font-weight: bold;}
+
+/* 노트 모양 이미지 */
+
+#brand_popup_wrap img {position: absolute; top: 35px;}
+/* 픽스드 끝 */
+
+
+/* ---------- 브랜드 페이지 끝났습니다!!---------- */
+/* --------------푸터 시작 ------------------ */
+#main_footer{
+   width: 100%;
+   height: 180px;
+   background-color: #363636;
+}
+.main_footerbox{
+   width: 1500px;
+   height: 180px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+}
+.main_footerbox h3{
+   font-size:15px;
+   font-weight: bold;
+   color: #C0C2C4;
+   padding-top: 33px;
+   margin: 0px 0px 10px 0px;
+}
+.main_footerbox p{
+   color: #A5A5A5;
+   font-weight: bold;
+   margin: 3px 0px 3px 0px;
+}
+.main_ftbutton{
+   width: 245px;
+   height: 40px;
+   border: 1px solid #A5A5A5;
+   color: #A5A5A5;
+   text-align: center;
+   font-size: 16px;
+   margin-top: 60px;
+   padding-top: 16px;
+}
+.main_ftbutton select{
+   display: none;
+}
+.main_ftbutton select:active{
+   display: block;
+}
+/* --------------푸터 end ------------------ */
+
+
+
+
+
+
+
+
