@@ -255,11 +255,19 @@ let 정수1 = prompt('정수1을 입력하세요')
 let 정수2 = prompt('정수2을 입력하세요')
 let 정수3 = prompt('정수3을 입력하세요')
 let max = 0;
+let mid = 0;
+let min = 0;
 
-정수1 > 정수2 ? max=정수1 : 정수2 > 정수3 ? max=정수2 : max-정수3 > 0 ? max=max : max=정수3
+정수1 > 정수2 && 정수1 > 정수3 ? max=정수1 : 정수2 > 정수3 ? max=정수2 : max-정수3 > 0 ? max=max : max=정수3 // max
+정수1 < 정수2 && 정수1 <정수3 ? min=정수1 : 정수2 < 정수3 ? min=정수2 : 정수1 > 정수3 ? min=정수3 : min=정수1 // min
+max > 정수1 && 정수1>min ? mid=정수1 : 
+		max > 정수2 && 정수2>min ? mid=정수2 :
+				max > 정수3 && 정수3>min ? mid=정수3 : mid=정수1  //mid
 
+console.log('최대값'+ max +'중간값' + mid + '최소값' + min)
 
-console.log(max)
+//문제12
+
 
 
 
