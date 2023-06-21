@@ -1,1 +1,68 @@
 @charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+/* -----------------시작----------------- */
+#wrap {
+	width: 100%;
+}
+
+.aria {
+	width: 1200px;
+	margin: auto;
+	border: 3px solid #F1E9FD;
+	border-radius: 10px;
+	margin-top: 170px;
+}
+
+.flexbox {
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.signup , .login {
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.signup > p {
+	color: #282828;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: -0.7px;
+}
+
+
+.input_id , .input_pw , .login_id , .login_pw{
+	padding: 10px 20px;
+	outline : none;
+	border: none;
+	border-bottom : 3px solid #FFD7E5;
+	font-size: 16px;
+	display: block;
+	margin: 20px auto 0 auto;
+}
+
+.input_id , .login_id {
+	margin-top: 70px;
+}
+
+.signup_btn , .login_btn{
+	padding: 10px 65px;
+	outline : none;
+	border: none;
+	border-radius: 25px;
+	background-color: #7e64a4;
+	font-size: 18px;
+	font-weight: 700;
+	display: block;
+	margin: 50px auto 50px auto;
+	color: white;
+}
+
+
