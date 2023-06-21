@@ -22,7 +22,11 @@ function 추가함수(){ // f start
 	let name = snameInput.value
 			// 3. 변수명.value : 입력된 값 호출
 		// 3. 입력받은 데이터를 배열에 추가
-	학생리스트.push( name)
+		
+		// * 유효성검사 : 이미 존재하면 push 안함, 존재하지 않으면 push
+		
+	학생리스트.indexOf(name) != -1 ? alert('중복된 이름입니다') : 학생리스트.push( name);	
+	
 			// 4. 배열명.push(데이터)	:	해당 데이터를 배열에 추가
 		// 4. 배열 출력
 			// document.write(학생리스트)		// 기존문서에 해당 데이터를 새로 쓰기 [기존 데이터 사라짐]
@@ -30,8 +34,41 @@ function 추가함수(){ // f start
 	let slistUl = document.querySelector(".slist")
 			//2. 해당 ul 객체에 쓰기
 		slistUl.innerHTML = '<li>' + 학생리스트 + '</li>'
-			// innerHTML : <> (inner) </>	
-				
-		
+			// innerHTML : <> (inner) </>		
 }; // f end
+
+
+// 3. 삭제 함수
+function 삭제함수(){ // 삭제함수 start
+	//* 입력받은 데이터 삭제
+	
+	// 1. <input> 객체 호출
+	let snameInput = document.querySelector('.sname')
+	// 2. <input> 객체의 value 속성 호출
+	let name = snameInput.value
+	// 3. 삭제할 데이터의 인덱스(저장된 순번) 찾자
+	let index = 학생리스트.indexOf(name)
+		// 해당 데이터가 배열에 존재하면 0~찾을번호 없으면 -1
+	// 4. 배열내 인덱스를 이용한 삭제
+	// * 유효성검사 : 데이터가 개발자가 원하는 데이터인지 검사
+	index != -1 ? 	학생리스트.splice( index , 1 ) : alert('없는 데이터임');
+		
+	// ~ 결과물 출력
+	// 5. 배열 출력
+	let slistUl = document.querySelector('.slist')
+	slistUl.innerHTML = '<li>'+ 학생리스트 +'</li>'
+	// * 현재 <input> 객체 입력값 초기화
+	snameInput.value = ''
+	
+}; // 삭제함수 end
+
+
+
+
+
+
+
+
+
+
 
