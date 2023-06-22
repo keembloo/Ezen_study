@@ -69,12 +69,37 @@ for (let i = 1; i <= value5; i++) {
 console.log(output);
 
 
+// 문제6) 입력받은 줄 수 만큼 * 출력  [ ex) 5 ]
+output = ``; // 공백으로 초기화
+let value6 = prompt('문제6:');
+
+for (let i = 1; i <= value6; i++) {
+	output += `\n`;
+	for (let k = 1; k < i; k++) {
+		output += ` `;
+	}
+	for (let j = value6; j >= i; j--) {
+		output += `*`;
+	}
+}
+console.log(output);
 
 
+// 문제7) 입력받은 줄 수 만큼 * 출력  [ ex) 5 ]
+output = ``; // 공백으로 초기화
+let value7 = prompt('문제7:');
 
 
-
-
+for (let i = 1; i <= value6; i++) {
+	output += `\n`;
+	for (let k =1; k < i; k++) {
+		output += ` `;
+	}
+	for (let j = 1; j <= value6; j++) {
+		output += `*`;
+	}
+}
+console.log(output);
 
 
 
