@@ -30,7 +30,7 @@ console.log(output);
 output = ``; // 공백으로 초기화
 let value3 = prompt('문제3:');
 
-for (let i = 1; i <= value3; i++) {
+for (let i = 1; i <= value3; i++) { // 1 
 	for (let j = 1; j <= value3; j++) {
 		output += `*`;
 	}
