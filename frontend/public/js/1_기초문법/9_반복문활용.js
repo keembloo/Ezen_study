@@ -31,23 +31,23 @@ output = ``; // 공백으로 초기화
 let value3 = prompt('문제3:');
 
 for (let i = 1; i <= value3; i++) {
-	output += `\n`;
-	for (let j = 1; j <= i; j++) {
+	for (let j = 1; j <= value3; j++) {
 		output += `*`;
 	}
+	output += `\n`;
 }
 console.log(output);
 
-
+/*
 // 문제4) 입력받은 줄 수 만큼 * 출력 [ ex) 5 ]
 output = ``; // 공백으로 초기화
 let value4 = prompt('문제4:');
 
 for (let i = 1; i <= value4; i++) {
-	output += `\n`;
 	for (let j = value4; j >= i; j--) {
 		output += `*`;
 	}
+	output += `\n`;
 }
 console.log(output);
 
@@ -100,7 +100,7 @@ for (let i = 1; i <= value6; i++) {
 	}
 }
 console.log(output);
-
+*/
 
 
 
