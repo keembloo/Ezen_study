@@ -26,6 +26,7 @@ for (let i = 1; i <= value2; i++) { // for s
 console.log(output);
 */
 
+/*
 // 문제3) 입력받은 줄 수 만큼 * 출력  [ ex) 5 ]
 output = ``; // 공백으로 초기화
 let value3 = prompt('문제3:');
@@ -38,7 +39,7 @@ for (let i = 1; i <= value3; i++) { // 1
 }
 console.log(output);
 
-/*
+
 // 문제4) 입력받은 줄 수 만큼 * 출력 [ ex) 5 ]
 output = ``; // 공백으로 초기화
 let value4 = prompt('문제4:');
@@ -83,24 +84,26 @@ for (let i = 1; i <= value6; i++) {
 	}
 }
 console.log(output);
-
+*/
 
 // 문제7) 입력받은 줄 수 만큼 * 출력  [ ex) 5 ]
 output = ``; // 공백으로 초기화
 let value7 = prompt('문제7:');
 
 
-for (let i = 1; i <= value6; i++) {
+for (let i = 1; i <= value7; i++) { // 줄만들기
 	output += `\n`;
-	for (let k =1; k < i; k++) {
+	for (let k = value7; k >= i; k--) {  // 공백 만들기
+		// 입력값과 같게 시작해서, 현재줄수 값보다 크거나 같을때까지, 공백은 줄어듬
 		output += ` `;
 	}
-	for (let j = 1; j <= value6; j++) {
+	for (let j = i; j <= (value7*2)-1; j+=2) { // 별찍기
+		// 1부터 시작해서, (입력값의2배)-1다 작거나같아질때까지, 2씩 증가
 		output += `*`;
 	}
 }
 console.log(output);
-*/
+
 
 
 
