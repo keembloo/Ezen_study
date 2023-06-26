@@ -11,21 +11,22 @@
 		<h3 class="title">가계부작성하기</h3>
 		<form id="form">
 			<div class="input">
-			날짜 : <input type="date"/>
+			날짜 : <input class="dateitem" id="date" type="date"/>
 			</div>
 			<div class="input">
-			항목 : <input type="text"/>
+			항목 : <input class="listitem" id="item" type="text"/>
 			</div>
 			<div class="input">
-			금액 : <input type="text"/>
+			금액 : <input class="priceitem" type="text"/>
 			</div>
 			<div class="input">
-				<button onclick="클릭()" class="btn_input">입력하기</button>
+				<button type="button" onclick="clickevent()" class="btn_input">입력하기</button>
 			</div>
+			
 		</form>
 	</div>
-	
-	<table border="1" >
+	<div class="text"></div>
+	<table border="1" class="table">
 		<tr>
 			<th>날짜</th>
 			<th>항목</th>
