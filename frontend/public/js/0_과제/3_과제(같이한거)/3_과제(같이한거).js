@@ -1,0 +1,183 @@
+/*
+
+	<주요기능1 - 등록>
+		1. HTML 작성 : input 3개 button 1개 작성
+		2. button 클릭했을때 입력받ㅈ은 input 3개 저장하는 이벤트
+			<button onclick="">등록</button>
+		3. 함수 정의
+			무슨이벤트 = 정의 = 구체적인 이벤트 내용물
+			- 등록 버튼 클릭했을때 함수 실행
+			1. input 입력된 3개의 데이터를 모두 가져오기
+				1. 마크업의 선택자 정의
+					1. 호출할 마크업의 선택자 필수!!
+						선택자 : 마크업 식별하는 방법
+						1. class , id , 마크업 그자체
+					
+			2. DOM객체 함수를 이용한 선택자의 마크업 객체로 호출
+			document.getElementsByClassName("클래스명")
+			document.querySelector(".클래스")
+			
+			3. DOM 객체의 입력된 값 호출
+				INPUT -> VALUE 속성 등
+				input, textarea, select -> Value 속성 가능
+				div, span , table 등등 -> Value 속성 불가능
+				
+		2. 배열에 저장
+			* 배열은 여러개 데이터 저장할 수 있다.
+			* 함수는 종료되는 순간 = { }에서 사용되었던 메모리 모두 초기화/사라짐
+			
+			<배열 선언>
+				1. 인덱스 순으로 데이터	형태 구분 
+					0 3 6 9 12 = 날짜 인덱스
+					1 4 7 10 13 = 항목 인덱스
+					2 5 8 11 14 = 항목 인덱스
+					let 가계부 = [ '2023-06-27' , '콜라' , '1000' , '2023-06-28' , '사이다' , '1200']
+					
+				2.
+					각 배열당 0번 인덱스가 날짜,항목,금액순으로 저장
+					let 가계부_날짜 = ['2023-06-27' , '2023-06-28']
+					let 가계부_항목 = ['콜라' , '사이다']
+					let 가계부_금액 = [ '1000 , '1200']
+					
+			<배열 저장>
+				1. 저장전 유효성검사 = 데이터 검사/필터링
+				push
+				
+				2. 저장 성공후 input value 값 초기화
+				
+	<주요기능2 - 출력>
+		1. HTML 작성 : 출력 예상 HTML 작성
+		2. 출력이벤트
+			1. 입장했을때 -> JS열렸을때
+			2. 등록했을때 -> 등록함수 안에 push 했을때 밑에
+		
+		3. 함수 정의
+			* 배열에 있는 값을 테이블에 출력
+			1. 테이블 마크업 객체로 호출
+				-document.querySelector
+				
+			2. 테이블 안에 넣을 html 구성	
+				-반복문 for
+				
+			3. 테이블 안에 구성된 html 넣기	
+				-innerHTML
+			
+	<주요기능3 - 삭제>
+			
+			
+	
+*/
+
+
+	
+let 날짜배열 =[];
+let 항목배열 =[];
+let 금액배열 =[];
+	
+	
+console.log('js작동됨');
+출력(); // JS 열렸을때 최초 1번 실행
+
+// 1. 등록 버튼 클릭했을때 이벤트
+function 등록(){ //등록함수 s
+	console.log('등록함수 클릭');
+
+	
+
+	// 1. HTML 특정 태그를 가져오기
+	let dateInput = document.querySelector(".date");
+	let nameInput = document.querySelector(".name");
+	let moneyInput = document.querySelector(".money");
+	
+	console.log(dateInput);
+	console.log(nameInput);
+	console.log(moneyInput);
+	
+	
+	// 2. 태그의 입력된 값 호출
+	let date = dateInput.value; console.log(date);
+	let name = nameInput.value; console.log(name);
+	let money = moneyInput.value; console.log(money);
+	
+	// * 유효성검사 :: 만약에 3가지중에 하나라도 공백이면
+	if (date =='' || name == '' || money == '') {
+		alert('미입력이 종재합니다. [등록불가]');
+		return; // 함수 강제 종료 // return 실행되면 아래 코드는 실행x
+	}
+	
+	// 3. 배열 저장
+	날짜배열.push(date); console.log(날짜배열);
+	항목배열.push(name); console.log(항목배열);
+	금액배열.push(money); console.log(금액배열);
+	
+	출력();
+	
+	
+	// * 저장 성공시 input 상자 입력값 초기화
+	alert('항목 등록이 성공 되었습니다.');
+	dateInput.value = ``;
+	nameInput.value = ``;
+	moneyInput.value = ``;
+	
+}		// 등록함수 e
+	
+	
+	
+function 출력(){ // 출력함수 s
+	console.log('가계부 목록 출력');
+	
+	
+	// 1. 어디에 출력할건지? table 가져오기
+	let outputTable = document.querySelector('.outputTable');
+	
+	// 2. 무엇을?
+	let html = `<tr>
+					<th>날짜</th>
+					<th>항목</th>
+					<th>금액</th>
+					<th>비고</th>
+				</tr>`
+				
+	for (let i = 0; i<날짜배열.length; i++) { // for s
+		html += `<tr>
+					<td>${날짜배열[i]}</td>
+					<td>${항목배열[i]}</td>
+					<td>${금액배열[i].toLocaleString()}원</td>
+					<td><button>삭제</button></td>
+				</tr>`
+	} // for e
+			
+	// * 요구사항 : 총합계 계산 (금액배열에 있는 데이터 모두 더하기)
+		// 0번 인덱스 데이터부터 마지막 인덱스 데이터까지를 누적합계
+	let 총합계 = 0;
+	
+	for(let i=0; i<금액배열.length; i++) { // for s
+		console.log(i);		//배열에 저장된 순서번호
+		console.log(금액배열[i]);		//배열에 저장된 순서번호의 저장된 데이터/금액
+		총합계 += Number(금액배열[i]);  // Number('숫자') => 숫자 // push 할때 숫자형변환 (권장)
+	}	// for e
+	console.log(총합계);
+	
+	html += `<tr>
+				<td colspan="2">총합계</td>
+				<td colspan="2">${총합계.toLocaleString()}원</td>
+			</tr>`
+			
+	//undefined : 정의된게 없다 / 데이터가 없다 / 등록안햇는데 먼저 출력했으니까 오류 발생
+	
+	// 2. table 에 HTML 넣어주기 <table> inner </table>
+	outputTable.innerHTML = html;
+	
+} // 출력함수 e
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

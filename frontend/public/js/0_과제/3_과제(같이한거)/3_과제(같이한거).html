@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<input class="input date" id="dateInput" type="date" /> <br/>
+		<input class="input name" id="nameInput" type="text"  placeholder="항목" /> <br/>
+		<input class="input money" id="moneyInput" type="text" placeholder="금액" /> <br/>
+		<button onclick="등록()">등록</button>
+	</div>
+	
+	<!-- 출력 HTML -->
+	<div>
+		<table class="outputTable" border="1">
+			<!-- 등록할때마다 고정 -->
+			<tr>
+				<th>날짜</th>
+				<th>항목</th>
+				<th>금액</th>
+				<th>비고</th>
+			</tr>
+			<!-- 등록할때마다 tr 추가 = 반복문 -->
+<!-- 			<tr>
+				<td>1241531</td>
+				<td>콜라</td>
+				<td>1000</td>
+				<td><button>삭제</button></td>
+			</tr> -->
+		</table>
+	</div>
+	<script src="3_과제(같이한거).js" type="text/javascript"></script>
+</body>
+</html>
