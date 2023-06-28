@@ -30,6 +30,12 @@
 */
 
 let 글정보 = [];
+// 배열에 객체를 넣으면 글정보[4].작성자 <-이런식으로 빼오면됨
+
+console.log (글정보.length); // 1
+
+let 조회수 = 0;
+
 
 function 작성하기() { 
 	
@@ -37,21 +43,24 @@ function 작성하기() {
 	let pw = document.querySelector('.input_pw').value;
 	let title = document.querySelector('.input_title').value;
 	let textBox = document.querySelector('.textbox').value;
-
-	let 리스트 = {작성자 : name , 비밀번호 : pw , 제목 : title , 내용 : textBox}
+	let 리스트 = {작성자 : name , 비밀번호 : pw , 제목 : title , 내용 : textBox , 날짜 : new Date()}
 	console.log(리스트); // 확인용
 	
+	
+	// 유효성 검사
+	if (name =='' || pw =='' || title =='' || textBox =='' ) { alert('모두 빠짐없이 입력해주세요.'); return;} 
+	if (pw.length <4) {alert('비밀번호는 4자 이상이어야합니다.'); return;}
+		
 	글정보.push(리스트);
+	
 	console.log('글정보배열 : '+글정보[0]); //확인용
+	
+	
 	
 	alert('작성되었습니다.');
 	
-	document.querySelector('.input_name').value =``;
-	document.querySelector('.input_pw').value = ``;
-	document.querySelector('.input_title').value = ``;
-	document.querySelector('.textbox').value = ``;
-	
-	
+	페이지생성();
+
 /* 함축가능
 
 	글정보.push(
@@ -59,13 +68,45 @@ function 작성하기() {
 			작성자 : document.querySelector('.input_name').value , 
 			비밀번호 : document.querySelector('.input_pw').value , 
 			제목 : document.querySelector('.input_title').value , 
-			내용 : document.querySelector('.textbox').value
+			내용 : document.querySelector('.textbox').value ,
+			날짜 : new Date()
 		});
 */
 	
+	//인풋값 초기화~
+	document.querySelector('.input_name').value =``;
+	document.querySelector('.input_pw').value = ``;
+	document.querySelector('.input_title').value = ``;
+	document.querySelector('.textbox').value = ``;
 } // 작성하기 함수 e
 
 
+console.log('글정보'+글정보);
+console.log('글정보[0]'+글정보[0]);
+
+
+function 페이지생성() {
+	
+	document.querySelector('#table').innerHTML =
+		`<tr>
+			<th>번호</th> <th>제목</th> <th>작성자</th> <th>작성일</th> <th>조회수</th>
+		</tr>`
+		
+	for(let j=0; j<글정보.length; j++) { // 글정보의갯수만큼 html생성
+	
+		console.log(글정보[j]); //확인용
+		console.log(글정보[j].날짜); // 확인용
+		
+		let 지금날짜 = 글정보[j].날짜.getFullYear()+"년"+( 글정보[j].날짜.getMonth()+1 ) +"월"
+					+글정보[j].날짜.getDay()+"일"+글정보[j].날짜.getHours()+":"
+					+글정보[j].날짜.getMinutes();
+
+		document.querySelector('#table').innerHTML +=
+		`<tr>
+			<td>글번호</td> <td>제목</td> <td>${글정보[j].내용}</td> <td>${지금날짜}</td> <td>조회수값</td>
+		</tr>`
+	} //for e
+} // 페이지생성 함수 e
 
 
 
