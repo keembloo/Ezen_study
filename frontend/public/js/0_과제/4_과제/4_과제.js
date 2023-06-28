@@ -103,7 +103,7 @@ function 페이지생성() {
 
 		document.querySelector('#table').innerHTML +=
 		`<tr>
-			<td>글번호</td> <td>제목</td> <td>${글정보[j].내용}</td> <td>${지금날짜}</td> <td>조회수값</td>
+			<td>글번호</td> <td>제목</td> <td>${글정보[j].내용}</td> <td>작성자값</td> <td>${지금날짜}</td> <td>조회수값</td>
 		</tr>`
 	} //for e
 } // 페이지생성 함수 e
