@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 1500px;
+	margin: 0 auto;
+}
+
+.page_area {
+	display: flex;
+	flex-direction: column;
+    width: 500px;
+}
+
+.inputbox1 {
+	width: 450px;
+	margin-bottom: 30px;
+}
+
+.textbox {
+	display: block;
+	margin-bottom: 30px;
+}
