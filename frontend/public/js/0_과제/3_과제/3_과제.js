@@ -30,6 +30,8 @@ let 금액배열 = [];
 
 let table = document.querySelector('.table'); // 테이블 지정
 
+
+
 function clickevent() { //클릭이벤트 함수 s
 
 	console.log('클릭');
@@ -62,6 +64,7 @@ function clickevent() { //클릭이벤트 함수 s
 
 	금액배열.push(price.value);
 	console.log(금액배열);
+	
 	지정항목();
 
 	//실행후 남아있는 인풋값 초기화
@@ -91,13 +94,14 @@ function 지정항목() { //지정항목 함수 s
 			</tr>`
 	}
 	
-	let 합계 = 0;
+	
+/*	let 합계 = 0;
 	
 	for(let s=0; s<금액배열.length; s++) {
 		console.log('합계출력할꺼임');
 	}
 	
-	table.innerHTML = html;
+	table.innerHTML = html;*/
 } //지정항목 함수 e
 
 function deletebtn(i) {
