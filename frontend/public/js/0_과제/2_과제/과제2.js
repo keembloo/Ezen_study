@@ -35,7 +35,7 @@ function 회원가입() { //회원가입 함수
 			alert('비밀번호가 틀렸습니다');
 		} else {
 			alert('로그인 성공');
-
+			// location.href="../4_과제/4_과제.html";
 			document.querySelector('.login_id').value = '';
 			document.querySelector('.login_pw').value = '';
 

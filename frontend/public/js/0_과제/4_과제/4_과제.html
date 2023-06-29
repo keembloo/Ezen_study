@@ -12,18 +12,18 @@
 			<h3>글쓰기 페이지</h3>
 			<div class="page1_main">
 				<div class="inputbox1">
-					작성자 : <input class="input_name" type="text" /><br/>
-					비밀번호 : <input class="input_pw" type="text" /><br/>
-					제목 : <input class="input_title" type="text" /><br/>
+					작성자 : &nbsp;&nbsp;<input class="input_name" type="text" /><br/>
+					비밀번호 : &nbsp;&nbsp;<input class="input_pw" type="password" /><br/>
+					제목 : &nbsp;&nbsp;<input class="input_title" type="text" /><br/>
 				</div>
-				<textarea rows="10" cols="50" class="textbox" placeholder="내용을 작성하세요"></textarea>
+				<textarea rows="10" cols="40" class="textbox" placeholder="내용을 작성하세요"></textarea>
 				<button type="button" onclick="작성하기()" class="write_btn">작성하기</button>
 			</div>
 		</div> <!-- 페이지1구역 e -->
 		
-		<div class="page_area"> <!-- 페이지2구역 -->
-			<h3>글목록 페이지</h3>
-			<table id="table" border="1">
+		<div class="page_area" id="page2"> <!-- 페이지2구역 -->
+<!--			<h3>글목록 페이지</h3>
+			<table id="table" border="1">-->
 		
 				<!--<tr>
 					<th>1</th> <th>제목값</th> <th>작성자값</th> <th>작성일값</th> <th>조회수값</th>
@@ -31,8 +31,8 @@
 			</table>
 		</div>  <!-- 페이지2구역 -->
 		
-		<div class="page_area"> <!-- 페이지3구역 -->
-		
+		<div id="contentPage" class="page_area"> <!-- 페이지3구역 -->
+	
 		</div>  <!-- 페이지3구역 -->
 		
 		
