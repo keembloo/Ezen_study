@@ -58,8 +58,6 @@
 }
 
 
-
-
 .page_title {
 	margin-bottom: 20px;
 	border-bottom: 2px solid #FFD7E5;
@@ -72,3 +70,23 @@
 	border: 1px solid #FFD7E5;
 	border-radius: 5px;
 }
+
+
+#table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+	
+}
+
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+    font-size: 12px;
+ }
+
+ th {
+ 	background: #7e64a4;
+ 	color: white;
+ 	border: 1px solid white;
+ }
