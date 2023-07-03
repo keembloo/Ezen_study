@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.wrap {
+	width: 1000px; height: 600px;
+	background-image: url("img/gameimg.png"); /* 구역사이즈 필수*/
+	background-repeat: no-repeat; /* 배경이미지보다 구역사이즈가 더 크면 채우기 가능*/
+	margin: 0 auto;
+	/* background-size: 100% 배경 이미지 사이즈를 구역사이즈에 맞춤*/
+	position: relative;
+}
+
+/*유저구역*/
+
+.userbox {
+	width: 100px; height: 100px;
+	background-image: url("img/캐릭터1.png");
+	background-repeat: no-repeat;
+	background-size: 90%;
+	position: absolute; /* 절대위치=부모기준*/
+	top: 410px;
+	left: 50px;
+}
