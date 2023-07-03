@@ -34,7 +34,7 @@ document.body.addEventListener('keydown', (e) => {
 		console.log('공격');
 		userbox.style.backgroundImage = `url(img/캐릭터_머임.png` // 이미지 파일명 반대로됨 ㅎ...
 	}
-	// 3.
+	// 3.현재 위치값을 대입
 	userbox.style.left = `${u_left}px`
 	// 확인출력
 	console.log(userbox.style.left);
