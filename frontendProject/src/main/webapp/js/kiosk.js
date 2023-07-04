@@ -1,0 +1,1 @@
+console.log('키오스크js열림');
