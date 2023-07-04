@@ -14,15 +14,11 @@
 		<div class="kioskheader">
 			<!-- 헤더 : 광고이미지 / 카테고리출력 표시되는 구역 -->
 			<!-- 광고이미지 -->
-			<img class="himg" src="../img/img1.png">
+			<img class="himg" src="../img/himg1.png">
 
 			<!-- 카테고리 -->
 			<ul class="categorymenu">
-				<li class="categoryselect">신제품(NEW)</li>
-				<li>프리미엄</li>
-				<li>와퍼&주니어</li>
-				<li>치킨&슈프림거버</li>
-				<li>올데이킹&킹모닝</li>
+				<!--categoryPrint() 함수가 html 넣어줌  -->
 			</ul>
 		</div>
 		<!-- 헤더 end -->
