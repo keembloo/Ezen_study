@@ -17,12 +17,16 @@ let categoryList = ['신제품(NEW)' , '프리미엄' , '와퍼&주니어' , '�
 let burgerList = [
 				{ name : '헬로디아블로와퍼' , price : 9500 , img : '헬로디아블로와퍼.png' , category : 0 } ,
 				{ name : '헬로릴리트와퍼' , price : 12500 , img : '헬로릴리트와퍼.png' , category : 0 } ,
-				{ name : '치킨킹' , price : 8000 , img : '치킨킹.png' , category : 3 }
-];
+				{ name : '치킨킹' , price : 8000 , img : '치킨킹.png' , category : 3 }];
 
 	// 1. 카트(장바구니) 배열 / 선택 버거들이 저장되는 배열
 		// 1. 버거객체 2. 버거의식별 = 중복x -> 버거 제품번호대신 배열 인덱스
 let cartList = [];
+	// 1. 주문(주문내역) 배열										[ 정해져있는 데이터들은 숫자로 저장 => 권장 ]
+		/* 주문 { 주문번호 : , 주문날짜 : , 결제금액 : , 주문제품 : [] , 상태 : 0[주문요청] 1[주문완료] 2[주문취소] } */	
+let orderList = [
+	{ ono : 1 , date : '2023-07-05 13:30' , pay : 30000 , products : [ 0 , 0 , 2] , state : 1 }];
+
 
 //-----------------------------------------------------------//
 
@@ -171,16 +175,40 @@ function productCancel(cartIndex){ // 전체취소:인수x 부분취소 : 인수
 } // f end
 
 // 8. 카트내 버거 전체 취소 함수 [ 실행조건 : 취소하기 버튼을 클릭했을때]
-function cartCancel() { // 전체취소 : 모두 취소 : 인수 x
-	cartList.splice(0); // 배열내 모든 요소 삭제
-	alert('카트 초기화했습니다');
-	
-	// 2. 카트 화면 업데이트	
-	cartPrint();
+function cartCancel(){ // 전체취소 : 모두취소 : 인수x 
+	cartList.splice( 0 ); // 배열내 모든 요소 삭제 
+	cartPrint(); // 2. 카트 화면 업데이트
 } // f end
 
-
-
+/* 주문 { 주문번호 : , 주문날짜 : , 결제금액 : , 주문제품 : [] , 상태 : 0[주문요청] 1[주문완료] 2[주문취소] } */	
+// 9. 카트내 저장된 버거 주문(등록) 함수  [ 실행조건 : 주문하기 버튼을 클릭했을때]
+function productOrder(){
+	alert('주문했습니다.');
+	// 주문번호 만들기 // 마지막 인덱스 : 배열명.length-1
+	let ono = orderList[orderList.length-1].ono; // 주문배열내 마지막주문의 번호
+	// 카트(전역변수)에 있던 버거인덱스를 새로운 배열에 저장
+	let products = []; //주문이 들어가는 버거들인덱스
+	let totalPrice = 0;
+	for( let i = 0; i<cartList.length ; i++){
+		products.push(cartList[i]); // i번째 버거의 인덱스를 새로운 배열에 저장
+		totalPrice += burgerList[cartList[i]].price;
+	}
+	//1. 주문객체 생성해서
+	let order = {
+		ono : ono+1 , 		// 주문번호 생성해서 저장 [ 마지막 주문번호 +1 ] 
+		date : new Date() , // 현재날짜/시간 구해주는 함수 이용해서 자동으로 대입
+		pay : totalPrice , 			// 카트내 제품들의 총가격
+		products : products ,		// 카트에있던 모든 제품들 // 전역변수 [cartList] 대입시 문제 발생
+		state : 0			// 주문 객체 생성시 주문요청으로 상태 초기로 사용
+	}
+	//2. 주문배열에 저장하기
+	orderList.push( order ); alert('주문이 들어갔습니다.');
+		
+	//카트초기화
+	cartCancel(); // 전체취소 함수로 동일하기 때문에 재호출
+	//주문리스트확인
+	console.log(orderList);
+} // f end
 
 
 
