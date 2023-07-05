@@ -20,6 +20,10 @@ let burgerList = [
 				{ name : '치킨킹' , price : 8000 , img : '치킨킹.png' , category : 3 }
 ];
 
+	// 1. 카트(장바구니) 배열 / 선택 버거들이 저장되는 배열
+		// 1. 버거객체 2. 버거의식별 = 중복x -> 버거 제품번호대신 배열 인덱스
+let cartList = [];
+
 //-----------------------------------------------------------//
 
 
@@ -61,6 +65,7 @@ function categoryPrint( selectNo ) {
 	}
 	// 3. 구성된 html 출력
 	categorymenu.innerHTML = html;
+	productPrint( selectNo );
 }
 
 
@@ -85,8 +90,66 @@ function categorySelect(selectNo) {
 			categoryli[i].classList.remove('categoryselect');
 		}
 	}
+	productPrint( selectNo );
 }
 
-// 4. 제품 출력
+// 4. 제품 출력 함수 [ 실행 조건 : 1. 카테고리 클릭(변경)되면 -> 2번,3번함수에서 호출 ]
+function productPrint( categoryNo ){ // 어떤 카테고리의 제품 출력할건지 ?? 인수 판단
+	// 1. 어디에
+	let productbox = document.querySelector('.productbox');
+	// 2. 무엇을 [ 선택된 카테고리에 맞는 제품들만 출력 ]
+	let html = ``;
+		// html 구성
+		for( let i = 0; i<burgerList.length; i++){ //모든 버거리스트 열어서 하나씩 확인
+			// i번재 버거의 카테고리와 선택한 카테고리가 같으면 html 구성 / 아니면 구성x
+			if(burgerList[i].category == categoryNo){
+				html += `<div onclick="productSelect(${i})" class="product">
+							<img src="../img/${burgerList[i].img}"/>
+							<div class="pinfo">
+								<div class="pname">${burgerList[i].name}</div>
+								<div class="pprice">${burgerList[i].price.toLocaleString()}원</div>
+							</div>
+						</div>`;
+			} // 
+		} // f end
+		
+	// 3. 출력[대입]
+	productbox.innerHTML = html;
+} // f end
 
-// 5. 제품 선택 
+// 5. 제품 선택해서 카트에 담는 함수 [ 실행 조건 : 1. 제품 구역 클릭하면 ]
+function productSelect( productNo ){ // 어떤 제품을 카트에 담을건지?? 인수 판단
+	console.log( burgerList[productNo].name );
+	// 1. 선택된 버거의 인덱스를 배열에 저장 [버거 모든 정보를 저장할 필요가 없음]
+	cartList.push(productNo);
+	console.log(cartList);
+} // f end
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
