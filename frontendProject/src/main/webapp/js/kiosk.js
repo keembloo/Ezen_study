@@ -155,7 +155,9 @@ function cartPrint() { // 인수판단 : 모든 카트내 제품 출력
 	// 카트내 제품수
 	document.querySelector('.ccount').innerHTML = `${cartList.length}`;
 	// 카트내 제품 총 가격
-	document.querySelector('.ctotal').innerHTML = `${totalPrice.toLocaleString()}원`;													
+	document.querySelector('.ctotal').innerHTML = `${totalPrice.toLocaleString()}원`;	
+	// 만약에 카트내 제품이 많아서 가로 스크롤 생성 되었을때 자동으로 가장 오른쪽으로 이동
+	cartbottom.scrollLeft = 10000;										
 } // f end
 
 // 7. 카트내 버거 부분 취소 함수 [ 실행조건 : x버튼을 클릭했을때 ]

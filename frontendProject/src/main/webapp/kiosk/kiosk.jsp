@@ -39,11 +39,7 @@
 					
 					<div class="cartbottom"> <!-- 제품정보 출력 구역 end -->
 						
-						<div class="citem"> <!-- 카트내 제품 1개 -->
-							<div class="iname">더블비프 불고기버거</div> <!-- 제품명 -->
-							<div class="iprice">12,000원</div> <!-- 제품가격 -->
-							<span class="icancel">X</span> <!-- 제품 개별취소 -->
-						</div> <!-- 카트내 제품 1개 end-->
+				<!--  cartPrint() 함구가 html 넣어줌-->
 						
 
 					</div> <!-- 제품정보 출력 구역 -->
