@@ -123,13 +123,59 @@ function productSelect( productNo ){ // 어떤 제품을 카트에 담을건지?
 	// 1. 선택된 버거의 인덱스를 배열에 저장 [버거 모든 정보를 저장할 필요가 없음]
 	cartList.push(productNo);
 	console.log(cartList);
+	//2. 카트에 저장했으면 카트화면 출력
+	cartPrint();
 } // f end
 	
+	
+// 6. 카트내 버거들을 출력 함수 [실행조건 : 1. 카트내 제품등록되면(5함수 하단 호출) 2.카트내 제품 취소되면(7,8함수 하단 호출)]
+function cartPrint() { // 인수판단 : 모든 카트내 제품 출력
 
+	// 1. 어디에
+	let cartbottom = document.querySelector('.cartbottom');
+	// 2. 무엇을? 카트내[배열내] 모든 제품 출력
+	let html =``;
+		let totalPrice = 0; // 카트내 버거들의 가격을 모두 더한 값을 저장 변수
+		for( let i=0; i<cartList.length; i++){
+			// 1. 카트내 버거의 인덱스
+			let burgerIndex = cartList[i];
+			console.log(burgerIndex);
+			// 2. i번재 제품을 html 구성	
+			html += `<div class="citem">
+						<div class="iname">${burgerList[burgerIndex].name}더블비프 불고기버거</div>
+						<div class="iprice">${burgerList[burgerIndex].price.toLocaleString()}원</div>
+						<span onclick="productCancel(${i})" class="icancel">X</span>
+					</div>`;
+			// 3. i번재 가격을 누적합계
+			totalPrice += burgerList[burgerIndex].price;
+		} // for end
+	
+	// 3. 대입/출력
+	cartbottom.innerHTML = html;
+	// 카트내 제품수
+	document.querySelector('.ccount').innerHTML = `${cartList.length}`;
+	// 카트내 제품 총 가격
+	document.querySelector('.ctotal').innerHTML = `${totalPrice.toLocaleString()}원`;													
+} // f end
 
+// 7. 카트내 버거 부분 취소 함수 [ 실행조건 : x버튼을 클릭했을때 ]
+function productCancel(cartIndex){ // 전체취소:인수x 부분취소 : 인수o
+	// 1. 선택된 카트배열내 인덱스 삭제
+	cartList.splice(cartIndex , 1);
+	alert('버거 취소 했습니다');
+	
+	// 2. 카트 화면 업데이트
+	cartPrint();
+} // f end
 
-
-
+// 8. 카트내 버거 전체 취소 함수 [ 실행조건 : 취소하기 버튼을 클릭했을때]
+function cartCancel() { // 전체취소 : 모두 취소 : 인수 x
+	cartList.splice(0); // 배열내 모든 요소 삭제
+	alert('카트 초기화했습니다');
+	
+	// 2. 카트 화면 업데이트	
+	cartPrint();
+} // f end
 
 
 
