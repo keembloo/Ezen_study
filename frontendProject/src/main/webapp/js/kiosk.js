@@ -193,6 +193,7 @@ function productOrder(){
 		products.push(cartList[i]); // i번째 버거의 인덱스를 새로운 배열에 저장
 		totalPrice += burgerList[cartList[i]].price;
 	}
+	
 	//1. 주문객체 생성해서
 	let order = {
 		ono : ono+1 , 		// 주문번호 생성해서 저장 [ 마지막 주문번호 +1 ] 
