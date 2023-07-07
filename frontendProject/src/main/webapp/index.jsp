@@ -7,13 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- 다른 jsp 파일 호출 -->
+	
+	<!-- 다른 JSP 파일 호출 -->
+	
 	<%@include file ="header.jsp" %>
 	<p>
 		대문입니다.
-		ctrl+F11
-		코드변경되면 저장후에 [ctrl+F5 3,4번]
+		ctrl+f11 실행 [ 톰캣서버 ]
+		코드변경되면 저장후에 [ 크롬에서 ctrl+f5 : 강력새로고침 ]
 	</p>
-	<%@include file ="footer.jsp" %>	
+	
+	<!-- 다른 JSP 파일 호출 -->
+	<%@include file ="footer.jsp" %>
+	
+	
 </body>
 </html>
