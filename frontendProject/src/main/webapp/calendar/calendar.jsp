@@ -22,10 +22,7 @@
 				<!-- 상단 요일 표기 일~토 -->
 
 				<!-- 일 표기 -->
-				<div>1
-					<span class="content">adfsasdgsdasdfgsadgsadgsadfgsdgdaf</span>
-					<span class="content">2adfsdaf</span>
-				</div>
+>
 			</div>
 		
 		</div>
