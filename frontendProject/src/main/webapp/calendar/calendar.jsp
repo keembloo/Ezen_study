@@ -22,7 +22,10 @@
 				<!-- 상단 요일 표기 일~토 -->
 
 				<!-- 일 표기 -->
-
+				<div>1
+					<span class="content">adfsasdgsdasdfgsadgsadgsadfgsdgdaf</span>
+					<span class="content">2adfsdaf</span>
+				</div>
 			</div>
 		
 		</div>
@@ -32,9 +35,11 @@
 		<div class="modal"> <!-- 모달 상자 -->
 			
 			<h3>일정 추가</h3>
-			<textarea rows="5" cols="10"></textarea>
+			<input class="color" type="color">
+			<div class="date">2023-7-10</div>
+			<textarea class="contentInput" rows="5" cols="10"></textarea>
 			<div class="modalbtns">
-				<button>일정 등록</button>
+				<button onclick="onWrite()" type="button">일정 등록</button>
 				<button onclick="closeModal()">닫기</button>
 			</div>
 		</div>

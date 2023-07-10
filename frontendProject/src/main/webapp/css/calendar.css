@@ -70,7 +70,19 @@
 	border-radius: 30px;
 }
 
-
+.content{
+	background-color: red;
+	color: white;
+	border: 1px solid #eeeeee;
+	margin: 3px;
+	padding: 3px;
+	font-size: 10px;
+	display: block; /*span 태그의 기본값은 inline 이기때문에 사이즈 적용x*/
+	/*만약에 해당구역보다 내용물(텍스트)이 더 커지면 ...*/
+	overflow: hidden;
+	white-space: nowrap; /*만약에 텍스트가 커지면 자동 줄바꿈 해제*/
+	text-overflow: ellipsis; /* ellipsis : 넘친 부분을 ... 표시 */
+}
 
 
 
