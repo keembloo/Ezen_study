@@ -28,6 +28,17 @@
 		</div>
 	</div> <!-- 캘린더 전체구역 end -->	
 	
+	<div class="modalwrap"> <!-- 모달 전체 구역 -->
+		<div class="modal"> <!-- 모달 상자 -->
+			
+			<h3>일정 추가</h3>
+			<textarea rows="5" cols="10"></textarea>
+			<div class="modalbtns">
+				<button>일정 등록</button>
+				<button onclick="closeModal()">닫기</button>
+			</div>
+		</div>
+	</div>
 	
 	<%@include file ="../footer.jsp" %>	
 	<script src="../js/calendar.js" type="text/javascript"></script>
