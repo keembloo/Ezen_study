@@ -1,6 +1,6 @@
 package 과제.과제22;
-
-import java.util.Scanner;
+// java.lang 패키지 : System 클래스, Math 클래스, Integer 클래스 등등 import 생략
+import java.util.Scanner; // Scanner 클래스를 사용하기 위한 클래스호출
 
 public class 연산20문제 {
 	
@@ -11,8 +11,11 @@ public class 연산20문제 {
 
 		//------ 문제2 여기에 풀이-------//
 		/*
-		 
-		 Scanner scanner = new Scanner( System.in ); System.out.println("이름을 입력하세요");
+		 //입력 
+		 	//1. 입력객체 생성 { } 마다 하나의 객체 필요
+		 Scanner scanner = new Scanner( System.in ); 
+		 System.out.println("이름을 입력하세요");
+		 	//2. 입력객체로부터 압력받은 데이터를 호출하기
 		 String writer = scanner.next(); System.out.println("내용을 입력하세요"); 
 		 String text = scanner.next(); System.out.println("날짜를 입력하세요"); 
 		 String callendar =	 scanner.next();
@@ -22,26 +25,39 @@ public class 연산20문제 {
 		 System.out.println("|\0 1 \0\0|"+"\0"+writer+"\0|"+text+"\0\0\0\0|\0\0"+callendar+"\0\0\0|");
 		 System.out.println("---------------------------------------");
 		
+		 // 간격맞출때는 printf 사용
 		 
+ 		 System.out.printf("--------------방문록--------------------");
+		 System.out.printf("|%4s|%5s|%10s|%4s|\n" , "순번 " , "작성자 ", "내용" ,"날짜 "); 
+		 System.out.printf("|%4d|%5s|%10s|%4s|\n" , 1 , 작성자 , 내용 ,날짜); 
+		 System.out.println("---------------------------------------");
 		
 		
+		
+		 //------ 문제3 여기에 풀이-------//
+		  
 		 Scanner scanner = new Scanner( System.in );
 		 System.out.println("기본급(정수)을 입력해주세요"); int 기본급 = scanner.nextInt();
 		 System.out.println("수당()을 입력해주세요"); int 수당 = scanner.nextInt();
 		 
 		 int 실수령액 = (int) (기본급 + 수당 - (기본급*0.1)); System.out.println("실수령액 :"+실수령액);
-		  
+		  //리터럴(직접입력한)의 기본타입 : int
+		  // int * double 연산시 -> 결과 double
+		  // double은 long에 대입 x -> 강제형변환(캐스팅)필요
 		 
 		//------ 문제4 여기에 풀이-------//
-		
+		// 1. 입력
+			// 1. 입력객체 : 상단
+			// 2. 입력값 호출
 		
 		 Scanner scanner = new Scanner( System.in ); System.out.println("금액을 입력해주세요");
-		 int 금액 = scanner.nextInt(); int 십만원 = (int) 금액/100000; int 만원 =
-		 (int)(금액/10000-십만원*10); int 천원 = (int)(금액/1000-십만원*100-만원*10); int 백원 =
-		 (int)(금액/100-십만원*1000-만원*100-천원*10);
+		 int 금액 = scanner.nextInt(); int 십만원 = (int) 금액/100000; 
+		 int 만원 = (int)(금액/10000-십만원*10); int 천원 = (int)(금액/1000-십만원*100-만원*10); 
+		 int 백원 = (int)(금액/100-십만원*1000-만원*100-천원*10);
 		  
 		 System.out.println("십만원권"+십만원+"장\n만원권"+만원+"장\n천원권"+천원+"장\n백원"+백원+"개");
-		
+		 
+		 // String.valueOf(금액).charAt(5);
 		
 		//------ 문제5 여기에 풀이-------//
 		 Scanner scanner = new Scanner( System.in ); System.out.println("숫자를 입력해주세요");
