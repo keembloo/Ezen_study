@@ -68,10 +68,37 @@ public class If문제7문제 {
 		
 		
 		/* -------문제6----- */
+		System.out.println("------------- 문제6 -------------");
+		System.out.println("국어 : "); int 국어 = scanner.nextInt();
+		System.out.println("영어 : "); int 영어 = scanner.nextInt();
+		System.out.println("수학 : "); int 수학 = scanner.nextInt();
+		double 평균 = (국어+영어+수학)/3.0; // 만약에 소수점이 존재해도 잘림		값/3	  vs  값/3.0
+		if (평균 >= 90) {
+			if(국어==100) System.out.println("국어우수");
+			if(영어==100) System.out.println("영어우수");
+			if(수학==100) System.out.println("수학우수");
+		}
+		else if (평균>=80) {
+			if(국어>=90) System.out.println("국어장려");
+			if(영어>=90) System.out.println("영어장려");
+			if(수학>=90) System.out.println("수학장려");
+		}
+		else { System.out.println("재시험");}
 		
 		/* -------문제7----- */
-		
-		
+		System.out.println("------------- 문제7 -------------");
+		System.out.println("아이디 : "); String id = scanner.next();
+		System.out.println("비밀번호 : "); String pw = scanner.next();
+			System.out.println(id =="admin"); System.out.println(id.equals("admin"));
+			if(id.equals("admin")) { //만약에 입력받은 아이디가 admin이면
+				if(pw.equals("1234")) { // 아이디가 admin이고 패스워드가 1234이면
+					System.out.println("로그인 성공");
+				} else { // 아이디가 admin이고 패스워드가 1234가 아니면
+					System.out.println("로그인실패 패스워드가 다릅니다");
+				}
+			} else { // admin 아니면
+				System.out.println("존재하지않는 아이디입니다");
+			}
 	}
 	
 }
