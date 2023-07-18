@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 public class Ex2_확인문제7 { // class s
 	public static void main(String[] args) { // main s
-		// step2 : 중복된 출력을 반복문으로 출력하자 [코드 효율성 증가]
-		// step3 : Scanner 클래스를 이용한 입력된 데이터 [1,2,3,4]기능 제공
+		// step5 : 각 기능별 구현 => 공통 변수 생각 => 예금액
+		// 1:예금액  	: 예금할 금액 입력받아 예금액 변수에 더하기 	+=
+		// 2:출금액	: 출금할 금액 입력받아 예금액 변수에 빼기 	-=
+		// 3:잔고		: 예금액 변수 출력 
+		// 4:종료		: 무한루프[while] 종료[break]
 			//입력
 				//1.입력객체
 		Scanner 입력객체 = new Scanner(System.in);
