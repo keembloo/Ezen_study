@@ -17,12 +17,48 @@ public class 과제4_1_예출금 {
 			int ch = scanner.nextInt();
 			
 			/* 문제풀이 위치 */
-			
-			
+			if (ch == 1) {
+				System.out.println("계좌번호를 입력하세요");
+				String 계좌번호 = scanner.next();
+				
+				if (계좌번호.equals(account)) {
+					System.out.println("예금액을 입력하세요");
+					int gold = scanner.nextInt();
+					balance += gold;
+					System.out.println(gold + " 예금 성공");
+				} else { 
+					System.out.println("계좌번호 미일치"); 
+					
+				} // if 1 end
+				
+			} else if (ch == 2) {
+				System.out.println("계좌번호를 입력하세요");
+				String 계좌번호 = scanner.next();
+				if (계좌번호.equals(account)) {
+					System.out.println("비밀번호를 입력하세요");
+					int num = scanner.nextInt();
+					if(num==password) {
+						System.out.println("출금액을 입력하세요");
+						int gold = scanner.nextInt();
+						if( balance < gold) {
+							System.out.println("잔액 부족");
+						} else {
+							balance -= gold;
+							System.out.println(gold + " 출금 성공");}
+					} else { System.out.println("비밀번호 미일치");}
+				} else {
+					System.out.println("계좌번호 미일치"); 
+				}
+			} else if (ch == 3) {
+				System.out.println( "잔액 : "+balance );
+			} else if (ch == 4) {
+				System.out.println("안녕히 가세요.");
+				break;
+			}
 			/* ----------- */
 			
 		
-		} 
+		} // while e
 	} 
 } 
 
