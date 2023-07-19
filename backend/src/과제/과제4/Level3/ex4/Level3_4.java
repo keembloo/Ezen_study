@@ -11,7 +11,22 @@ public class Level3_4 {
 		Scanner scanner = new Scanner(System.in);
 	
 		/* 문제풀이 위치 */
-	
+		int count = 0;
+		
+		while (true) {
+			System.out.println("정수를 입력하세요");
+			int num = scanner.nextInt();
+			if(num<0) {
+				System.out.println("프로그램 종료");
+				count =0;
+				break;
+			} else {
+				count = num;
+				for( int i =1; i<=count; i++) {
+					System.out.println("■");
+				} // for end
+			}
+		}
 		/* ----------- */
 
 	}
