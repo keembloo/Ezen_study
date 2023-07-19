@@ -12,7 +12,144 @@ public class Level3_6 {
 		Scanner scanner = new Scanner(System.in);
 		
 		/* 문제풀이 위치 */
+		String 좌석1 = "[ ]";
+		String 좌석2 = "[ ]";
+		String 좌석3 = "[ ]";
+		String 좌석4 = "[ ]";
+		String 좌석5 = "[ ]";
+		String 좌석6 = "[ ]";
+	
 		
+		while (true) {
+			System.out.println("1.예약하기 2.예약취소 3.예약현황");
+			int ch = scanner.nextInt();
+			if (ch ==1) { //예약하기시
+				System.out.println("예약할 좌석을 선택하세요");
+				int ch2 = scanner.nextInt();
+				switch (ch2){
+				case 1: // 1번좌석을 선택했을때
+					if (좌석1 == "[ ]") {
+						좌석1 = "[예약]";
+						System.out.println("예약이 완료되었습니다");
+					} else {
+						System.out.println("예약실패 , 좌석1은 이미 예약중입니다.");
+					}
+					break;
+					
+				case 2: // 2번좌석을 선택했을때
+					if (좌석2 == "[ ]") {
+						좌석2 = "[예약]";
+						System.out.println("예약이 완료되었습니다");
+					} else {
+						System.out.println("예약실패 , 좌석2은 이미 예약중입니다.");
+					}
+					break;
+					
+				case 3: // 3번좌석을 선택했을때
+					if (좌석3 == "[ ]") {
+						좌석3 = "[예약]";
+						System.out.println("예약이 완료되었습니다");
+					} else {
+						System.out.println("예약실패 , 좌석3은 이미 예약중입니다.");
+					}
+					break;
+					
+				case 4: // 4번좌석을 선택했을때
+					if (좌석4 == "[ ]") {
+						좌석4 = "[예약]";
+						System.out.println("예약이 완료되었습니다");
+					} else {
+						System.out.println("예약실패 , 좌석4은 이미 예약중입니다.");
+					}
+					break;
+					
+				case 5: // 5번좌석을 선택했을때
+					if (좌석5 == "[ ]") {
+						좌석5 = "[예약]";
+						System.out.println("예약이 완료되었습니다");
+					} else {
+						System.out.println("예약실패 , 좌석5은 이미 예약중입니다.");
+					}
+					break;
+					
+				case 6: // 6번좌석을 선택했을때
+					if (좌석6 == "[ ]") {
+						좌석6 = "[예약]";
+						System.out.println("예약이 완료되었습니다");
+					} else {
+						System.out.println("예약실패 , 좌석6은 이미 예약중입니다.");
+					}
+					break;
+					
+				default: 
+					System.out.println("좌석을 다시 선택해주세요");
+				}
+				
+			} else if (ch ==2) {  //예약취소시
+				System.out.println("취소할 좌석번호를 입력해주세요");
+				int cancle = scanner.nextInt();
+				switch (cancle) {
+					case 1 : 
+						if (좌석1 =="[예약]") {
+							좌석1 ="[ ]";
+							System.out.println("예약이 취소되었습니다.");
+						} else {
+							System.out.println("예약취소 실패 , 예약되지 않은 좌석입니다.");
+						}
+						break;
+						
+					case 2 : 
+						if (좌석2 =="[예약]") {
+							좌석2 ="[ ]";
+							System.out.println("예약이 취소되었습니다.");
+						} else {
+							System.out.println("예약취소 실패 , 예약되지 않은 좌석입니다.");
+						}
+						break;
+						
+					case 3 : 
+						if (좌석3 =="[예약]") {
+							좌석3 ="[ ]";
+							System.out.println("예약이 취소되었습니다.");
+						} else {
+							System.out.println("예약취소 실패 , 예약되지 않은 좌석입니다.");
+						}
+						break;
+						
+					case 4 : 
+						if (좌석4 =="[예약]") {
+							좌석4 ="[ ]";
+							System.out.println("예약이 취소되었습니다.");
+						} else {
+							System.out.println("예약취소 실패 , 예약되지 않은 좌석입니다.");
+						}
+						break;
+						
+					case 5 : 
+						if (좌석5 =="[예약]") {
+							좌석5 ="[ ]";
+							System.out.println("예약이 취소되었습니다.");
+						} else {
+							System.out.println("예약취소 실패 , 예약되지 않은 좌석입니다.");
+						}
+						break;
+						
+					case 6 : 
+						if (좌석6 =="[예약]") {
+							좌석6 ="[ ]";
+							System.out.println("예약이 취소되었습니다.");
+						} else {
+							System.out.println("예약취소 실패 , 예약되지 않은 좌석입니다.");
+						}
+						break;
+						
+					default :
+						System.out.println("에러, 좌석을 올바르게 선택해주세요");
+				}
+			} else if (ch ==3) { //예약현황시
+				System.out.println(좌석1+" "+좌석2+" "+좌석3+"\n"+좌석4+" "+좌석5+" "+좌석6);
+			}
+		}
 		/* ----------- */
 
 	}
