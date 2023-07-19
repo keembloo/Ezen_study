@@ -15,13 +15,26 @@ public class 과제5_키오스크 {
 		
 		
 		String cok = 재고관리.split("-")[0];
-		System.out.println(cok);
+		//System.out.println(cok);
 		String fanta = 재고관리.split("-")[1];
-		System.out.println(fanta);
+		//System.out.println(fanta);
 		String sida = 재고관리.split("-")[2];
-		System.out.println(sida);
+		//System.out.println(sida);
 		
-		int cokCount = Integer.parseInt(cok.split(",")[2]);
+		
+		int cokPoket = Integer.parseInt(cok.split(",")[2]); //콜라 바구니
+		int fanPoket = Integer.parseInt(fanta.split(",")[2]); //환타 바구니
+		int sidaPoket = Integer.parseInt(sida.split(",")[2]); //사이다 바구니
+		
+		int cokCount = Integer.parseInt(cok.split(",")[3]); //콜라 재고
+		int fanCount = Integer.parseInt(fanta.split(",")[3]); //환타 재고
+		int sidaCount = Integer.parseInt(sida.split(",")[3]); //사이다 재고
+		
+		int cokGold = Integer.parseInt(cok.split(",")[1]); //콜라 가격
+		int fanGold = Integer.parseInt(fanta.split(",")[1]); //환타 가격
+		int sidaGold = Integer.parseInt(sida.split(",")[1]); //사이다 가격
+		
+		int total = 0; //총합계
 		
 		while(true) {
 			System.out.println("\n\n-------------------- 메뉴 ------------------- ");
@@ -29,18 +42,59 @@ public class 과제5_키오스크 {
 			System.out.print(">>>>>> 선택 : "); int ch = scanner.nextInt();
 			
 			/* 문제풀이 위치 */
-			int newCok =0;
-			if (ch == 1) {
-				cokCount++;
-		
-				System.out.println(cokCount);
-
-			} else if (ch ==2) {
-				
-			} else if (ch ==3) {
-				
-			} else if (ch ==4) {
-				
+			if (ch == 4) { // 결제눌렀을때
+				System.out.println("----------------------------------");
+				System.out.printf("%3s %3s %5s \n" , "제품명" , "수량" , "가격");
+				if (cokPoket > 0) {System.out.printf("%3s %3d %7d \n" ,  cok.split(",")[0], cokPoket , cokPoket*cokGold);}
+				if (fanPoket > 0) {System.out.printf("%3s %3d %7d \n" ,  fanta.split(",")[0], fanPoket , fanPoket*fanGold);}
+				if (sidaPoket > 0) {System.out.printf("%3s %3d %7d \n" ,  sida.split(",")[0], sidaPoket , sidaPoket*sidaGold);}
+				total = cokPoket*cokGold+fanPoket*fanGold+sidaPoket*sidaGold;
+				System.out.println("총가격 : "+total);
+				System.out.println("1. 결제 2.취소");
+				int ch2 = scanner.nextInt();
+				while(true) { // 금액부족시 전단계로 돌리기위한 while문
+					if (ch2 == 1) { // 결제시
+						System.out.println("금액을 넣어주세요");
+						int pay = scanner.nextInt();
+						if(pay>=total) { // 금액있을시
+							int change = pay-total;
+							System.out.println("거스름돈 : "+change);
+							cokPoket = 0;
+							fanPoket = 0;
+							sidaPoket = 0;
+							break;
+						}else { // 금액부족시
+							System.out.println("금액이 부족합니다...");
+						}
+					}else { // 결제 취소시
+						System.out.println("결제 취소되었습니다");
+						cokCount +=cokPoket;
+						fanCount +=fanPoket;
+						sidaCount +=sidaPoket;
+						cokPoket=0;
+						fanPoket=0;
+						sidaPoket=0;
+						break;
+					}
+				}//while end
+			} else if (ch ==1) { // 콜라 선택시
+				if(cokCount>0) {
+					cokPoket++;
+					cokCount--;
+					System.out.println(cokPoket);
+				} else { System.out.println("콜라 재고 없음");}
+			} else if (ch ==2) { // 환타 선택시
+				if(fanCount>0) {
+					fanPoket++;
+					fanCount--;
+					System.out.println(fanPoket);
+				} else { System.out.println("환타 재고 없음");}
+			} else if (ch ==3) { // 사이다 선택시
+				if(sidaCount>0) {
+					sidaPoket++;
+					sidaCount--;
+					System.out.println(sidaPoket);
+				} else { System.out.println("사이다 재고 없음");}
 			}
 			/* ----------- */
 			
