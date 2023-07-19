@@ -15,7 +15,40 @@ public class Level3_3 {
 		int july4 = 11738700;
 		
 		/* 문제풀이 위치 */
+
+			
+
+		int 주1 = (int)(july1/1000000);
+		int 주2 = (int)(july2/1000000);
+		int 주3 = (int)(july3/1000000);
+		int 주4 = (int)(july4/1000000);
 		
+
+		System.out.println("1주차");
+		for (int i=1; i<= 주1; i++) {
+			System.out.print("■");	
+		} //for2 end
+		System.out.println(" "+주1);
+
+		System.out.println("2주차");
+		for (int i=1; i<= 주2; i++) {
+			System.out.print("■");	
+		} //for2 end
+		System.out.println(" "+주2);
+
+		System.out.println("3주차");
+		for (int i=1; i<= 주3; i++) {
+			System.out.print("■");	
+		} //for2 end
+		System.out.println(" "+주3);
+
+		System.out.println("4주차");
+		for (int i=1; i<= 주4; i++) {
+			System.out.print("■");	
+		} //for2 end
+		System.out.println(" "+주4);
+
+	
 		/* ----------- */
 	}
 }

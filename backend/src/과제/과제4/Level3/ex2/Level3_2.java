@@ -12,7 +12,16 @@ public class Level3_2 {
 		
 		
 		/* 문제풀이 위치 */
-		
+		int num = 0;
+		while (true) {
+			System.out.println("문구를 입력하세요 end입력시 종료");
+			String text = scanner.next();
+			num++;
+			if(text.equals("end")) {
+				System.out.println("입력횟수 : "+(num-1) +"\n 종료됩니다");
+				break;
+			}
+		}
 		/* ----------- */
 
 	}
