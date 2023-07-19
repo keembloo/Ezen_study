@@ -10,8 +10,18 @@ public class 과제5_키오스크 {
 		
 		String 재고관리 = "";
 		/* 재고관리 변수 샘플  */
-		재고관리 = "~~~";
+		재고관리 = "콜라,300,0,10-환타,200,0,10-사이다,100,0,10";
 		/* ----------- */
+		
+		
+		String cok = 재고관리.split("-")[0];
+		System.out.println(cok);
+		String fanta = 재고관리.split("-")[1];
+		System.out.println(fanta);
+		String sida = 재고관리.split("-")[2];
+		System.out.println(sida);
+		
+		int cokCount = Integer.parseInt(cok.split(",")[2]);
 		
 		while(true) {
 			System.out.println("\n\n-------------------- 메뉴 ------------------- ");
@@ -19,7 +29,19 @@ public class 과제5_키오스크 {
 			System.out.print(">>>>>> 선택 : "); int ch = scanner.nextInt();
 			
 			/* 문제풀이 위치 */
-			
+			int newCok =0;
+			if (ch == 1) {
+				cokCount++;
+		
+				System.out.println(cokCount);
+
+			} else if (ch ==2) {
+				
+			} else if (ch ==3) {
+				
+			} else if (ch ==4) {
+				
+			}
 			/* ----------- */
 			
 		} // while end 
