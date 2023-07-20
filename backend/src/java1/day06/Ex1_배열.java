@@ -48,7 +48,61 @@ public class Ex1_배열 { // class s
 		System.out.println("평균 : "+ sum/3.0);
 		
 		
-		
+		// [p.173]
+		// 1. int형 배열
+			// 1. new 연산자를 이용한 배열 선언
+			int[] arr1 = new int[3];	// int 3개를 저장할수 있는 배열 선언 [ 0, 0, 0]
+				System.out.println(Arrays.toString(arr1));
+				
+			// 2. 배열내 모든 데이터 호출
+				for (int i =0; i<3; i++) {System.out.println(arr1[i]);} // for end
+				
+			// 3. 배열내 값 변경
+				arr1[0] = 10;	arr1[1] = 20;	arr1[2] = 30;
+					System.out.println(Arrays.toString(arr1));
+				
+		//2. double형 배열
+				//1. new 연산자를 이용한 배열 선언
+				double[] arr2 = new double[3];  // double 3개를 젖아할수 있는 배열 선언 [ 0.0 , 0.0 , 0.0 ]
+					System.out.println(Arrays.toString(arr2));
+				// 2. 배열내 모든 데이터 호출 // 길이를 모르는경우 => 배열명.length : 배열의 길이 수 반환	
+														// 배열명.length , 문자열.length()
+				for( int i=0; i<arr2.length ; i++) {System.out.println(arr2[i]);}
+					
+				// 3. 배열내 값 변경
+				arr2[0] = 0.1;	arr2[1] = 0.2; 	arr2[2] = 0.3; 
+				// arr2.push() [x] : JS에서 사용되는 함수이므로 자바에서 불가능
+				// arr2[3] = 0.4;	// 길이 :3 	인덱스:0~2	이므로 없는 인덱스 호출 불가능
+				
+		// 3. String 클래스 배열
+				// 1. 선언
+				String[] arr3 = new String[3];		// String 객체(문자열)를 3개 저장할수 있는 배열 선언 [ null , null , null ]
+				// 2. 호출
+				for (int i=0; i<arr3.length; i++) {System.out.println(arr3[i]);}
+				// 3. 값 변경
+				arr3[0] = "1월"; arr3[1] = "2월"; arr3[2] = "3월";
+					System.out.println(arr3);
+				
+				// * 값 삭제 ( 불가능 : 배열은 선언시 고정 길이 이므로 , 값 대신에 기본값으로 변경 )
+				arr3[1] = null;
+				System.out.println(Arrays.toString(arr3));
+				
+					// * 삭제된 인덱스 뒤로 한칸 당기기
+					for (int i=1; i<arr3.length; i++) {
+						// 만약에 마지막인덱스에 도착했으면 다음인덱스가 없으므로 당기기 할 필요 x
+						if(i == arr3.length-1) {arr3[i] = null; break;}
+						arr3[i]=arr3[i+1];
+					}
+					System.out.println(Arrays.toString(arr3));
+					
+				// * 값 추가 ( 불가능 : 배열은 선언시 고정 길이 이므로, null 빈공간을 있으면 값 변경)
+				for (int i=0; i<arr3.length; i++) {
+					if(arr3[i] == null) { //만약에 i번째 인덱스의 값이 비어있으면
+						arr3[i] = "5월"; break; // 해당 위치에 값 추가
+					}
+				}
+				System.out.println(Arrays.toString(arr3));
+				
 	} // main e
 } // class e
 
