@@ -1,6 +1,6 @@
 package java1.day06;
 
-import java.security.DrbgParameters.NextBytes;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
