@@ -88,7 +88,7 @@ public class 과제1 { // class s
 				int.parseInt()	 	[x]
 				Integer.parseInt() 	[o]	
 				
-				*/
+				
 				// 11 : 13,16  	* 변수의 허용범위 : { } 안에서 선언된 변수는 밖으로 호출/사용 불가
 				int v1 = 1;
 				System.out.println( v1 );
@@ -108,6 +108,7 @@ public class 과제1 { // class s
 				System.out.println( v2 );// 첫번째 if {} 선언 x	
 			}
 		}
+		*/
 		/*
 		 	1. (2인1조) 연산자 암기 확인 
 			 	1. 산술 
