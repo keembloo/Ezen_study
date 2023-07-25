@@ -10,6 +10,7 @@ public class 과제5_키오스크_배열 {
 		Scanner scanner = new Scanner(System.in);
 		
 		String[] 재고관리 = { "10,0,300,콜라","10,0,200,환타","10,0,100,사이다" };
+		int 총가격 =0;
 		// 배열 선언하는 방법 : 선언시 크기/길이 줄이거나 늘릴 수 없음
 			// 1. 타입[] 변수명 = { 값1, 값2, 값3, 값4 };
 				// 배열 선언시 배열에 저장할 값을 알고 있는 상태
@@ -72,8 +73,10 @@ public class 과제5_키오스크_배열 {
 					
 					if( basket > 0 ) { // 바구니에 수량이 있는경우만 출력 
 						System.out.printf( "%10s %10s %10s \n" , name ,  basket , basket*price );
+						총가격 += basket*price;
 					}
 				}
+				System.out.println("총가격 : "+총가격);
 			}
 			/* ----------- */
 			
