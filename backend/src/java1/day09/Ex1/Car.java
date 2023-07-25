@@ -1,4 +1,4 @@
-package java1.day09;
+package java1.day09.Ex1;
 
 public class Car {
 	// 1.필드 : *객체의 데이터 저장하는 곳

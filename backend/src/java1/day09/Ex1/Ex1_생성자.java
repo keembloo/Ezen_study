@@ -1,4 +1,4 @@
-package java1.day09;
+package java1.day09.Ex1;
 
 public class Ex1_생성자 {
 	public static void main(String[] args) {
