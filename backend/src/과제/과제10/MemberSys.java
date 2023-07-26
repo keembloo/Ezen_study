@@ -1,6 +1,7 @@
 package 과제.과제10;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 import 과제.과제10.Member;
@@ -100,7 +101,18 @@ public class MemberSys {
 		
 		for (int i =0; i<memberList.length; i++) {
 			if (memberList[i] != null && memberList[i].id.equals(inputId) &&  memberList[i].phone.equals(inputPhone)) {
-				System.out.println("비밀번호 : " + memberList[i].password);
+				Random random = new Random(); // 랜덤함수선언
+				int num = 0; // 1자리 난수
+				String ranNum = ""; // 1자리 형변환 변수
+				int letter = 4; // 4자리수
+				String resultNum = ""; //결과난수
+				for (int j=0; j<letter; j++) {
+					num = random.nextInt(9); // 0부터 9까지 생성 
+					ranNum = Integer.toString(num); // 1자리 난수 형변환
+					resultNum += ranNum;
+				}
+				System.out.println("임시 비밀번호 : " + resultNum);
+				memberList[i].password = resultNum;
 				find++;
 				break;
 			} 
