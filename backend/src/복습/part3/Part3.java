@@ -39,8 +39,8 @@ public class Part3 {
 					String 이름 = 재고관리[i].split(",")[3];
 					if (바구니>0) {
 						System.out.printf("%5s %5d %10d \n", 이름 , 바구니 , 바구니*가격);
+						sum += 바구니*가격;
 					} // if e
-					sum += 바구니*가격;
 				} // for e
 				System.out.println("총합계 : "+sum);
 			} // if e
