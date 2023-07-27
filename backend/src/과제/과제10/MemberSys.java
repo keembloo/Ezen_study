@@ -91,10 +91,10 @@ public class MemberSys {
 		}
 	} // 로그인 e
 	
-	// 3. 아이디찾기 함수
+	// 3. 아이디찾기 함수 : 입력받아 기존에 데이터와 일치하는지 비교 [Reading]
 	static void 아이디찾기 () {
-		int find = 0;
 		sc.nextLine();
+		System.out.print("--------------아이디찾기--------------");
 		System.out.println("이름과 전화번호를 입력하세요");
 		System.out.println("이름 : ");
 		String inputName = sc.nextLine();
@@ -104,19 +104,17 @@ public class MemberSys {
 		for (int i =0; i<memberList.length; i++) {
 			if (memberList[i] != null && memberList[i].name.equals(inputName) &&  memberList[i].phone.equals(inputPhone)) {
 				System.out.println("아이디 : " + memberList[i].id);
-				find++;
-				break;
-			} 
-		}
-		if(find==0) {
-			System.out.println("실패 ) 정보를 올바르게 입력해주세요");
-		}
+				return; 	// 일치하는회원이 존재하면 아이디 출력후 함수 강제종료
+			} // if end
+		} // for end
+		System.out.println("실패 ) 정보를 올바르게 입력해주세요");
+		
 	} // 아이디 찾기 e
 	
-	// 4. 비밀번호찾기 함수
+	// 4. 비밀번호찾기 함수 : 입력받아 기존에 데이터와 일치하는지 비교 [Reading]
 	static void 비밀번호찾기 () {
-		int find = 0;
 		sc.nextLine();
+		System.out.print("--------------비밀번호찾기--------------");
 		System.out.println("아이디와 전화번호를 입력하세요");
 		System.out.println("아이디 : ");
 		String inputId = sc.nextLine();
@@ -137,13 +135,10 @@ public class MemberSys {
 				}
 				System.out.println("임시 비밀번호 : " + resultNum);
 				memberList[i].password = resultNum;
-				find++;
-				break;
+				return;
 			} 
 		}
-		if(find==0) {
-			System.out.println("실패 ) 정보를 올바르게 입력해주세요");
-		}
+		System.out.println("실패 ) 정보를 올바르게 입력해주세요");
 	}
 	
 }
