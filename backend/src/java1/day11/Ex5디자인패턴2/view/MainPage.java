@@ -2,6 +2,8 @@ package java1.day11.Ex5디자인패턴2.view;
 
 import java.util.Scanner;
 
+import java1.day11.Ex5디자인패턴2.controller.MemberController;
+
 public class MainPage {
 	// 0. 싱글톤 생성 [ 디자인 패턴 ]
 		// 1. 현재 클래스로 static 객체 생성
@@ -40,9 +42,21 @@ public class MainPage {
 		String phone = sc.next();
 		System.out.print("나이 : ");
 		int age = sc.nextInt();
+		// --> 컨트롤러/서빙에게 전달 // 컨트롤 클래스내 메소드 호출
+		boolean result = MemberController.getInstance().signupPage(id , pw , name , phone , age);
+		if (result)System.out.println("회원가입성공");
+		else System.out.println("회원가입실패");
 	}
 	
-	void loginPage () {}
+	void loginPage () {
+		System.out.println("아이디 : ");
+		String inputId = sc.nextLine();
+		System.out.println("비밀번호 : ");
+		String inputPw = sc.nextLine();
+		boolean result = MemberController.getInstance().loginPage(inputId,inputPw);
+		if (result) { System.out.println("로그인 성공");}
+		else {System.out.println("로그인실패");}
+	}
 	
 	void findIdPage () {}
 	
