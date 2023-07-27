@@ -3,6 +3,7 @@ package java1.day11.Ex5디자인패턴2.view;
 import java.util.Scanner;
 
 import java1.day11.Ex5디자인패턴2.controller.MemberController;
+import java1.day11.Ex5디자인패턴2.model.dao.MemberDao;
 
 public class MainPage {
 	// 0. 싱글톤 생성 [ 디자인 패턴 ]
@@ -31,7 +32,8 @@ public class MainPage {
 	} // main e
 	
 	void singupPage() {
-		System.out.print("--------------회원가입--------------");
+		sc.nextLine();
+		System.out.println("--------------회원가입--------------");
 		System.out.print("아이디 : ");
 		String id = sc.next();
 		System.out.print("비밀번호 : ");
@@ -49,18 +51,42 @@ public class MainPage {
 	}
 	
 	void loginPage () {
-		System.out.println("아이디 : ");
+		sc.nextLine();
+		System.out.println("--------------로그인--------------");
+		System.out.print("아이디 : ");
 		String inputId = sc.nextLine();
-		System.out.println("비밀번호 : ");
+		System.out.print("비밀번호 : ");
 		String inputPw = sc.nextLine();
 		boolean result = MemberController.getInstance().loginPage(inputId,inputPw);
 		if (result) { System.out.println("로그인 성공");}
 		else {System.out.println("로그인실패");}
 	}
 	
-	void findIdPage () {}
+	void findIdPage () {
+		sc.nextLine();
+		System.out.println("--------------아이디찾기--------------");
+		System.out.println("이름과 전화번호를 입력하세요");
+		System.out.print("이름 : ");
+		String inputName = sc.nextLine();
+		System.out.print("전화번호 : ");
+		String inputPhone = sc.nextLine();
+		int result = MemberController.getInstance().findIdPage(inputName , inputPhone);
+		if (result>=0) {System.out.println("아이디 : " + MemberDao.memberList[result].getId());}
+		else {System.out.println("일치하는 아이디가 없습니다 다시 확인해주세요");}
+	}
 	
-	void findPwPage () {}
+	void findPwPage () {
+		sc.nextLine();
+		System.out.println("--------------비밀번호찾기--------------");
+		System.out.println("아이디와 전화번호를 입력하세요");
+		System.out.print("아이디 : ");
+		String inputId = sc.nextLine();
+		System.out.print("전화번호 : ");
+		String inputPhone = sc.nextLine();
+		String resultNum = MemberController.getInstance().findPwPage( inputId , inputPhone );
+		if (resultNum !="") {System.out.println("임시 비밀번호 : "+resultNum);}
+		else {System.out.println("일치하는 정보가 없습니다 다시 확인해주세요");}
+	}
 
 	
 }
