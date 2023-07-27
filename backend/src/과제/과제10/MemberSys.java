@@ -1,10 +1,13 @@
 package 과제.과제10;
-
-import java.util.Arrays;
-import java.util.Random;
+						 // 현재 클래스에서 같은 패키지에 있는 클래스 호출 = 생략
+						 // java.lang 기본 패키지이므로 생략 (String, System 등)
+import java.util.Arrays; // 현재 클래스에서 다른 패키지에 있는 클래스 호출 = import
+import java.util.Random; // 자동완성 이용해서 클래스 작성하면 import 자동
 import java.util.Scanner;
 
 import 과제.과제10.Member;
+// vs
+// import java.util.*; // 해당 패키지내 모든 클래스 호출
 
 public class MemberSys {
 	static Scanner sc = new Scanner(System.in); // 2. 모든 함수에서 사용 가능한 인스턴스 멤버
