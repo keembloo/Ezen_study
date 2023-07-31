@@ -64,22 +64,29 @@ public class Mainpage {
 		// 3. 전달받은 결과를 출력
 		System.out.println("검색한 방문록 정보");
 		System.out.println("작성자 : "+ result.getWriter()+" / 내용"+result.getContent());
-		
-		
 	}
 	
 	// 글수정 페이지 입출력 함수
 	public void updateView() {
-		System.out.println("수정할 게시물의 인덱스 : ");
-
-		
+		System.out.print("수정할 게시물의 인덱스 : ");
+		int index = sc.nextInt();
+		System.out.println("수정할 내용 : ");
+		sc.nextLine();
+		String content = sc.nextLine();
+		System.out.println("수정할 작성자 : ");
+		String writer = sc.next();
+		// 2. 입력받은 변수를 컨트롤에게 전달보내고 결과를 리턴 받음
+		boolean result = BoardController.getInstance().updateLogic(index, content, writer);
+		// 3. 결과에 따른 제어
+		if(result)	{System.out.println("수정 성공");}
+		else { System.out.println("수정 실패");}
 	}
 	
 	
 	// 글삭제 페이지 입출력 함수
 	public void deleteView() {
 		// 1. 삭제할 게시물의 인덱스 입렵받아서 저장
-		System.out.print("삭제할 방문록의 인데스 : ");
+		System.out.print("삭제할 방문록의 인덱스 : ");
 		int index = sc.nextInt();
 		// 2. view에서 컨트롤에게 입력받은 인덱스 전달보내고 삭제결과 여부 리턴 받음
 		boolean result = BoardController.getInstance().deleteLogic(index);
