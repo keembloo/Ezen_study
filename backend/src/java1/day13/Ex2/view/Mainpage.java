@@ -3,6 +3,8 @@ package java1.day13.Ex2.view;
 import java.util.Scanner;
 
 import java1.day13.Ex2.controller.BoardController;
+import java1.day13.Ex2.model.dao.BoardDao;
+import java1.day13.Ex2.model.dto.BoardDto;
 
 public class Mainpage {
 	// --------------------- 싱글톤 ------------------------- //
@@ -23,6 +25,7 @@ public class Mainpage {
 	// 메인페이지 입출력 함수
 	public void MainView() {
 		while(true) {
+			System.out.println("보드리스트"+BoardDao.getInstance().boardDtoList);
 			System.out.println("\n\n -----------방문록 프로그램------------");
 			System.out.print("1.글등록 2.글보기 3.글수정 4.글삭제 선택> ");
 			int ch = sc.nextInt();
@@ -52,20 +55,37 @@ public class Mainpage {
 	
 	// 글출력 페이지 입출력 함수
 	public void printView() {
-		// V -> C
-		BoardController.getInstance().printLogic();
+		// 1. 보고자하는 게시물의 인덱스 입력 받아서 저장
+		System.out.println("출력할 게시물의 인덱스 : ");
+		int index = sc.nextInt();
+		
+		// 2. view에서 컨트롤에게 입력받은 인덱스 전달보내고 선택한 인덱스의 게시물1개 리턴 받음
+		BoardDto result = BoardController.getInstance().printLogic(index);
+		// 3. 전달받은 결과를 출력
+		System.out.println("검색한 방문록 정보");
+		System.out.println("작성자 : "+ result.getWriter()+" / 내용"+result.getContent());
+		
+		
 	}
 	
 	// 글수정 페이지 입출력 함수
 	public void updateView() {
-		// V -> C
-		BoardController.getInstance().updateLogic();
+		System.out.println("수정할 게시물의 인덱스 : ");
+
+		
 	}
+	
 	
 	// 글삭제 페이지 입출력 함수
 	public void deleteView() {
-		// V -> C
-		BoardController.getInstance().deleteLogic();
+		// 1. 삭제할 게시물의 인덱스 입렵받아서 저장
+		System.out.print("삭제할 방문록의 인데스 : ");
+		int index = sc.nextInt();
+		// 2. view에서 컨트롤에게 입력받은 인덱스 전달보내고 삭제결과 여부 리턴 받음
+		boolean result = BoardController.getInstance().deleteLogic(index);
+		// 3. 리턴결과에 따른 제어
+		if(result)	{System.out.println("삭제 성공");}
+		else { System.out.println("삭제 실패");}
 	}
 
 	
