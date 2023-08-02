@@ -13,7 +13,7 @@ public class Part4 {
 		Scanner sc = new Scanner(System.in);
 		while(true) {
 			
-		    //String filePath = "./src/복습/part4/제품정보.txt";
+		    String filePath = "./src/복습/part4/제품정보.txt";
 	
 		    FileOutputStream fileOutputStream = new FileOutputStream( filePath ,true); 
 	
