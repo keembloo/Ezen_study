@@ -9,7 +9,7 @@ public class Dao {
 	// 1. 필드 
 		public Connection conn; 	 // DB연동 객체
 		public PreparedStatement ps; // 연동된 DB SQL조작( SQL매개변수대입, SQL실행/취소 )하는 객체
-		public ResultSet rs; 		 // SQL 조작 결과를 가져오는 객체
+		public ResultSet rs; 		 // SQL 조작 결과(검색결과)를 가져오는 객체
 		// 2. 생성자 : 객체 생성시 초기화 담당
 			// 기본생성자에 DB연동 코드 작성 *dao객체 생성시 바로 DB연동
 		public Dao() {
