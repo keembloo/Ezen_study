@@ -7,7 +7,7 @@ public class MemberDao extends Dao  {
 	private static MemberDao memberDao = new MemberDao();
 	public static MemberDao getInstance() {return memberDao;}
 	private MemberDao() {}
-	
+	  
 	// 1. 회원가입SQL
 	public void singnupSQL(MemberDto dto) {
 		System.out.println("singnupSQL 다오 도착");

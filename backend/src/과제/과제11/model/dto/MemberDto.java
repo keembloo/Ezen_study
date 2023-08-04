@@ -7,7 +7,7 @@ public class MemberDto {
 	private String mpw;
 	private String mname;
 	private String mphone;
-	
+	 
 	// 2. 생성자
 		// 1.기본생성자
 	public MemberDto() { }

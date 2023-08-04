@@ -8,7 +8,7 @@ public class MemberController {
 	private static MemberController memberController = new MemberController();
 	public static MemberController getInstance() {return memberController;}
 	private MemberController() {}
-	
+	 
 
 	// 1. 회원가입 처리
 	public void signupLogic(String id , String pw , String name , String phone) {

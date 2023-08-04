@@ -3,7 +3,7 @@ package 과제.과제11.view;
 import java.util.Scanner;
 
 import 과제.과제11.controller.MemberController;
-
+ 
 public class MainPage {
 	// 0. 싱글톤
 	private static MainPage mainPage = new MainPage();

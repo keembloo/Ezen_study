@@ -8,7 +8,7 @@ public class JDBC연동 {
 	public static void main(String[] args) {
 		// ----------------------------------------- 예외가 발생할것 같은 코드들을 try{} 안에넣어줘 ----------------------------------------//
 		try { // JDBC 드라이버 클래스들의 예외처리
-		
+		 
 			// 1. p908 : 현재 프로젝트에 JDBC파일을 build path add 하기
 			// 2. p909 : DB연결하기 위해 JDBC Driver 클래스를 찾아서 메모리 로딩하기
 				// Class.forName("oracle.jdbc.OracleDriver");	//오라클기준
