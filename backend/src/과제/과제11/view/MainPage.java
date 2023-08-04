@@ -30,10 +30,25 @@ public class MainPage {
 	} // main e
 	// 2. 회원가입 화면
 	public void signupView() {
-		MemberController.getInstance().signupLogic();
+		System.out.println("------ 회원가입 페이지 ------");
+		System.out.print("아이디 : ");
+		String id = sc.next();
+		System.out.print("비밀번호 : ");
+		String pw = sc.next();
+		System.out.print("이름 : ");
+		String name = sc.next();
+		System.out.print("전화번호 : ");
+		String phone = sc.next();
+		// 2. 입력받은 값을 컨트롤에게 전달
+		MemberController.getInstance().signupLogic(id , pw , name , phone);
 	}
 	// 3. 로그인 화면
 	public void loginView() {
-		MemberController.getInstance().loginLogic();
+		System.out.println("------ 로그인 페이지 ------");
+		System.out.print("아이디 : ");
+		String id = sc.next();
+		System.out.print("비밀번호 : ");
+		String pw = sc.next();
+		MemberController.getInstance().loginLogic(id , pw);
 	}
 }
