@@ -4,13 +4,13 @@ use portfolio;
 
 #직급 테이블
 drop table if exists companyLevel;
-create table companyLevel( clevel int , cname varchar(10) ,
+create table companyLevel( clevel int auto_increment not null , cname varchar(10) not null,
 	primary key (clevel) 
 );
 
 #회원 테이블
 drop table if exists memberlist;
-create table memberlist( mno int auto_increment, 
+create table memberlist( mno int auto_increment not null, 
 	mcategory varchar(10) not null, 
     mname varchar(10) not null, 
     mid varchar(10) not null unique, 
@@ -23,7 +23,7 @@ create table memberlist( mno int auto_increment,
 #제품 카테고리목록
 drop table if exists category;
 create table category (
-	cno int auto_increment , 
+	cno int auto_increment not null, 
     cname varchar(20) not null unique ,
     cprice int not null,
     primary key(cno) 
@@ -32,7 +32,7 @@ create table category (
 #제품 컬러
 drop table if exists color;
 create table color (
-	colorno int auto_increment ,
+	colorno int auto_increment not null,
     colorname varchar(10) not null unique ,
     primary key(colorno)
 );
@@ -40,7 +40,7 @@ create table color (
 #제품 사이즈
 drop table if exists size;
 create table size (
-	sno int auto_increment , 
+	sno int auto_increment not null, 
     ssize varchar(15) not null unique,
     primary key(sno)
 );
@@ -56,5 +56,7 @@ create table stock (
     colorno int , 
     foreign key(colorno) references color(colorno) ,
     sno int , 
-    foreign key(sno) references size(sno)
+    foreign key(sno) references size(sno) ,
+    mno int ,
+    foreign key(mno) references memberlist(mno)
 );
