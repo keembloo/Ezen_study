@@ -8,7 +8,7 @@ import java1.day11.Ex5디자인패턴2.model.dao.MemberDao;
 public class MainPage {
 	// 0. 싱글톤 생성 [ 디자인 패턴 ]
 		// 1. 현재 클래스로 static 객체 생성
-	public static MainPage mainPage = new MainPage();
+	private static MainPage mainPage = new MainPage();
 		// 2. 외부 객체에서 해당 실클톤 호출하기 위한 메소드
 	public static MainPage getInstance() { return mainPage; }
 	// 3. 외부 해당 클래스로 객체 생성 잠금, 생성자를 private
