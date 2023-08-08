@@ -16,7 +16,7 @@ public class MainPage {
 	public void mainView() {
 		while(true) {
 			System.out.println("\n\n ========= 회원제 커뮤니티 ==========");
-			System.out.println("1.회원가입 2.로그인 선택 3.아이디찾기 4.비밀번호찾기 선택 : ");
+			System.out.print("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 선택 : ");
 			
 			try {
 				int ch = sc.nextInt(); // 만약에 타입과 일치하지 않는 값을 입력하면 InputMismatchException

@@ -70,5 +70,37 @@ public class MemberController {
 		
 		//return null; //실패
 	}
+	
+	// 6. 
+	public MemberDto info() {
+		// 현재 로그인된 회원번호[loginSession]는 view에서 전달 받지 않고 컨트롤 안에 저장
+		// 현재 로그인된 회원번호로 회원정보 요청하기
+		return MemberDao.getInstance().info(this.loginSession);
+	}
+	
+	// 7.
+	public boolean infoUpdate( String newPW ) {
+		return MemberDao.getInstance().infoUpdate(newPW, loginSession);
+	}
+	
+	// 8.
+	public boolean infoDelete() {
+		return MemberDao.getInstance().infoDelete(loginSession);
+	}
+	
 } // class e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
