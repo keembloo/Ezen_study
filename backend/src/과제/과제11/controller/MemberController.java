@@ -28,19 +28,27 @@ public class MemberController {
 		else return 2;
 	} // signupLogic end
 	
-	// 2. 로그인 처리
+	// 0. 로그인된 회원의 번호를 저장하는 필드 = 웹세션
+	private int loginSession = 0; // 0:로그인 안한상태 , 1이상 : 로그인된 회원의 번호
+	public int getLoginSession() {return loginSession;}
+	
+	// 3-1. 로그인 처리
 	public boolean loginLogic(String id , String pw) {
-		System.out.println("loginLogic컨트롤 도착");
-		System.out.println(id + pw);
+		//System.out.println("loginLogic컨트롤 도착");
+		//System.out.println(id + pw);
 		// 유효성검사했다치고		
 		// 1. 매개 변수가 2개라서 객체화 해도되고 안해도 됨[선택]
 		// 2. Dao 에게 전달
-		boolean result = MemberDao.getInstance().loginSQL(id , pw);
-		return result;
+		int result = MemberDao.getInstance().loginSQL(id , pw);
+		// 로그인 성공했을때 기록하기 [ -로그인이후 로그인된 정보로 활동 ] 
+		if( result >=1 ) {this.loginSession = result; return true;}
+		else {return false;}
 	} //loginLogic end
 	
+	// 3-2 로그아웃 처리
+	public void logOut() {this.loginSession=0;}
 	
-	// 4.
+	// 4. 아이디찾기
 	public String findById(String name, String phone) {
 		// - 테스트. view 전달받은 매개변수 확인
 		System.out.println("view value :" + name + phone);
@@ -52,7 +60,7 @@ public class MemberController {
 		//return ; //실패
 	}
 	
-	// 5.
+	// 5. 비밀번호찾기
 	public String findByPw(String id , String phone) {
 		// - 테스트. view 전달받은 매개변수 확인
 		System.out.println("view value :" + id + phone);

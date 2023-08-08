@@ -54,7 +54,7 @@ public class MemberDao extends Dao  {
 		return false;
 	}
 	// 3. 로그인SQL
-	public boolean loginSQL(String id , String pw) {
+	public int loginSQL(String id , String pw) {
 		//System.out.println("loginSQL 다오 도착");
 		//System.out.println(id+pw);
 		try {
@@ -73,10 +73,11 @@ public class MemberDao extends Dao  {
 				// 								.next()		.next()	  .next()
 			if( rs.next() ) { // 로그인SQL은 결과레코드가 1개 또는 0개 이므로 if 사용해서 .next() 1번 호출해서
 								// .next() 다음레코드가 존재하면 true / false
-				return true; // 로그인성공
+				return rs.getInt(1); // 검색된 회원번호(첫번째필드)를 반환
 			} // if end
+			
 		} catch (Exception e) {System.out.println(e);}
-		return false; // 로그인 실패
+		return 0; // 로그인 실패
 	} // loginSQL end
 	
 		
