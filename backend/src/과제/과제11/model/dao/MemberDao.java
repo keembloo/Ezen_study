@@ -1,14 +1,31 @@
 package 과제.과제11.model.dao;
 
 
+
 import 과제.과제11.model.dto.MemberDto;
 
 public class MemberDao extends Dao  {
+	// 0.싱글톤 객체
 	private static MemberDao memberDao = new MemberDao();
 	public static MemberDao getInstance() {return memberDao;}
 	private MemberDao() {}
-	  
-	// 1. 회원가입SQL
+	 
+	
+	// 1. 회원정보 체크 함수 : type=1 아이디중복체크 type=2 전화번호중복체크... // vs String 필드명
+	public boolean infoCheck( String 검색할필드명, String 검색할값 ) {
+		try {
+			String sql = "select * from member where "+검색할필드명+" = ?";
+			System.out.println(sql);
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, 검색할값);
+			rs = ps.executeQuery();
+			if(rs.next()) {return true;} // 레코드 존재 => 이미 있는 데이터 => 중복
+		}catch (Exception e) {System.out.println(e);}
+		
+		return false;
+	}
+	
+	// 2. 회원가입SQL
 	public boolean singnupSQL(MemberDto dto) {
 		System.out.println("singnupSQL 다오 도착");
 		System.out.println(dto);
@@ -36,7 +53,7 @@ public class MemberDao extends Dao  {
 		// 6. 리턴 [ 회원가입성공 = true / 회원가입 실패 = false ]
 		return false;
 	}
-	// 2. 로그인SQL
+	// 3. 로그인SQL
 	public boolean loginSQL(String id , String pw) {
 		//System.out.println("loginSQL 다오 도착");
 		//System.out.println(id+pw);

@@ -43,11 +43,13 @@ public class MainPage {
 		System.out.print("전화번호 : ");
 		String phone = sc.next();
 		// 2. 입력받은 값을 컨트롤에게 전달하고 결과 받기
-		boolean result = 
+		int result = 
 				MemberController.getInstance().signupLogic(id , pw , name , phone);
 		// 3. 결과에 따른 출력
-		if ( result ) {System.out.println("안내) 회원가입 성공");}
-		else {System.out.println("경고) 회원가입실패");}
+		if ( result ==1 ) {System.out.println("안내) 회원가입 성공");}
+		else if (result ==2){System.out.println("경고) 회원가입실패 관리자에게 문의");}
+		else if (result ==3){System.out.println("경고) 회원가입실패 아이디중복");}
+		else if (result ==4){System.out.println("경고) 회원가입실패 전화번호중복");}
 	}
 	// 3. 로그인 화면
 	public void loginView() {
