@@ -87,7 +87,7 @@ public class LoginPage {
 		System.out.println("------ 글쓰기 ------");
 		sc.nextLine();
 		System.out.print("제목 > "); String title = sc.nextLine();
-		System.out.print("내용 > "); String content = sc.next();
+		System.out.print("내용 > "); String content = sc.nextLine();
 		
 		boolean result = BoardController.getInstance().boardWrite(title, content);
 		if (result) {System.out.println("글쓰기 성공");}
@@ -105,7 +105,7 @@ public class LoginPage {
 			BoardDto dto = result.get(i);	// i번째의 객체를 호출
 			// 리스트.size() : 리스트내 객체수 => length 동일
 			System.out.printf("%-3s %-4s %-19s %-10s %s \n", 
-					dto.getBno() , dto.getBview() , dto.getBdate() , dto.getMno() , dto.getBtitle() );
+					dto.getBno() , dto.getBview() , dto.getBdate() , dto.getMid() , dto.getBtitle() );
 		}
 	}
 	// 11. boardView : 개별 게시물 출력

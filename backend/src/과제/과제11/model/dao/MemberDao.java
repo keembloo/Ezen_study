@@ -59,7 +59,7 @@ public class MemberDao extends Dao  {
 		//System.out.println(id+pw);
 		try {
 			// 1단계 : SQL 작성한다 [ 추천 : MYSQL워크벤치에서 임의의값으로 테스트하고 ]
-			String sql = "select mid , mpw from member where mid = ? and mpw = ?";
+			String sql = "select mno , mpw from member where mid = ? and mpw = ?";
 			// 2단계 : SQL 조작할수 잇는 객체 필요하므로 prepareStatement 반환받기
 			ps = conn.prepareStatement(sql);
 			// 3단계 : SQL 조작 [SQL안에 있는 매개변수[?]에 값 대입 ]

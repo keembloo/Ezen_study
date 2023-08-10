@@ -23,6 +23,7 @@ public class BoardDao extends Dao{
 			ps.setString(1, boardDto.getBtitle());
 			ps.setString(2, boardDto.getBcontent());
 			ps.setInt(3, boardDto.getMno());
+			System.out.println(boardDto.getMno());
 			//4. sql 실행 / 실행후 저장된 레코드 개수 반환
 			int row = ps.executeUpdate();
 			//5. 만약에 저장된 레코드수가 1개이면 성공
