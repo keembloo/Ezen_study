@@ -20,7 +20,7 @@ public class LoginPage {
 	public void loginMenu() {
 		while(MemberController.getInstance().getLoginSession() !=0) { // 로그인이 되어있는 경우에만 메뉴 반복문
 			System.out.println("\n\n ========= ========== ==========");
-			System.out.print("1.로그아웃 2.회원정보 3.글쓰기 선택 : ");
+			System.out.print("1.로그아웃 2.회원정보 3.글쓰기 4.글조회 선택 : ");
 			boardPrint();
 			
 			try {
@@ -28,7 +28,7 @@ public class LoginPage {
 				if(ch ==1) { MemberController.getInstance().logOut();}
 				if(ch==2) {info();}
 				if(ch==3) {boardWrite();}
-				
+				if(ch==4) {boardView();}
 			}catch ( Exception e) {
 				System.out.println("경고) 잘못 입력했습니다.");
 				sc = new Scanner(System.in); 
@@ -109,7 +109,26 @@ public class LoginPage {
 		}
 	}
 	// 11. boardView : 개별 게시물 출력
-	public void boardView() {}
+	public void boardView() {
+		System.out.println("------ 게시물 보기------");
+		//1. 보고자하는 게시물의 게시물번호 입력 받기 [식별번호]
+		System.out.print("게시물번호 : "); int bno = sc.nextInt();
+		//2.
+		BoardDto result = BoardController.getInstance().boardView(bno);
+		//3. 출력
+		System.out.printf("bno : %-3s view : %-3s mid : %-3s date %-19s ", 
+				result.getBno() , result.getBview() , 
+				result.getMid() , result.getBdate());
+		System.out.printf("title : %s \n", result.getBtitle());
+		System.out.printf("content : %s \n", result.getBcontent());
+		
+		// 4. 추가메뉴
+		System.out.println("1.뒤로가기 2.수정 3.삭제 선택 >");
+		int ch = sc.nextInt();
+		if(ch==1) {}
+		if(ch==2) {boardUpdate();}
+		if(ch==3) {boardDelete();}
+	}
 	// 12. boardUpdate : 게시물 수정
 	public void boardUpdate() {}
 	// 13. boardDelete : 게시물 삭제
