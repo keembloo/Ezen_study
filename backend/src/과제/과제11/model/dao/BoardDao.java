@@ -101,11 +101,37 @@ public class BoardDao extends Dao{
 	}
 	
 	
-	// 12. boardUpdate : 게시물 수정
-	public void boardUpdate() {}
+	// 12. boardUpdate : 게시물 수정 [ 인수 : bno , title , content ]  / 반환 : true , false
+	public boolean boardUpdate(BoardDto boardDto) {
+		try {
+			String sql="update board set btitle = ? , bcontent = ? where bno =?;";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(3, boardDto.getBno());
+			ps.setString(1, boardDto.getBtitle());
+			ps.setString(2, boardDto.getBcontent());
+			int row = ps.executeUpdate();
+			// select -> rs = ps.executeQuery()
+			// insert , update , delete -> int row = ps.executeUpdate()
+			if (row ==1) return true;
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return false; // DB오류 또는 수정된 레코드가 0이면 실패
+	}
 	
-	// 13. boardDelete : 게시물 삭제
-	public void boardDelete() {}
+	// 13. boardDelete : 게시물 삭제 [ 인수 : bno ] / 반환 : true , false
+	public boolean boardDelete(int bno) {
+		try {
+			String sql="delete from board where bno =?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			int row = ps.executeUpdate();
+			if(row==1) return true;
+		}catch (Exception e) {System.out.println(e);}
+		return false; // DB오류 또는 수정된 레코드가 0이면 실패
+	}
+
+
 }
 
 

@@ -126,13 +126,33 @@ public class LoginPage {
 		System.out.println("1.뒤로가기 2.수정 3.삭제 선택 >");
 		int ch = sc.nextInt();
 		if(ch==1) {}
-		if(ch==2) {boardUpdate();}
-		if(ch==3) {boardDelete();}
+		if(ch==2) {boardUpdate(bno , result.getMno());} // 보고있는 게시물 번호와 작성자회원번호
+		if(ch==3) {boardDelete(bno , result.getMno());}
 	}
-	// 12. boardUpdate : 게시물 수정
-	public void boardUpdate() {}
-	// 13. boardDelete : 게시물 삭제
-	public void boardDelete() {}
+	// 12. boardUpdate : 게시물 수정 [ 게시물번호 식별해서 제목이랑 내용만 수정 -> 로그인된 사람과 작성자가 일치할경우 가능하도록]
+	public void boardUpdate(int bno , int mno) {
+		System.out.println("---------- 게시물수정 ----------");
+		sc.nextLine();
+		System.out.print("수정할 제목 > "); String title = sc.nextLine();
+		System.out.print("수정할 내용 > "); String content = sc.nextLine();
+		
+		// 2. 
+		int result = BoardController.getInstance().boardUpdate(bno, mno , title , content);
+		if (result ==1) {System.out.println("안내) 글 수정 성공");} 
+		else if (result ==2) {System.out.println("경고) 글수정 실패 : 관리자 오류");}
+		else if(result ==3) {System.out.println("경고) 본인 글만 수정 가능합니다");}
+		else if (result ==4) {System.out.println("경고) 수정할 제목을 1-50글자 사이로 입력해주세요");}
+	}
+	
+	// 13. boardDelete : 게시물 삭제 [ 게시물번호 식별해서 삭제 -> 로그인된 사람과 작성자가 일치할경우 가능하도록 ]
+	public void boardDelete(int bno , int mno) {
+		int result =
+				BoardController.getInstance().boardDelete(bno, mno);
+		if(result==1) {System.out.println("안내) 글 삭제 성공");}
+		else if(result==2) {System.out.println("경고) 글삭제 실패 : 관리자 오류");}
+		else if(result==3) {System.out.println("경고) 본인 글만 삭제 가능합니다");}
+		
+	}
 }
 
 
