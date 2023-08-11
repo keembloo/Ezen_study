@@ -48,7 +48,7 @@ public class LoginPage {
 		System.out.println("전화번호 : "+ result.getMphone());
 		
 		// 2.서브메뉴
-		System.out.print("1.비밀번호수정 2.회원탈퇴 3.뒤로가기 선택> ");
+		System.out.print("1.비밀번호수정 2.회원탈퇴 3.뒤로가기 4.쪽지확인 선택> ");
 		int ch = sc.nextInt();
 		if(ch==1) {infoUpdate();}
 		if(ch==2) {infoDelete();}
@@ -123,11 +123,12 @@ public class LoginPage {
 		System.out.printf("content : %s \n", result.getBcontent());
 		
 		// 4. 추가메뉴
-		System.out.println("1.뒤로가기 2.수정 3.삭제 선택 >");
+		System.out.println("1.뒤로가기 2.수정 3.삭제 4.쪽지보내기 선택 >");
 		int ch = sc.nextInt();
 		if(ch==1) {}
 		if(ch==2) {boardUpdate(bno , result.getMno());} // 보고있는 게시물 번호와 작성자회원번호
 		if(ch==3) {boardDelete(bno , result.getMno());}
+		if(ch==4) {sendMessage(result.getBno(), result.getMno());}
 	}
 	// 12. boardUpdate : 게시물 수정 [ 게시물번호 식별해서 제목이랑 내용만 수정 -> 로그인된 사람과 작성자가 일치할경우 가능하도록]
 	public void boardUpdate(int bno , int mno) {
@@ -153,6 +154,21 @@ public class LoginPage {
 		else if(result==3) {System.out.println("경고) 본인 글만 삭제 가능합니다");}
 		
 	}
+	
+	// 14. 쪽지보내기
+	public void sendMessage(int bno , int mno) {
+		System.out.print("보낼 메세지 >");
+		sc.nextLine();
+		String message = sc.nextLine();
+		
+		int result = 
+				BoardController.getInstance().sendMessage(bno, mno, message);
+		if (result==1) {System.out.println("쪽지보내기 성공");}
+		else if(result==2) {System.out.println("경고) 메세지 보내기 실패 : 관리자 오류");}
+		else if(result==3) {System.out.println("경고) 게시물 작성자가 동일함 메세지 보낼 수 없음");}
+		else if(result==4) {System.out.println("경고) 메세지의 글자수는 1-50사이만 가능");}
+	}
+	// 15. 쪽지확인 페이지	// + 쪽지 답장 보내기
 }
 
 

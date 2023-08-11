@@ -62,4 +62,17 @@ public class BoardController {
 		return 2;
 	}
 	
+	
+	public int sendMessage(int bno , int tomno , String message) {
+		System.out.println("연결완료");
+		// 1. 유효성검사
+		if (tomno == MemberController.getInstance().getLoginSession()) {return 3;}
+		if (message.length() <1 | message.length() > 50) {return 4;}
+		
+		boolean result =
+				BoardDao.getInstance().sendMessage(bno, tomno, message, MemberController.getInstance().getLoginSession());
+		if (result ) return 1;
+		else return 2;
+	}
+	
 }

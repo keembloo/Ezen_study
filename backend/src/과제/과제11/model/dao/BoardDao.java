@@ -63,6 +63,7 @@ public class BoardDao extends Dao{
 	
 	// 11. boardView : 개별(1개) 게시물 출력
 	public BoardDto boardView(int bno) {
+		//  boardViewCount(); 조회수 선 증가
 		try {
 			String sql="select b.* , m.mid from board b natural join member m where b.bno = ?";
 			ps = conn.prepareStatement(sql);
@@ -72,7 +73,7 @@ public class BoardDao extends Dao{
 				// 레코드1개 --> Dto 변환
 				BoardDto dto = new BoardDto(
 						rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getString(7));
-				boardViewCount(rs.getInt(1) , rs.getInt(5)); // 조회수 증가 함수 호출
+				boardViewCount(rs.getInt(1) , rs.getInt(5)); // 조회수 후증가 함수 호출
 				return dto;
 			}
 		}catch (Exception e) {
@@ -83,7 +84,7 @@ public class BoardDao extends Dao{
 	
 	// 11-2 조회수 증가 함수
 	public boolean boardViewCount(int bno , int bview) {
-		try {
+		try { // set 수정할필드명 = 기본필드값 +1
 			String sql="update board set bview = ? where bno = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, ++bview); // 뒤에 ++ 넣으면 안되지....?
@@ -132,6 +133,23 @@ public class BoardDao extends Dao{
 	}
 
 
+	public boolean sendMessage(int bno , int tomno , String message , int fromno) {
+		try {
+			String sql="insert into note (bno , tomno , frommno , ncontent) values (? , ? , ? , ?)";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			ps.setInt(2, tomno);
+			ps.setInt(3, fromno);
+			ps.setString(4, message);
+			int row = ps.executeUpdate();
+			//5. 만약에 저장된 레코드수가 1개이면 성공
+			if (row==1) return true;
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return false; // 실패
+	}
+	
 }
 
 

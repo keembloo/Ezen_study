@@ -12,6 +12,13 @@ public class BoardDto {
 	// 화면에는 작성자를 회원번호가 아닌 회원의 다른 정보 출력
 	private String mid;		// 회원번호를 이용한 회원테이블에서 조회 가능 [ 테이블 합치기 JOIN ]
 	
+	// + 쪽지보내기 추가한 필드
+	private int nno;
+	private int tomno;
+	private int frommno;
+	private String ncontent;
+	private String ndate;
+	
 	// 2. 생성자 [ 1. 빈생성자 , 2. 풀생성자 + 추가생성자 (글쓰기 사용할 생성자 , 글출력 사용할 생성자 ) ]
 	public BoardDto() {	}
 
@@ -43,13 +50,28 @@ public class BoardDto {
 		this.bcontent = bcontent;
 	}
 
+	
+	// + 메세지 보낼때 사용되는 생성자
+	public BoardDto(int nno, int tomno, String ncontent, int frommno) {
+		super();
+		this.nno = nno;
+		this.tomno = tomno;
+		this.frommno = frommno;
+		this.ncontent = ncontent;
+	}
+
+	
 
 	// 3. 메소드 [ 1.getter or setter , 2.toString ]
 	
 
+
 	public int getBno() {
 		return bno;
 	}
+
+
+
 
 	public void setBno(int bno) {
 		this.bno = bno;
