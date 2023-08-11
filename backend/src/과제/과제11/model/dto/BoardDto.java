@@ -60,11 +60,62 @@ public class BoardDto {
 		this.ncontent = ncontent;
 	}
 
-	
+	//+ 메세지 확인할때 사용되는 생성자
+	public BoardDto(int bno, int nno, int tomno, int frommno, String ncontent, String ndate) {
+		super();
+		this.bno = bno;
+		this.nno = nno;
+		this.tomno = tomno;
+		this.frommno = frommno;
+		this.ncontent = ncontent;
+		this.ndate = ndate;
+	}
 
 	// 3. 메소드 [ 1.getter or setter , 2.toString ]
 	
 
+
+	public int getNno() {
+		return nno;
+	}
+
+
+
+	public void setNno(int nno) {
+		this.nno = nno;
+	}
+
+	public int getTomno() {
+		return tomno;
+	}
+
+	public void setTomno(int tomno) {
+		this.tomno = tomno;
+	}
+
+	public int getFrommno() {
+		return frommno;
+	}
+
+	public void setFrommno(int frommno) {
+		this.frommno = frommno;
+	}
+
+	public String getNcontent() {
+		return ncontent;
+	}
+
+	public void setNcontent(String ncontent) {
+		this.ncontent = ncontent;
+	}
+
+	public String getNdate() {
+		return ndate;
+	}
+
+	public void setNdate(String ndate) {
+		this.ndate = ndate;
+	}
 
 	public int getBno() {
 		return bno;

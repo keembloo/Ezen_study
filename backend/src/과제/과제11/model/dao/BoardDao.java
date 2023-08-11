@@ -150,6 +150,28 @@ public class BoardDao extends Dao{
 		return false; // 실패
 	}
 	
+	public ArrayList<BoardDto> checkMessege(int loginNum) {
+		System.out.println("다오연결완료");
+		ArrayList<BoardDto> list = new ArrayList<>();
+		try {
+			String sql ="select * from note where tomno = ? or frommno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, loginNum);
+			ps.setInt(2, loginNum);
+	
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()){
+				BoardDto dto = new BoardDto( rs.getInt(1) ,  rs.getInt(2) ,  rs.getInt(3) ,  rs.getInt(4), rs.getString(5) , rs.getString(6));
+				list.add(dto);
+			}
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		return list;
+	}
+	
 }
 
 

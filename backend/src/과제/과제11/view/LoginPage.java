@@ -53,6 +53,8 @@ public class LoginPage {
 		if(ch==1) {infoUpdate();}
 		if(ch==2) {infoDelete();}
 		if(ch==3) {return;} // 생략가능
+		if(ch==4) {checkMessege();} // 메세지확인
+		
 	}
 	
 	// 3. infoUpdate : 비밀번호수정 페이지
@@ -168,7 +170,23 @@ public class LoginPage {
 		else if(result==3) {System.out.println("경고) 게시물 작성자가 동일함 메세지 보낼 수 없음");}
 		else if(result==4) {System.out.println("경고) 메세지의 글자수는 1-50사이만 가능");}
 	}
+	
 	// 15. 쪽지확인 페이지	// + 쪽지 답장 보내기
+	public void checkMessege() {
+		System.out.println("\n\n ========= 쪽지확인 ==========");
+		ArrayList<BoardDto> result = BoardController.getInstance().checkMessege();
+		
+		for (int i = 0; i<result.size(); i++) {
+			BoardDto dto = result.get(i);	// i번째의 객체를 호출
+			// 리스트.size() : 리스트내 객체수 => length 동일
+			System.out.printf("%-3s %-4s %-10s %-15s %-30s %-13s \n", 
+					"쪽지번호" ,"게시물번호" ,"받는사람번호" , "보낸사람번호" , "내용" ,"보낸날짜");
+			System.out.printf("%-6s %-8s %-13s %-17s %-30s %-13s \n", 
+					dto.getNno() , dto.getBno() , dto.getTomno() , dto.getFrommno() , dto.getNcontent() , dto.getNdate() );
+		} // for e
+
+	} // checkMessege end
+	
 }
 
 

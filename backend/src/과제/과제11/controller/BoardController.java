@@ -3,6 +3,7 @@ package 과제.과제11.controller;
 import java.util.ArrayList;
 
 import 과제.과제11.model.dao.BoardDao;
+import 과제.과제11.model.dao.MemberDao;
 import 과제.과제11.model.dto.BoardDto;
 
 
@@ -64,7 +65,7 @@ public class BoardController {
 	
 	
 	public int sendMessage(int bno , int tomno , String message) {
-		System.out.println("연결완료");
+		//System.out.println("연결완료");
 		// 1. 유효성검사
 		if (tomno == MemberController.getInstance().getLoginSession()) {return 3;}
 		if (message.length() <1 | message.length() > 50) {return 4;}
@@ -73,6 +74,13 @@ public class BoardController {
 				BoardDao.getInstance().sendMessage(bno, tomno, message, MemberController.getInstance().getLoginSession());
 		if (result ) return 1;
 		else return 2;
+	}
+	
+	public ArrayList<BoardDto> checkMessege() {
+		//System.out.println("컨트롤러연결완료");
+		int loginNum = MemberController.getInstance().getLoginSession();
+			ArrayList<BoardDto> result = BoardDao.getInstance().checkMessege(loginNum);
+			return result;
 	}
 	
 }
