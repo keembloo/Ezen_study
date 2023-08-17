@@ -27,7 +27,7 @@ public class Ex1_멀티스레드 {
 			try {Thread.sleep(500);}catch (Exception e) { System.out.println(e);}
 		}
 		
-		// ---------------------- 멀티 스레드 ---------------------- //
+		// ---------------------- 1. 멀티 스레드 [익명구현체] ---------------------- //
 		// 1. [main스레드가 작업스레드 생성] main 스레드외 작업스레드 객체 만들기
 		Thread thread = new Thread( new Runnable() {
 			
@@ -50,6 +50,26 @@ public class Ex1_멀티스레드 {
 			try {Thread.sleep(500);}catch (Exception e) { System.out.println(e);}
 		}
 		
+		// ---------------------- 2. 멀티 스레드 [익명 구현체] ---------------------- //
+		비프음 비프음 = new 비프음(); // Runnable 인터페이스 구현한 객체 [구현체]
+		Thread thread2 = new Thread(비프음); // Runnable 구현체를 Thread 객체에게 전달
+		thread2.start();	// Thread 클래스에 start()실행시 run 메소드 실행
+		
+		// 3. main 스레드 작업
+		for ( int i =0; i<5; i++) {
+			System.out.println("띵");
+			try {Thread.sleep(500);}catch (Exception e) { System.out.println(e);}
+		}
+		
+		// ---------------------- 3. 멀티 스레드 [Thread 자식 클래스 구현체] ---------------------- //
+		비프음2 비프음2 = new 비프음2(); // Thread 자식객체 생성
+		비프음2.start(); // run메소드 실행
+		
+		// 3. main 스레드 작업
+		for ( int i =0; i<5; i++) {
+			System.out.println("띵");
+			try {Thread.sleep(500);}catch (Exception e) { System.out.println(e);}
+		}
 	} // main e
 }
 
