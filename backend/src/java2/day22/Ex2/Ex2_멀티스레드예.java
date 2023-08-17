@@ -19,7 +19,9 @@ public class Ex2_멀티스레드예 {
 			int count = 1;
 			while (true) {
 				Thread.sleep(1000); // 1초간 일시정지 [예외처리필수]
-				System.out.println("main 스레드 output" + count);
+				System.out.println(Thread.currentThread().getName() + "main 스레드 output" + count);
+				// 현재 스레드의 이름 호출 : Thread.currentThread().getName();
+				// 현재 스레드의 이름 수정 : Thread.currentThread().setName("새로운이름");
 				count++;
 			}
 		} catch (Exception e) {System.out.println(e);}
