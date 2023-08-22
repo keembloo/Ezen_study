@@ -1,1 +1,111 @@
 @charset "UTF-8";
+
+
+.visitwrap{
+	width: 800px;
+	margin: 0 auto;
+}
+
+/*-----------쓰기구역-----------*/
+
+.visit_Top{
+	margin : 30px 0;
+}
+
+.visit_Inputs {
+	margin-top: 50px;
+	display: flex;
+	width: 100%;
+	justify-content : center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.visit_Inputs input {
+	padding: 5px;
+	border: 1px solid #e8e8e8;
+}
+
+textarea{
+	width: 78%;
+	height : 100px;
+	padding: 5px;
+	border: 1px solid #e8e8e8;
+	resize : none;  /* textarea  의 사이즈 변경 불가 */
+    margin: 0 auto;
+    display: block;
+	margin-bottom: 20px;
+}
+
+
+.visit_Top button {
+	width: 80%;
+	height: 30px;
+	background-color: blue;
+	border-radius: 15px;
+	color: white;
+    margin: 0 auto;
+    display: block;
+    border: none;
+}
+
+/*-----------출력구역-----------*/
+.visit_Bottom {
+	margin : 30px 0;
+}
+/* 방문록 1개 구역 */
+.visitbox {
+	width: 80%;
+	display: flex;
+	margin: 0 auto;
+	border-top: 1px solid #e8e8e8;
+	padding-top : 10px;
+	margin-top : 30px;
+}
+/* 작성일 표시구역 */
+.visitdate{
+	font-size: 9px;
+}
+
+/* 상단 */
+.visitbox_top {
+	width: 20%;
+}
+
+/* 내용물 */
+.visitbox_center{
+	width: 60%;
+	margin: 0 10px;
+}
+/* 버튼구역 */
+.visitbox_bottom{
+	width: 20%;
+}
+/* 버튼구역 버튼 */
+.visitbox_bottom button {
+	width: 100%;
+	background-color: blue;
+	color: white;
+	border: none;
+	border-radius: 15px;
+}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
