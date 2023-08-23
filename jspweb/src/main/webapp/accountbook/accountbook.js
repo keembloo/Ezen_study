@@ -53,8 +53,8 @@ function cread() {
 							<div class="price">${r[i].aprice}원</div>
 							<div class="date">${r[i].adate}</div>
 							<div class="btn_box">
-								<button class="btn_edit" type="button">수정</button>
-								<button class="btn_delete" type="button">삭제</button>
+								<button onclick="cudate(${r[i].ano})" class="btn_edit" type="button">수정</button>
+								<button onclick="cdelete(${r[i].ano})" class="btn_delete" type="button">삭제</button>
 							</div>
 						</div>`;
 			}
@@ -85,7 +85,8 @@ function cudate(ano) {
 		})
 }
 
-function cdelete() {
+function cdelete(ano) {
+	console.log('cdelete함수실행'+ano);
 	cread();
 }
 
