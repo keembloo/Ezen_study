@@ -46,7 +46,31 @@ public class AccountbookDao extends Dao {
 	
 	
 	// 3. 수정
+	public boolean cupdate (AccountbookDto accountbookDto ) {
+		try {
+			String sql ="update accountbook set acontent = ? where ano = ?"; // 1. SQL 작성
+			ps = conn.prepareStatement(sql); 
+			ps.setInt(2, ano);
+			ps.setString(1, acontent);
+			ps.setInt(3, aprice);
+			ps.setString(4, adate);
+			int row = ps.executeUpdate(); // 4. SQL 실행
+			if( row == 1) return true;  // 5. SQL 실행 결과 따른 제어 
+			return false;
+		}catch (Exception e) { System.out.println(e);}
+		return false;
+	}
 	
 	// 4. 삭제 
+	public boolean cdelete (int ano) {
+		try {
+			String sql ="delete from accountbook where ano = "+ano;
+			ps = conn.prepareStatement(sql);
+			int row = ps.executeUpdate();
+			if (row == 1) return true;
+			return false;			
+		}catch (Exception e) {System.out.println(e);}
+			return false;
+	}
 	
 }

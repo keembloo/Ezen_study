@@ -48,14 +48,25 @@ public class Accountbook extends HttpServlet {
 
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ano = Integer.parseInt(request.getParameter("ano"));
-		String acontent = request.getParameter("acontent");
-		String aprice = request.getParameter("aprice");
+		int ano = Integer.parseInt(request.getParameter("ano")); System.out.println("ano"+ano);
+		String acontent = request.getParameter("acontent"); System.out.println("acontent"+acontent);
+		int aprice = request.getParameter("aprice"); System.out.println("aprice"+aprice);
+		String adate = request.getParameter("adate"); System.out.println("adate"+adate);
+		
+		AccountbookDto accountbookDto = new AccountbookDto(ano, acontent, aprice, adate);
+		boolean result = AccountbookDao.getInstence().cupdate(accountbookDto);
+		
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
 	}
 
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		int ano = Integer.parseInt(request.getParameter("ano")); System.out.println("ano"+ano);
+		boolean result = AccountbookDao.getInstence().cdelete(ano);
+		
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
 	}
 
 }

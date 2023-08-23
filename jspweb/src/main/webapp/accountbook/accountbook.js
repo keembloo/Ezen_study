@@ -68,26 +68,41 @@ function cread() {
 function cudate(ano) {
 	console.log('update함수실행'+ano);
 	let acontent = prompt('수정할 내용 : ');
+	let aprice = prompt('수정할 가격 : ');
+	let adate = prompt('수정할 날짜 : ');
 	
 	let info = {
 		ano : ano ,
-		content : content,
-		price : price,
-		date : date ,
+		content : acontent,
+		price : aprice,
+		date : adate ,
 	}; console.log(info);
 	
 	$.ajax({
 		url : "/jspweb/Accountbook",
 		method : "put" ,
 		data : info ,
-		success : function f(r){ console.log(r); console.log('리드됨');cread();},
-		error : function f(r){console.log('불러올수없음')}
+		success : function f(r){ console.log(r); console.log('리드됨');
+			if (r==true){alert('수정성공'); cread();}
+			else {alert('수정실패');}
+		},
+		error : function f(r){console.log(r);}
 		})
 }
 
 function cdelete(ano) {
 	console.log('cdelete함수실행'+ano);
-	cread();
+	$.ajax({
+	url : "/jspweb/Accountbook",
+	method : "delete" ,
+	data : {ano : ano },
+	success : function f(r){ console.log(r); console.log('들리트실행됨');
+		if( r==true){alert('삭제성공'); cread();}
+		else {alert('삭제실패')}
+	},
+	error : function f(r){console.log(r);}
+	})
+	
 }
 
 
