@@ -19,8 +19,9 @@ public class VisitDao extends Dao {
 			ps.setString(1, visitDto.getVwriter()); // 3. SQL 매개변수 대입
 			ps.setString(2, visitDto.getVpwd()); // 3. SQL 매개변수 대입
 			ps.setString(3, visitDto.getVcontent()); // 3. SQL 매개변수 대입
-			ps.executeUpdate();	// 4. SQL 실행
-			return true; // 5. 결과 반환
+			int row = ps.executeUpdate();	// 4. SQL 실행
+			if(row==1)	return true; // 5. 결과 반환
+			return false;
 		} catch (Exception e) { System.out.println(e); }
 		return false;
 		
@@ -47,10 +48,34 @@ public class VisitDao extends Dao {
 		return list;
 	}
 	
-	// 3. 수정 [ 인수 : 수정할방문록번호(int)/수정할방문록내용(String) , 리턴 : 성공/실패(boolean) = true/false ]
-	public boolean vupdate( int vno , String vcontent ) {return false;}
+	// 3. 수정 [ 인수 : 수정할방문록번호(int)/수정할방문록내용(String)/비밀번호검토(String) , 리턴 : 성공/실패(boolean) = true/false ]
+	public boolean vupdate( int vno , String vcontent , String vpwd ) {
+		try {
+			String sql ="update visitlog set vcontent = ? where vno = ? and vpwd = ?"; // 1. SQL 작성
+			ps = conn.prepareStatement(sql); // 2. SQL 연결
+			ps.setInt(2, vno);		// 3. SQL 매개변수 대입
+			ps.setString(1, vcontent);
+			ps.setString(3, vpwd);
+			int row = ps.executeUpdate(); // 4. SQL 실행
+			if( row == 1) return true;  // 5. SQL 실행 결과 따른 제어 
+			return false;
+		}catch (Exception e) { System.out.println(e);	}
+		
+		return false;
+		}
 	
-	// 4. 삭제 [ 인수 : 삭제할방문록번호(int) , 리턴 : 성공/실패(boolean) = true/false ]
-	public boolean vdelete( int vno ) {return false;}
+	// 4. 삭제 [ 인수 : 삭제할방문록번호(int)/비밀번호검토(String) , 리턴 : 성공/실패(boolean) = true/false ]
+	public boolean vdelete( int vno , String vpwd ) {
+		try {
+			String sql ="delete from visitlog where vno = ? and vpwd = ?"; // 1. SQL 작성
+			ps = conn.prepareStatement(sql); // 2. SQL 연결
+			ps.setInt(1, vno);		// 3. SQL 매개변수 대입
+			ps.setString(2, vpwd);
+			int row = ps.executeUpdate(); // 4. SQL 실행
+			if( row == 1) return true;  // 5. SQL 실행 결과 따른 제어 
+			return false;
+		}catch (Exception e) { System.out.println(e);	}
+			return false;
+		}
 	
 }

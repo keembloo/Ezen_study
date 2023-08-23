@@ -19,3 +19,14 @@ insert into visitlog (vwriter , vpwd , vcontent) values ( '김규리' , '123' , 
 
 #2. 호출 select / 모든 레코드 검색
 select * from visitlog order by vdate desc;
+
+#3. 수정 [ 조건필수 ]
+update visitlog set vcontent ='내용수정함' where vno = 3; /* vno가 3이면 vcontent 필드의 값을 수정 */
+update visitlog set vcontent ='내용수정함' where vno = 3 and vpwd = '1234'; /*vno가 3이면서 vpwd가 1234이면 vcontent 필드의 값을 수정*/
+# update visitlog set vcontent =? where vno = ? and vpwd = ?;
+
+#4. 삭제 [삭제할 식별자 필수 ]
+delete from visitlog; /*모든 레코드 삭제 */
+delete from visitlog where vno = 3; /* vno가 3이면 삭제 */
+delete from visitlog where vno = 3 and vpwd = '1234'; /* vno가 3이면서 vpwd가 1234이면 레코드 삭제 */
+# delete from visitlog where vno = ? and vpwd = ?;

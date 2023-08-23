@@ -32,7 +32,7 @@ function vwrite(){
 
 } // f e
 
-vread();
+vread(); // JS열릴때 1번 실행 
 // 2. Read(호출)
 function vread(){ // 실행조건 : js열릴때 1번실행 , 글등록할때마다 , 글수정할때마다 , 글삭제할때마다 => 최신화(화면새로고침)
 	$.ajax({
@@ -58,8 +58,8 @@ function vread(){ // 실행조건 : js열릴때 1번실행 , 글등록할때마�
 								</div>
 								<div class="visitbox_center">${ r[i].vcontent }</div>
 								<div class="visitbox_bottom">
-									<button type="button">수정</button>
-									<button type="button">삭제</button>
+									<button onclick="vupdate(${r[i].vno})" type="button">수정</button>
+									<button onclick="vdelete(${r[i].vno})" type="button">삭제</button>
 								</div>
 							</div>`;
 				}
@@ -70,11 +70,45 @@ function vread(){ // 실행조건 : js열릴때 1번실행 , 글등록할때마�
 	})
 } // f e 
 // 3. Update(수정)
-function vupdate(){
-	vread();
+	// 누구를(클릭된방문록번호 vno) 어떻게(새롭게 입력받아 vcontent) 수정할건지
+function vupdate(vno){
+	console.log('vupdate함수실행'+vno);
+	
+	// 1. 수정할 내용 입력 
+	let vcontent = prompt('수정할 방문록 내용 : ');
+	// 2. 비밀번호가 일치할 경우에만 수정하므로 체크할 비밀번호 입력받기
+	let vpwd = prompt('방문록 비밀번호 : ');
+	// 수정할때 필요한 준비물 : vno(누구를) , vcontent(어떤내용으로) , vpwd(유효성검사 :비밀번호가 일치하는경우)
+	
+	$.ajax({
+		url : "/jspweb/VisitLogController" , // 통신할 백엔드 컨트롤러 서블릿 주소
+		method : "put" ,
+		data : {vno : vno , vcontent : vcontent , vpwd : vpwd} ,
+		success : function f(r){console.log("put 통신성공");
+			if (r == true){alert('수정성공'); vread(); }
+			else {alert('수정실패 ) 비밀번호가 일치하지 않습니다');}
+		} ,
+		error : function f(r){console.log(r);}
+	})
 } // f e
 
 // 4. Delete(삭제)
-function vdelete(){
+function vdelete(vno){
+	console.log('vdelete함수실행'+vno);
+	
+	// 1. 비밀번호가 일치할 경우에 수정하므로 확인용 비밀번호 입력받기
+	let vpwd = prompt('방문록비밀번호 : ');
+	// 삭제할때 필요한 준비물 : vno(누구를) , vpwd(유효성검사 :비밀번호가 일치하는경우)
+		$.ajax({
+		url : "/jspweb/VisitLogController" ,
+		method : "delete" ,
+		data : {vno : vno , vpwd : vpwd} ,
+		success : function f(r){console.log("delete 통신성공");
+			if (r == true){alert('삭제성공'); vread(); }
+			else {alert('삭제실패 ) 비밀번호가 일치하지 않습니다');}
+		} ,
+		error : function f(r){console.log(r);}
+	})
+	
 	vread();
 } // f e
