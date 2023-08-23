@@ -30,3 +30,22 @@ delete from visitlog; /*모든 레코드 삭제 */
 delete from visitlog where vno = 3; /* vno가 3이면 삭제 */
 delete from visitlog where vno = 3 and vpwd = '1234'; /* vno가 3이면서 vpwd가 1234이면 레코드 삭제 */
 # delete from visitlog where vno = ? and vpwd = ?;
+
+
+
+# ----------------------가계부 ---------------------------
+use jspweb;
+drop table if exists accountbook;
+create table accountbook(
+	ano int auto_increment ,
+    acontent varchar(20) not null ,
+    aprice int not null ,
+    adate varchar(10) not null ,
+    primary key (ano)
+);
+select * from accountbook;
+
+#저장
+insert into accountbook (acontent , aprice , adate) values ( '닌텐도' , '132523' , '2023-08-23' );
+#호출
+select * from accountbook order by adate desc , acontent asc;
