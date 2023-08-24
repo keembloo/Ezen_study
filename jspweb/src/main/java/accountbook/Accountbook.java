@@ -50,9 +50,8 @@ public class Accountbook extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ano = Integer.parseInt(request.getParameter("ano")); System.out.println("ano"+ano);
 		String acontent = request.getParameter("acontent"); System.out.println("acontent"+acontent);
-		int aprice = request.getParameter("aprice"); System.out.println("aprice"+aprice);
+		int aprice = Integer.parseInt(request.getParameter("aprice")); System.out.println("aprice"+aprice);
 		String adate = request.getParameter("adate"); System.out.println("adate"+adate);
-		
 		AccountbookDto accountbookDto = new AccountbookDto(ano, acontent, aprice, adate);
 		boolean result = AccountbookDao.getInstence().cupdate(accountbookDto);
 		

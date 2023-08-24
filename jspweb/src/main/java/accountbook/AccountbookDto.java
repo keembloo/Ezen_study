@@ -21,22 +21,18 @@ public class AccountbookDto {
 	}
 
 	// 등록하기위한 생성자 추가
-	
-	
-	// 메소드
-	public int getAno() {
-		return ano;
-	}
-
-
 	public AccountbookDto(String acontent, int aprice, String adate) {
 		super();
 		this.acontent = acontent;
 		this.aprice = aprice;
 		this.adate = adate;
 	}
-
-
+	
+	// 메소드
+	public int getAno() {
+		return ano;
+	}
+	
 	public void setAno(int ano) {
 		this.ano = ano;
 	}

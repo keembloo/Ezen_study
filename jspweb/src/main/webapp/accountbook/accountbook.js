@@ -73,16 +73,16 @@ function cudate(ano) {
 	
 	let info = {
 		ano : ano ,
-		content : acontent,
-		price : aprice,
-		date : adate ,
+		acontent : acontent ,
+		aprice : aprice ,
+		adate : adate
 	}; console.log(info);
 	
 	$.ajax({
 		url : "/jspweb/Accountbook",
 		method : "put" ,
-		data : info ,
-		success : function f(r){ console.log(r); console.log('리드됨');
+		data :  info,
+		success : function f(r){ console.log(r); console.log('업데이트실행됨');
 			if (r==true){alert('수정성공'); cread();}
 			else {alert('수정실패');}
 		},
