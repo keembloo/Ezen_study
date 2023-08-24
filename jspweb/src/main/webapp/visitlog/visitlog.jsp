@@ -9,7 +9,7 @@
 	<link href="visitlog.css" rel="stylesheet">
 </head>
 <body>
-
+	<%@include file ="../header.jsp" %>
 	<!-- CRUD(Restful API)  기반의 비회원 게시판/방문록 구현 -->
 	<div class="visitwrap"> <!-- 전체구역 -->
 		<div class="visit_Top"> <!-- 쓰기 구역 -->

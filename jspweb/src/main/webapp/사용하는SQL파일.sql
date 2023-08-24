@@ -33,6 +33,7 @@ delete from visitlog where vno = 3 and vpwd = '1234'; /* vno가 3이면서 vpwd�
 
 
 
+
 # ----------------------가계부 ---------------------------
 use jspweb;
 drop table if exists accountbook;
@@ -49,3 +50,21 @@ select * from accountbook;
 insert into accountbook (acontent , aprice , adate) values ( '닌텐도' , '132523' , '2023-08-23' );
 #호출
 select * from accountbook order by adate desc , acontent asc;
+#수정
+update accountbook set acontent = '술' , aprice = '1231' , adate = '2023-08-16' where ano = 5;
+#삭제
+delete from accountbook where ano = 1;
+
+
+# ----------------------멤버 ---------------------------
+use jspweb;
+drop table if exists member;
+create table member(
+	mno int auto_increment ,
+    mid varchar(10) not null unique,
+    mpwd varchar(20) not null ,
+    memail varchar(20) not null unique,
+    mimg longtext , 
+    primary key (mno)
+);
+select * from member;

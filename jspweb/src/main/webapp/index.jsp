@@ -7,7 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h3> JSP 실행 테스트 </h3>
+	<!-- jsp  파일안에 다른 jsp파일 import -->
+	<%@include file ="header.jsp" %>
+	
+	<!-- 대문 -->
+	<h3> 대문 </h3>
+	
+	<!-- jsp  파일안에 다른 jsp파일 import -->
+	<%@include file ="footer.jsp" %>
+	
 </body>
 </html>
