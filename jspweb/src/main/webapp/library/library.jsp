@@ -15,7 +15,7 @@
 		<div class="contentbox"> <!-- 화면구역 -->
 			<div class="seatarea"> <!-- 좌석구역 -->
 				<div class="seatBox"> 
-					<div class="unusedseat seat">1000</div>
+
 				</div>
 			</div>
 			
@@ -27,7 +27,7 @@
 		</div>
 		<div class="buttonBox"> <!-- 버튼구역 -->
 			<button onclick="enterseat()" class="btnEnter" type="button"> 입실 </button>
-			<button class="btnOut" type="button"> 퇴실 </button>
+			<button onclick="outseat()" class="btnOut" type="button"> 퇴실 </button>
 		</div>
 	</div> <!-- 전체구역 end-->
 

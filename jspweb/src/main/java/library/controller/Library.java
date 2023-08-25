@@ -43,23 +43,30 @@ public class Library extends HttpServlet {
 		
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(LibraryDao.getInstance().enterSeat(dto));
-		
-		
+
 		
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		LibraryDto dto = new LibraryDto();
+		dto.setSno(Integer.parseInt(request.getParameter("sno")));
+		dto.setUphone(request.getParameter("phone"));
+		boolean result = LibraryDao.getInstance().exitSeat(dto);
+		System.out.println("dto : "+dto);
+	
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
 	}
-
+	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LibraryDto dto = new LibraryDto();
 		dto.setSno(Integer.parseInt(request.getParameter("sno")));
-		dto.setState(Integer.parseInt(request.getParameter("uphone")));
-
-		LibraryDao.getInstance().enterSeat(dto);
+		dto.setUphone(request.getParameter("phone"));
+		boolean result = LibraryDao.getInstance().exitSeat(dto);
+		System.out.println("dto : "+dto);
 	
-	
-	
-	}
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
+	   }
 
 }

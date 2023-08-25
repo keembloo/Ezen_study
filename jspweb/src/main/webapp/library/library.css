@@ -23,7 +23,7 @@ h3{
 /* 좌석구역 */
 .seatarea {
 	width: 60%;
-	border: 2px solid blue;
+	border: 2px solid #7b82c0;
 	border-radius: 10px;
 	display: flex;
     justify-content: center;
@@ -37,6 +37,7 @@ h3{
     justify-content: center;
 }
 
+/*기본 좌석 css*/
 .seat {
 	width: 30px;
 	height: 30px;
@@ -44,23 +45,35 @@ h3{
 	border: 2px solid black;
     line-height: 30px;
     text-align: center;
+    border-radius: 15px;
 }
 
-.usedseat { /*사용중인좌석*/
-	background-color: red;
+/*선택한 좌석*/
+.selectbutton{
 	color: white;
+	background-color: pink;
+	line-height: 30px;
+	border: none;
+	border-radius: 15px;
+	font-weight: bold;
+}
+.usedseat { /*사용중인좌석*/
+	background-color: #7b82c0;
+	color: white;
+	border: none;
 }
 
 .unusedseat { /*비어있는 좌석*/
-	background-color: gray;
+	background-color: white;
 	color: black;
+	border: 1px solid #181818;
 }
 
 /* 입력구역 */
 .inputBox{
 	width: 30%;
 	margin: 0 auto;
-	border : 1px solid blue;
+	border : 2px solid #7b82c0;
 	border-radius: 10px;
 }
 .nameInput , .phoneInput {
@@ -68,10 +81,13 @@ h3{
 	padding: 10px 0;
 	width: 200px;
 	border: none;
-	border-bottom: 4px solid blue;
+	border-bottom: 4px solid #7b82c0; 
 	margin: 50px auto;
 	font-size: 16px;
 	outline: none;
+}
+.nameInput{
+	margin-top: 90px;
 }
 .phoneInput {
 	margin-top: 20px;
@@ -79,7 +95,7 @@ h3{
  /* 버튼구역 */
 .buttonBox {
 	width: 500px;
-	margin: 30px auto;
+	margin: 50px auto;
 	display: flex;
 	gap : 50px;
 	justify-content: center;
@@ -88,8 +104,10 @@ h3{
 .btnEnter , .btnOut {
 	width: 200px;
 	border-radius: 15px;
-	background-color: blue;
+	background-color: #00C9A7;
 	color: white;
 	border: none;
 	padding: 10px 5px;
+	font-weight: bold;
+	font-size: 18px;
 }

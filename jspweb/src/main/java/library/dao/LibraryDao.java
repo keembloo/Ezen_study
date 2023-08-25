@@ -38,23 +38,23 @@ public class LibraryDao extends Dao{
 	public boolean enterSeat(LibraryDto dto) { // 입실 sql문 
 		if(insertUser(dto)) {
 			try {
-				String sql = "update seat set sstate = ? where sno = ?";
-				
-				ps = conn.prepareStatement(sql);
-				ps.setInt(1, dto.getState());
-				ps.setInt(2, dto.getSno());
-				if(ps.executeUpdate()==1) {
-					return true;
-				}else {
-					return false;
-				}
-				
-			}catch (Exception e) {
-				System.out.println("입실 sql문 예외 : "+e);
-				return false;
-			}
-		}
-		return false;
+	            String sql = "update seat set sstate = ? where sno = ?";
+	            
+	            ps = conn.prepareStatement(sql);
+	            ps.setInt(1, dto.getSno());
+	            ps.setInt(2, dto.getSno());
+            if(ps.executeUpdate()==1) {
+               return true;
+            }else {
+               return false;
+            }
+            
+         }catch (Exception e) {
+            System.out.println("입실 sql문 예외 : "+e);
+            return false;
+         }
+      }
+      return false;
 	} // 입실 sql문 종료
 	
 	public boolean insertUser(LibraryDto dto) { // 유저 정보 저장 sql문
@@ -78,27 +78,27 @@ public class LibraryDao extends Dao{
 	
 	
 	public boolean exitSeat(LibraryDto dto) { // 퇴실 sql문
-		
-		try {
-			String sql = "update seat set sstate = 0 where (select uphone from user where uno = ?) = ?";
-			
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, dto.getSno());
-			ps.setString(2, dto.getUphone());
-			
-			if(ps.executeUpdate()==1) {
-				return true;
-			}else {
-				return false;
-			}
-			
-		}catch (Exception e) {
-			System.out.println("퇴실 sql문 예외 : "+e);
-			return false;
-		}
-				
-	} // 퇴실 sql문 종료
-	
-	
-	
+	      
+	      try {
+	         String sql = "update seat set sstate = 0 where sstate = (select uno from user where uphone = ?)";
+	         ps = conn.prepareStatement(sql);
+	         ps.setString(1, dto.getUphone());
+	         int row = ps.executeUpdate();
+	         //System.out.println("row : "+row);
+	         if(row==1) {
+	        	 //System.out.println("daoif도나");
+	            return true;
+	         }else {
+	            return false;
+	         }
+	         
+	      }catch (Exception e) {
+	         System.out.println("퇴실 sql문 예외 : "+e);
+	         return false;
+	      }
+	            
+	   } // 퇴실 sql문 종료
+	   
+	   
+	   
 }
