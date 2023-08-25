@@ -1,4 +1,6 @@
 # 도서관
+drop database if exists JSPWEB;
+create database JSPWEB;
 use JSPWEB;
 
 drop table if exists user;
@@ -30,4 +32,7 @@ insert into user (uname , uphone) values ('김규리' , '010-1231-1231');
 update seat set sstate = 1 where sno = 3;
 
 
-select * from seat natunal join user where = ;
+select * from user where uno = 1;
+select uno from user where uphone = '010-1231-1231';
+
+update seat set sstate = 0 where sstate = (select uno from user where uphone = '010-1231-1231');
