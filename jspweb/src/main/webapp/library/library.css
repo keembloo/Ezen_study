@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+*{margin: 0 ; padding : 0;}
+
+.wrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+h3{
+	text-align: center;
+	font-size: 30px;
+	margin-top: 100px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.contentbox {
+	width: 100%;
+	display: flex;
+	margin-top: 100px;
+	height: 350px;
+}
+
+/* 좌석구역 */
+.seatarea {
+	width: 60%;
+	border: 2px solid blue;
+	border-radius: 10px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.seatBox {
+	display: flex;
+	gap : 25px;
+	flex-wrap: wrap;
+	padding: 0 100px;
+    justify-content: center;
+}
+
+.seat {
+	width: 30px;
+	height: 30px;
+	padding: 30px;
+	border: 2px solid black;
+    line-height: 30px;
+    text-align: center;
+}
+
+.usedseat { /*사용중인좌석*/
+	background-color: red;
+	color: white;
+}
+
+.unusedseat { /*비어있는 좌석*/
+	background-color: gray;
+	color: black;
+}
+
+/* 입력구역 */
+.inputBox{
+	width: 30%;
+	margin: 0 auto;
+	border : 1px solid blue;
+	border-radius: 10px;
+}
+.nameInput , .phoneInput {
+	display: block;
+	padding: 10px 0;
+	width: 200px;
+	border: none;
+	border-bottom: 4px solid blue;
+	margin: 50px auto;
+	font-size: 16px;
+	outline: none;
+}
+.phoneInput {
+	margin-top: 20px;
+}
+ /* 버튼구역 */
+.buttonBox {
+	width: 500px;
+	margin: 30px auto;
+	display: flex;
+	gap : 50px;
+	justify-content: center;
+}
+
+.btnEnter , .btnOut {
+	width: 200px;
+	border-radius: 15px;
+	background-color: blue;
+	color: white;
+	border: none;
+	padding: 10px 5px;
+}
