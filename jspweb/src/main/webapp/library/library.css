@@ -3,111 +3,127 @@
 *{margin: 0 ; padding : 0;}
 
 .wrap {
-	width: 1200px;
-	margin: 0 auto;
+   width: 1200px;
+   margin: 0 auto;
 }
 h3{
-	text-align: center;
-	font-size: 30px;
-	margin-top: 100px;
-	border-bottom: 1px solid #e8e8e8;
+   text-align: center;
+   font-size: 30px;
+   margin-top: 100px;
+   border-bottom: 1px solid #e8e8e8;
 }
 
 .contentbox {
-	width: 100%;
-	display: flex;
-	margin-top: 100px;
-	height: 350px;
+   width: 100%;
+   display: flex;
+   margin-top: 100px;
+   height: 350px;
 }
 
 /* 좌석구역 */
+.seatarea h4{
+   margin-bottom: 20px;
+   color :#93b0ff;
+   font-size: 30px;
+   letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 .seatarea {
-	width: 60%;
-	border: 2px solid #7b82c0;
-	border-radius: 10px;
-	display: flex;
-    justify-content: center;
-    align-items: center;
+   width: 60%;
+   border: 2px solid #7b82c0;
+   border-radius: 10px;
+   display: flex;
+   flex-direction : column;
+   justify-content: center;
+   align-items: center;
+   
 }
 .seatBox {
-	display: flex;
-	gap : 25px;
-	flex-wrap: wrap;
-	padding: 0 100px;
-    justify-content: center;
+   display: flex;
+   gap : 25px;
+   flex-wrap: wrap;
+   padding: 0 100px;
+   justify-content: center;
+   margin-bottom: 20px;
 }
 
 /*기본 좌석 css*/
 .seat {
-	width: 30px;
-	height: 30px;
-	padding: 30px;
-	border: 2px solid black;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 15px;
+   width: 30px;
+   height: 30px;
+   padding: 30px;
+   border: none;
+   line-height: 30px;
+   text-align: center;
+   border-radius: 15px;
 }
 
 /*선택한 좌석*/
 .selectbutton{
-	color: white;
-	background-color: pink;
-	line-height: 30px;
-	border: none;
-	border-radius: 15px;
-	font-weight: bold;
+   color: white;
+   background-color: #d3d6eb;
+   line-height: 30px;
+   border: none;
+   border-radius: 15px;
+   font-weight: bold;
 }
 .usedseat { /*사용중인좌석*/
-	background-color: #7b82c0;
-	color: white;
-	border: none;
+   background-color: #7b82c0;
+   color: white;
+   border: none;
 }
 
 .unusedseat { /*비어있는 좌석*/
-	background-color: white;
-	color: black;
-	border: 1px solid #181818;
+   background-color: #daf1fe;
+   color: black;
+    border: none;
 }
 
 /* 입력구역 */
 .inputBox{
-	width: 30%;
-	margin: 0 auto;
-	border : 2px solid #7b82c0;
-	border-radius: 10px;
+   width: 30%;
+   margin: 0 auto;
+   border : 2px solid #7b82c0;
+   border-radius: 10px;
 }
 .nameInput , .phoneInput {
-	display: block;
-	padding: 10px 0;
-	width: 200px;
-	border: none;
-	border-bottom: 4px solid #7b82c0; 
-	margin: 50px auto;
-	font-size: 16px;
-	outline: none;
+   display: block;
+   padding: 10px 0;
+   width: 200px;
+   border: none;
+   border-bottom: 4px solid #7b82c0; 
+   margin: 50px auto;
+   font-size: 16px;
+   outline: none;
 }
 .nameInput{
-	margin-top: 90px;
+   margin-top: 90px;
 }
 .phoneInput {
-	margin-top: 20px;
+   margin-top: 20px;
 }
  /* 버튼구역 */
 .buttonBox {
-	width: 500px;
-	margin: 50px auto;
-	display: flex;
-	gap : 50px;
-	justify-content: center;
+   width: 500px;
+   margin: 50px auto;
+   display: flex;
+   gap : 50px;
+   justify-content: center;
 }
 
 .btnEnter , .btnOut {
-	width: 200px;
-	border-radius: 15px;
-	background-color: #00C9A7;
-	color: white;
-	border: none;
-	padding: 10px 5px;
-	font-weight: bold;
-	font-size: 18px;
+   width: 200px;
+   border-radius: 15px;
+   background-color: #00C9A7;
+   color: white;
+   border: none;
+   padding: 10px 5px;
+   font-weight: bold;
+   font-size: 18px;
+}
+
+.unusedselect{
+   background-color: #d3d6eb;
+   
 }

@@ -37,36 +37,30 @@ public class Library extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LibraryDto dto = new LibraryDto();
 		dto.setSno(Integer.parseInt(request.getParameter("sno")));
-		dto.setState(Integer.parseInt(request.getParameter("sstate")));
 		dto.setUname(request.getParameter("name"));
 		dto.setUphone(request.getParameter("phone"));
 		
+		
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(LibraryDao.getInstance().enterSeat(dto));
-
+		System.out.println("자바통신 post");
+		
 		
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LibraryDto dto = new LibraryDto();
-		dto.setSno(Integer.parseInt(request.getParameter("sno")));
-		dto.setUphone(request.getParameter("phone"));
-		boolean result = LibraryDao.getInstance().exitSeat(dto);
-		System.out.println("dto : "+dto);
-	
-		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(result);
+		
 	}
-	
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LibraryDto dto = new LibraryDto();
-		dto.setSno(Integer.parseInt(request.getParameter("sno")));
-		dto.setUphone(request.getParameter("phone"));
-		boolean result = LibraryDao.getInstance().exitSeat(dto);
-		System.out.println("dto : "+dto);
-	
-		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(result);
-	   }
 
-}
+	  protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		      LibraryDto dto = new LibraryDto();
+		      dto.setSno(Integer.parseInt(request.getParameter("sno")));
+		      dto.setUphone(request.getParameter("phone"));
+		      boolean result = LibraryDao.getInstance().exitSeat(dto);
+		      System.out.println("dto : "+dto);
+		   
+		      response.setContentType("application/json;charset=UTF-8");
+		      response.getWriter().print(result);
+		      }
+
+		}

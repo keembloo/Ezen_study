@@ -38,23 +38,23 @@ public class LibraryDao extends Dao{
 	public boolean enterSeat(LibraryDto dto) { // 입실 sql문 
 		if(insertUser(dto)) {
 			try {
-	            String sql = "update seat set sstate = ? where sno = ?";
-	            
-	            ps = conn.prepareStatement(sql);
-	            ps.setInt(1, dto.getSno());
-	            ps.setInt(2, dto.getSno());
-            if(ps.executeUpdate()==1) {
-               return true;
-            }else {
-               return false;
-            }
-            
-         }catch (Exception e) {
-            System.out.println("입실 sql문 예외 : "+e);
-            return false;
-         }
-      }
-      return false;
+				String sql = "update seat set sstate = (select uno from user where uphone = ?) where sno = ?";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, dto.getUphone());
+				ps.setInt(2, dto.getSno());
+				if(ps.executeUpdate()==1) {
+					return true;
+				}else {
+					return false;
+				}
+				
+			}catch (Exception e) {
+				System.out.println("입실 sql문 예외 : "+e);
+				return false;
+			}
+		}
+		return false;
 	} // 입실 sql문 종료
 	
 	public boolean insertUser(LibraryDto dto) { // 유저 정보 저장 sql문
@@ -77,28 +77,47 @@ public class LibraryDao extends Dao{
 	}// 유저 정보 저장 sql 종료
 	
 	
-	public boolean exitSeat(LibraryDto dto) { // 퇴실 sql문
-	      
-	      try {
-	         String sql = "update seat set sstate = 0 where sstate = (select uno from user where uphone = ?)";
-	         ps = conn.prepareStatement(sql);
-	         ps.setString(1, dto.getUphone());
-	         int row = ps.executeUpdate();
-	         //System.out.println("row : "+row);
-	         if(row==1) {
-	        	 //System.out.println("daoif도나");
-	            return true;
-	         }else {
-	            return false;
-	         }
+	   public boolean exitSeat(LibraryDto dto) { // 퇴실 sql문
 	         
-	      }catch (Exception e) {
-	         System.out.println("퇴실 sql문 예외 : "+e);
-	         return false;
-	      }
+	        try {
+	           String sql = "update seat set sstate = 0 where sstate = (select uno from user where uphone = ?) and sno = ?";
+	           ps = conn.prepareStatement(sql);
+	           ps.setString(1, dto.getUphone());
+	           ps.setInt(2, dto.getSno());
+	           int row = ps.executeUpdate();
+	           if(row==1 && deleteUser(dto)) {
+	              return true;
+	           }else {
+	              return false;
+	           }
 	            
-	   } // 퇴실 sql문 종료
+	        }catch (Exception e) {
+	           System.out.println("퇴실 sql문 예외 : "+e);
+	           return false;
+	        }
+	               
+	     } // 퇴실 sql문 종료
 	   
-	   
-	   
+	   public boolean deleteUser(LibraryDto dto) { //퇴실 유저 삭제 sql문
+		   try {
+			   String sql = "delete from user where uphone = ?";
+			   
+			   ps = conn.prepareStatement(sql);
+			   ps.setString(1, dto.getUphone());
+			   if(ps.executeUpdate()==1) {
+				   return true;
+			   }else {
+				   return false;
+			   }
+		   }catch (Exception e) {
+				System.out.println("퇴실 유저 삭제 sql문 종료");
+				return false;
+		   }
+		   
+		   
+		   
+	   } // 퇴실 유저 삭제 sql문 종료
+	
+
+	
 }
