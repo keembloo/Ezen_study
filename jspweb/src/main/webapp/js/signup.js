@@ -111,6 +111,7 @@ function pwcheck(){
 // 3. 이메일 유효성검사 [ 1. 정규표현식 2. 중복검사 ]
 function emailcheck(){
 	let emailcheckbox = document.querySelector('.emailcheckbox');
+	let authReqBtn = document.querySelector('.authReqBtn');
 	// 1. 입력된 값 호출
 	let memail = document.querySelector('.memail').value;
 	
@@ -136,18 +137,96 @@ function emailcheck(){
 			success : r => {
 				if(r){
 					emailcheckbox.innerHTML = `사용중인 이메일입니다.`;
+					authReqBtn.disabled = true; //disabled 해당버튼의 disabled 속성 해제 
+				
 				} else {
 					emailcheckbox.innerHTML= `사용가능한 이메일입니다.`;
+					authReqBtn.disabled = false; //disabled 해당버튼의 disabled 속성 해제 
 				}
 			} ,
 			error : r=> {console.log(r);}
 		})
-		
-		console.log('이메일통과');
 	} else{
-		console.log('이메일 실패');
+		emailcheckbox.innerHTML = `이메일 형식에 맞게 입력해주세요.`;
+		authReqBtn.disabled = true; //disabled 해당버튼의 disabled 속성 해제 	
 	}
 } // f end
+
+// 4. 인증요청 버튼을 눌렀을때
+function authReq(){
+	
+	// 1. authbox div 호출
+	let authbox = document.querySelector('.authbox');
+	
+	// 2. auth html 구성
+	let html = `<span class="timebox">02:00</span>
+				<input class="ecode" type="text">
+				<button onclick="auth()" type ="button">인증</button>`;
+	// 3. auth html 대입
+	authbox.innerHTML = html;
+	
+	// 4. 타이머 실행
+	authcode='1234'; // 인증 코드 '1234' 테스트용
+	timer = 10; 	 // 인증 제한시간 10초 테스트용
+	settimer();		 // 타이머실행
+	
+} // f end
+
+// 4,5,6번 함수에서 공통적으로 사용할 변수 [전역변수]
+let authcode= ''; // 인증코드
+let timer = 0; // 인증시간 (초) 변수
+let timerInter; // setInterval() 함수를 가지고있는 변수 [ setInterval 종료시 필요 ]
+
+// 5. 타이머 함수 만들기
+function settimer(){
+	// setInterval( 함수명 , 실행간격[밀리초]) : 특정시간마다 함수를 실행 함수
+	 timerInter = setInterval( ()=>{ 
+		// 시간 형식 만들기
+			// 1. 분 만들기 [ 초/60] =>분 / [초%60] => 나머지 초
+		let m = parseInt(timer / 60); // 1분 계산
+		let s = parseInt(timer % 60); // 초 계산 [나머지]
+			// 2. 두자리수 맞춤 3 -> 03
+		m = m < 10 ? "0" + m : m; // 만약에 분이 한자리수이면 0을 붙이고 아니면 안붙임
+		s = s < 10 ? "0" + s : s;
+		 
+		document.querySelector('.timebox').innerHTML =`${m}:${s}`; // 현재 인증시간 (초) html 대입
+		timer--; // 1씩 차감 
+		
+		// 만약에 타이머가 0보다 작으면 [ 시간 끝 ]
+		if(timer<0){
+			// 1. setInterval 종료 [ 누구를 종료할건지 식별자 필요 / 변수선언 = timerInter]
+			clearInterval(timerInter);
+			// 2. 인증실패 알림
+			document.querySelector('.emailcheckbox').innerHTML = `인증실패`;
+			// 3. authbox 구역 html 초기화
+			document.querySelector('.authbox').innerHTML = ``;
+		 }
+	}, 1000);
+} // f end
+
+// 6. 인증요청후 인증코드를 입력하고 인증하는 함수
+function auth(){
+	//console.log('auth 오픈');
+	// 1. 입력받은 인증코드
+	let ecode = document.querySelector('.ecode').value;
+	
+	// 2. 비교 [ 인증코드와 입력받은 인증코드 ]
+	if(authcode==ecode){
+		// 1. setInterval 종료 
+		clearInterval(timerInter);
+		// 2. 인증성공 알림
+		document.querySelector('.emailcheckbox').innerHTML = `인증성공`;
+		// 3. authbox 구역 html 초기화
+		document.querySelector('.authbox').innerHTML = ``;
+
+	} else {
+		// 1. 인증코드 불일치 알림
+		document.querySelector('.emailcheckbox').innerHTML = `인증코드 불일치`;
+	}
+} // f end
+
+
+
 
 
 // --. 회원가입 메소드
@@ -189,4 +268,19 @@ function signup(){
 		error : e => {alert('통신실패');}
 	})
 	// 5. Servlet 의 응답에 따른 제어 
-}
+}// f end
+
+
+
+/*
+
+	setInterval() : 특정시간마다 함수를 실행하는 함수
+		1. 정의
+			let 변수명 = setInterval( function 함수명(){} , 밀리초 )
+			let 변수명 = setInterval( function (){} , 밀리초 )
+			let 변수명 = setInterval( () => {} , 밀리초 )
+			let 변수명 = setInterval( 함수명() , 밀리초 )
+		2. 종료
+			clearInterval( setInterval변수명 )	
+
+ */

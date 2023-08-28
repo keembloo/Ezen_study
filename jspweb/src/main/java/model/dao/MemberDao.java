@@ -33,7 +33,7 @@ public class MemberDao extends Dao{
 	// 5. 내정보 호출
 	
 	// 6. 아이디/이메일 중복검사
-	// - type : 필드명 / data : 필드에서 찾을 값 
+	// - type(mid,memail) : 필드명 / data(입력받은mid , 입력받은memail) : 필드에서 찾을 값 
 	public boolean findIdOrEmail(String type , String data) {
 		try {
 			String sql ="select * from member where "+type+" = ?";
