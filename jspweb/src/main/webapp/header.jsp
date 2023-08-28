@@ -13,6 +13,7 @@
 			<li> <a href="/jspweb/index.jsp">홈으로</a></li>
 			<li> <a href="/jspweb/visitlog/visitlog.jsp">방문록(절대경로)</a></li>
 			<li> <a href="/jspweb/accountbook/accountbook.jsp">과제1:가계부(절대경로)</a></li>
+			<li> <a href="/jspweb/accountbook/accountbook.jsp">과제2:도서관열람실(절대경로)</a></li>
 			<li> <a href="/jspweb/member/signup.jsp">회원가입</a></li>
 		</ul>
 	</div>

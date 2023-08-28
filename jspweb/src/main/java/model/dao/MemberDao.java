@@ -33,11 +33,12 @@ public class MemberDao extends Dao{
 	// 5. 내정보 호출
 	
 	// 6. 아이디/이메일 중복검사
-	public boolean findId(String mid) {
+	// - type : 필드명 / data : 필드에서 찾을 값 
+	public boolean findIdOrEmail(String type , String data) {
 		try {
-			String sql ="select * from member where mid = ?";
+			String sql ="select * from member where "+type+" = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, mid);
+			ps.setString(1, data);
 			rs = ps.executeQuery();
 			// [ while : 결과 레코드 여러개 검사 vs if : 결과 레코드 1개 검사 ]
 			if (rs.next()) return true;  // true 는 중복 있음 / false 는 중복 없음
