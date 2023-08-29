@@ -154,22 +154,30 @@ function emailcheck(){
 
 // 4. 인증요청 버튼을 눌렀을때
 function authReq(){
+	// -- 인증요청시 서블릿통신 [ 인증코드 생성 , 이메일전송 ]
+	$.ajax({
+		url : "/jspweb/AuthSendEmailController",
+		method : "get" ,
+		data : { memail : document.querySelector('.memail').value } ,
+		success : r => { console.log(r);
+			// 1. authbox div 호출
+			let authbox = document.querySelector('.authbox');
 	
-	// 1. authbox div 호출
-	let authbox = document.querySelector('.authbox');
-	
-	// 2. auth html 구성
-	let html = `<span class="timebox">02:00</span>
-				<input class="ecode" type="text">
-				<button onclick="auth()" type ="button">인증</button>`;
-	// 3. auth html 대입
-	authbox.innerHTML = html;
-	
-	// 4. 타이머 실행
-	authcode='1234'; // 인증 코드 '1234' 테스트용
-	timer = 10; 	 // 인증 제한시간 10초 테스트용
-	settimer();		 // 타이머실행
-	
+			// 2. auth html 구성
+			let html = `<span class="timebox">02:00</span>
+						<input class="ecode" type="text">
+						<button onclick="auth()" type ="button">인증</button>`;
+			// 3. auth html 대입
+			authbox.innerHTML = html;
+			
+			// 4. 타이머 실행
+			// authcode = '1234'; 	// 인증 코드 '1234' 테스트용 
+			authcode = r;  //[ Controller(서블릿)에게 전달받은 값이 인증코드]
+			timer = 120; 	 // 인증 제한시간 10초 테스트용
+			settimer();		 // 타이머실행
+		} ,
+		error : e => {console.log(e);}
+	})
 } // f end
 
 // 4,5,6번 함수에서 공통적으로 사용할 변수 [전역변수]
