@@ -64,14 +64,15 @@ function idcheck(){ /* 실행조건 : 아이디 입력창에 입력할때마다 
 				method : "get",
 				data : { type: "mid" , data : mid},
 				success : r => {
-					if (r) {idcheckbox.innerHTML = '사용중인 아이디입니다';}
-					else {idcheckbox.innerHTML = '사용 가능한 아이디입니다';}
+					if (r) {idcheckbox.innerHTML = '사용중인 아이디입니다'; checkList[0]=false;}
+					else {idcheckbox.innerHTML = '사용 가능한 아이디입니다'; checkList[0]=true;}
 				} ,
-				error : r => {}
+				error : e => {}
 			})
 			
 		} else { // 입력한 값이 패턴과 일치하지 않으면
 			document.querySelector('.idcheckbox').innerHTML = '아이디는 5 ~ 30글자 사이이면서 영문 +숫자 조합만 가능합니다';
+			checkList[0]=false;
 		}
 	// 3. 결과 출력
 }
@@ -95,15 +96,15 @@ function pwcheck(){
 			if(mpwdj.test(mpwdconfirm)){
 				// 3.비밀번호와 비밀번호 확인 일치여부
 				if(mpwd== mpwdconfirm){
-					pwcheckbox.innerHTML=`사용가능한 비밀번호`;
+					pwcheckbox.innerHTML=`사용가능한 비밀번호`;checkList[1]=true;
 				} else {
-						pwcheckbox.innerHTML=`비밀번호가 일치하지 않습니다`;
+						pwcheckbox.innerHTML=`비밀번호가 일치하지 않습니다`; checkList[1]=false;
 				}
 			} else {
-				pwcheckbox.innerHTML = `영대소문자1개이상+숫자1개이상 조합 5~20글자 사이로 입력해주세요.`;
+				pwcheckbox.innerHTML = `영대소문자1개이상+숫자1개이상 조합 5~20글자 사이로 입력해주세요.`; checkList[1]=false;
 			}
 		} else {
-			pwcheckbox.innerHTML = `영대소문자1개이상+숫자1개이상 조합 5~20글자 사이로 입력해주세요.`;
+			pwcheckbox.innerHTML = `영대소문자1개이상+숫자1개이상 조합 5~20글자 사이로 입력해주세요.`; checkList[1]=false;
 		}
 }
 
@@ -138,7 +139,7 @@ function emailcheck(){
 				if(r){
 					emailcheckbox.innerHTML = `사용중인 이메일입니다.`;
 					authReqBtn.disabled = true; //disabled 해당버튼의 disabled 속성 해제 
-				
+					checkList[2]=false;
 				} else {
 					emailcheckbox.innerHTML= `사용가능한 이메일입니다.`;
 					authReqBtn.disabled = false; //disabled 해당버튼의 disabled 속성 해제 
@@ -149,11 +150,30 @@ function emailcheck(){
 	} else{
 		emailcheckbox.innerHTML = `이메일 형식에 맞게 입력해주세요.`;
 		authReqBtn.disabled = true; //disabled 해당버튼의 disabled 속성 해제 	
+		checkList[2]=false;
 	}
 } // f end
 
 // 4. 인증요청 버튼을 눌렀을때
 function authReq(){
+	// -------------------테스트용 -------------------//
+	// 1. authbox div 호출
+			let authbox = document.querySelector('.authbox');
+	
+			// 2. auth html 구성
+			let html = `<span class="timebox">02:00</span>
+						<input class="ecode" type="text">
+						<button onclick="auth()" type ="button">인증</button>`;
+			// 3. auth html 대입
+			authbox.innerHTML = html;
+			
+			// 4. 타이머 실행
+			authcode = '1234'; 	// 인증 코드 '1234' 테스트용 
+			//authcode = r;  //[ Controller(서블릿)에게 전달받은 값이 인증코드]
+			timer = 120; 	 // 인증 제한시간 10초 테스트용
+			settimer();		 // 타이머실행 
+	/*		
+	// -------------------------이메일 인증 보냇을때 -----------------------//
 	// -- 인증요청시 서블릿통신 [ 인증코드 생성 , 이메일전송 ]
 	$.ajax({
 		url : "/jspweb/AuthSendEmailController",
@@ -178,6 +198,7 @@ function authReq(){
 		} ,
 		error : e => {console.log(e);}
 	})
+	*/
 } // f end
 
 // 4,5,6번 함수에서 공통적으로 사용할 변수 [전역변수]
@@ -206,6 +227,7 @@ function settimer(){
 			clearInterval(timerInter);
 			// 2. 인증실패 알림
 			document.querySelector('.emailcheckbox').innerHTML = `인증실패`;
+			checkList[2]=false;
 			// 3. authbox 구역 html 초기화
 			document.querySelector('.authbox').innerHTML = ``;
 		 }
@@ -226,18 +248,91 @@ function auth(){
 		document.querySelector('.emailcheckbox').innerHTML = `인증성공`;
 		// 3. authbox 구역 html 초기화
 		document.querySelector('.authbox').innerHTML = ``;
+		checkList[2]=true;
 
 	} else {
 		// 1. 인증코드 불일치 알림
-		document.querySelector('.emailcheckbox').innerHTML = `인증코드 불일치`;
+		document.querySelector('.emailcheckbox').innerHTML = `인증코드 불일치`; checkList[2]=false;
 	}
 } // f end
 
+// 7. 첨부파일에 등록된 사진을 html 표시하기 <등록된 사진을 미리보기 기능>
+function preimg(object){
+	console.log('사진 선택 변경');
+	console.log(object); // 이벤트 발생시킨 태그의 dom객체를 인수로 받음
+	console.log(document.querySelector('.mimg'));
+	// 1. input태그의 속성 [ type , class , onchange , name 등등 ]
+	// 1. input태그이면서 type="file"이면 추가적인 속성 .files
+		// .files : input type = "file"에 선택한 파일 정보를 리스트로 받음
+	console.log(object.files);
+	console.log(object.files[0]); // 리스트중에서 하나의 파일만 가져오기
+	
+	// --- 해당 파일을 바이트코드 변환
+	// 2. js파일클래스 선언
+	let file = new FileReader(); // 파일 읽기 클래스 이용한 파일읽기객체 선언
+	// 3. 파일 읽어오기 함수 제공 
+	file.readAsDataURL(object.files[0]); // input에 등록된 파일리스트중 1개를 파일객체로 읽어오기
+	console.log(file);
+	// 4. 읽어온 파일을 해당 html img태그에 load
+	file.onload = e => { // onload() : 일겅온 파일의 바이트코드를 불러오기
+		console.log(e);  // e : 이벤트 정보 
+		console.log(e.target);  // e.target : onload() 실행한 fileReader 객체
+		console.log(e.target.result); // 읽어온 파일의 바이트코드
+		document.querySelector('.preimg').src = e.target.result; // img src 속성에 대입
+		
+	}
+} // f end
 
+let checkList = [false , false , false ] // [0] : 아이디통과여부 , [1] : 패스워드통과여부 , [2] : 이메일통과여부
+	// true 통과 , false 비통과
+	
+// 8 . 회원가입 메소드
+function signup(){
+	
+	// 1. 아이디/비밀번호/이메일 유효성검사 통과 여부 체크
+	console.log(checkList);
+	if(checkList[0] && checkList[1] && checkList[2] ){ // checkList에 저장된 논리가 모두 true이면
+		console.log('회원가입 진행가능');
+		
+		// 2. 입력받은 데이터를 한번에 가져오기 form 태그 이용
+			// <form> 각종 input/button </form>
+		 	// 1. form 객체 호출 document.querySelectorAll(폼태그식별자)
+		 	let signupForm = document.querySelectorAll('.signupForm')[0];
+		 	console.log(signupForm);
+		 	// 2. form 데이터 객체화
+		 		// 일반객체로 첨부파일 전송 불가능 -> FormData 객체 이용시 첨부파일 전송가능
+		 	let signupData = new FormData(signupForm); // 첨부파일시 필수		 	
+		 	console.log(signupData);
+		 	
+		 	// 3. AJAX에게 첨부파일[대용량] 전송하기
+		 		// 1. 첨부파일 없을때
+		 		/*
+		 	$.ajax({
+				 url: "" ,
+				 method : "" ,
+				 data : "" ,
+				 success : r => {console.log(r)} , 
+				 error : e => {console.log(e)}
+			 })
+			 */
+			// 2. 첨부파일 있을때 [ 기존 json형식의 전송x form객체 전송 타입으로 변환 ]
+			$.ajax({
+				 url: "/jspweb/Memberinfocontroller" ,
+				 method: "post" ,			// 첨부파일 form 전송은 무조건 post 방식 
+				 data : signupData ,			// FormData 객체를 전송 
+				 contentType : false ,		// form 객체 전송타입 		
+				 processData : false ,
+				 success : r => { console.log(r) } ,
+				 error : e => { console.log(e) } ,
+			 })
+		
+	} else {
+		console.log('회원가입 진행불가능');
+	}
+}
 
-
-
-// --. 회원가입 메소드
+// --. 유효성검사가 없는 회원가입 메소드
+/*
 function signup(){
 	
 	// 1. html에 가져올 데이터의 tog객체 호출 [ dom객체 : html 태그를 객체화 ]
@@ -277,7 +372,7 @@ function signup(){
 	})
 	// 5. Servlet 의 응답에 따른 제어 
 }// f end
-
+*/
 
 
 /*
