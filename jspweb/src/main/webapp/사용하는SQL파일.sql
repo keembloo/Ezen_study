@@ -94,3 +94,7 @@ create table hrm(
 );
 
 select * from hrm;
+insert into hrm (himg , hname, hphone, hlevel , hdate) values( 'asdf' , 'asdf' , 'asdf', 'asdf' , 'asdf');
+#insert into hrm (himg , hname, hphone, hlevel , hdate) values( ? , ? , ? , ? , ? );
+
+select * from hrm order by hdate desc;
