@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+/* 공통 css */
+/* 1. 기본값 바깥/안쪽 여백 제거 2.구역사이즈기준 : 테두리기준 */
+*{	
+	margin: 0;	padding: 0; 
+	box-sizing: border-box; 
+	list-style-type: none;
+	font-family: 'TTWanjudaedunsancheB';
+}
+/* 2. a태그 색상 , 밑줄 제거 */
+a{	color: black;	text-decoration: none; }
+/* 3. 외부폰트 = 눈누*/
+@font-face {
+    font-family: 'TTWanjudaedunsancheB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+/* 4. 웹 컨텐츠 사이즈 */ /* 950px ~ 1350px */
+.webcontainer{
+	width: 1200px; margin: 0 auto;
+}
+
+/* 5. 테마 색상 */
+
+/*
+	box-sizing : 구역의 사이즈 기준 
+		box-sizing: content-box; [기본값]
+			구역사이즈+여백 => 사이즈
+			300 + 10 => 310
+		box-sizing: border-box;
+			300 + 10 => 300
+*/
+
+/* -------------------------------------------------- */
+#header{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 20px 0 50px 0;
+}
+
+.mainlogo {
+	width: 5%;
+}
+.mainlogo img {
+	width: 100%;
+}
+.mainmenu {
+	display: flex;
+	font-size: 20px;
+}
+.mainmenu li {
+	margin-right: 20px;
+}
+.submenu {
+	display: flex;
+	font-size: 13px;
+	align-items: center;
+}
+
+.hmimg{ /* 회원의 프로필 이미지 */
+	width: 50px; /* 가로세로 같으면 정사각형*/
+	height: 50px;
+	border-radius: 50%; /* 둥근 모서리 */
+	border : 1px solid #e8e8e8;
+}
+
+
+
+
