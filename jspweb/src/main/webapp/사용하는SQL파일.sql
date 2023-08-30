@@ -68,3 +68,13 @@ create table member(
     primary key (mno)
 );
 select * from member;
+
+# 1. 회원가입
+insert into member( mid , mpwd , memail , mimg ) values('김규리' , 'aaa' , 'asd@asd.com' , 'default.jpg' );
+
+# 2. 아이디중복검사 [ 특정 mid의 아이디로 검색했을때 존재하면 사용중인 아이디 , 없으면 사용중인 아이디 X ] 
+select * from member where mid = 'asdf';
+select mid from member where mid = 'asdf';
+
+# 3. 로그인 [ 아이디와 비밀번호가 일치한 레코드 존재여부 ]
+select * from member where mid = 'qwer' and mpwd ='qwer1'; # 레코드가 검색되면 로그인 성공 / 없으면 로그인 실패
