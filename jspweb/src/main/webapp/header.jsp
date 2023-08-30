@@ -24,6 +24,7 @@
 			
 			<li> <a href="/jspweb/accountbook/accountbook.jsp">과제1:가계부</a></li>
 			<li> <a href="/jspweb/library/library.jsp">과제2:도서관열람실</a></li>
+			<li> <a href="/jspweb/hrm/hrm.jsp">과제3:인사관리</a></li>
 		</ul>
 		
 		<ul class="submenu"> <!-- 서브메뉴 -->

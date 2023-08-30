@@ -78,3 +78,19 @@ select mid from member where mid = 'asdf';
 
 # 3. 로그인 [ 아이디와 비밀번호가 일치한 레코드 존재여부 ]
 select * from member where mid = 'qwer' and mpwd ='qwer1'; # 레코드가 검색되면 로그인 성공 / 없으면 로그인 실패
+
+
+#------------------------과제3 : 인사관리 -------------------------------------
+use jspweb;
+drop table if exists hrm;
+create table hrm(
+	hno int auto_increment ,
+    himg longtext ,
+    hname varchar(10) not null,
+    hphone varchar(13) not null unique ,
+    hlevel varchar(10) not null ,
+    hdate varchar(10) not null , 
+    primary key (hno)
+);
+
+select * from hrm;
