@@ -34,7 +34,7 @@ public class HrmDao extends Dao {
 	public ArrayList<HrmDto> view() {
 		ArrayList<HrmDto> list = new ArrayList<>();
 		try {
-			String sql ="select * from hrm order by hdate desc";
+			String sql ="select * from hrm order by hno desc";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {

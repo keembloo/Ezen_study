@@ -79,6 +79,9 @@ select mid from member where mid = 'asdf';
 # 3. 로그인 [ 아이디와 비밀번호가 일치한 레코드 존재여부 ]
 select * from member where mid = 'qwer' and mpwd ='qwer1'; # 레코드가 검색되면 로그인 성공 / 없으면 로그인 실패
 
+# 4. 회원정보 호출 [ 아이디를 이용한 패스워드 제외하고 모든 회원정보 호출 ] 
+select mno, mid , memail, mimg from member where mid = 'qwer';
+
 
 #------------------------과제3 : 인사관리 -------------------------------------
 use jspweb;
@@ -98,3 +101,4 @@ insert into hrm (himg , hname, hphone, hlevel , hdate) values( 'asdf' , 'asdf' ,
 #insert into hrm (himg , hname, hphone, hlevel , hdate) values( ? , ? , ? , ? , ? );
 
 select * from hrm order by hdate desc;
+select * from hrm order by hno desc;
