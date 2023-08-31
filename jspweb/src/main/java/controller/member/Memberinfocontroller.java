@@ -127,12 +127,62 @@ public class Memberinfocontroller extends HttpServlet {
 
 	// 3. 회원수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// multipart/form-data 전송 요청
+		// cos.jar [ multipartRequest 클래스 ]
+		
+		// ----------------- 파일 업로드 --------------------------------//
+		MultipartRequest multi = new MultipartRequest(
+				request, 
+				request.getServletContext().getRealPath("/member/img") , 
+				1024*1024*10,
+				"UTF-8" ,
+				new DefaultFileRenamePolicy() );
+		
+		// ----------------- DB 업데이트 --------------------------------//
+		// * form 전송일때는 input의 데이터 호출시
+			// 일반 input : multi.getParameter("input name 속성명");
+			// 첨부 input : multi.getFilesystemName("input name 속성명");
+		String mimg = multi.getFilesystemName("mimg");
+		String mpwd = multi.getParameter("mpwd");
+		String newmpwd = multi.getParameter("newmpwd");
+		//System.out.println("기존비밀번호 : "+mpwd);
+		//System.out.println("새비밀번호 : "+newmpwd);
+		 
+		// Dao [ 로그인된 회원번호 , 수정할 값 ]
+		Object object = request.getSession().getAttribute("loginDto"); // 1. 로그인 세션 호출한다.
+		MemberDto memberDto = (MemberDto)object;	// 2. 타입변환한다.
+		int loginMno = memberDto.getMno();	// 3. 로그인객체에 회원번호만 호출한다.
+		System.out.println("memberDto : "+memberDto);
+		String loginpw = memberDto.getMpwd();
+		System.out.println("비번"+loginpw);
+		// 만약에 수정할 첨부파일 이미지 없으면 
+		if (mimg == null ) { // 기존 이미지 그대로 사용
+			mimg = memberDto.getMimg(); // 세션에 있던 이미지 그대로 대입
+		}
+		//System.out.println("memberDto.getMpwd() : "+memberDto.getMpwd());
+
+		boolean result = MemberDao.getInstence().mupdate(loginMno, mimg , mpwd , newmpwd);
+		response.setContentType("application/json;charset=utf-8");
+		response.getWriter().print(result);			
 		
 	}
 
 	// 4. 회원삭제
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// 1. 요청한다
+		String mpw = request.getParameter("mpw"); System.out.println("mpw : "+mpw);
+		// 2. 유효성검사/객체화
+		// 3. DAO처리 [ 현재 로그인된 회원번호[pk] ,입력받은 패스워드[mpwd]]
+			// 1.현재로그인된 회원정보 => 세션
+		//int loginMno = ((memberDto)request.getSession().getAttribute("loginDto")).getMno();	
+		Object object = request.getSession().getAttribute("loginDto"); // 1. 로그인 세션 호출한다.
+		MemberDto memberDto = (MemberDto)object;	// 2. 타입변환한다.
+		int loginMno = memberDto.getMno();	// 3. 로그인객체에 회원번호만 호출한다.
+			// 2. Dao전달해서 결과 받기
+		boolean result =  MemberDao.getInstence().mdelete(loginMno,mpw);
+		// 4. 응답
+    	response.setContentType("application/json;charset=UTF-8");
+    	response.getWriter().print(result);
 	}
 
 }

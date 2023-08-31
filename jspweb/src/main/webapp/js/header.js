@@ -22,7 +22,7 @@ function getMemberInfo() {
 			}else { //로그인
 					html += `<li>${r.mid}님</li>
 							<li> <img class="hmimg" src="/jspweb/member/img/${r.mimg}"></li>
-							<li> <a href="#">마이페이지</a></li>
+							<li> <a href="/jspweb/member/info.jsp">마이페이지</a></li>
 							<li> <a onclick="logout()" href="#">로그아웃</a></li>`;
 							
 				if(r.mid == "admin"){ // 관리자 로그인
@@ -40,7 +40,7 @@ function logout() {
 	$.ajax({
 		url : "/jspweb/Memberinfocontroller" , 
 		method : "get" ,
-		data : {type : "logout" , } ,
+		data : {type : "logout"} ,
 		success : r => {
 				alert('로그아웃되었습니다');
 				location.href="/jspweb/index.jsp";

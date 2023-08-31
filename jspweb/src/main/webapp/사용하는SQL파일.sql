@@ -82,6 +82,16 @@ select * from member where mid = 'qwer' and mpwd ='qwer1'; # 레코드가 검색
 # 4. 회원정보 호출 [ 아이디를 이용한 패스워드 제외하고 모든 회원정보 호출 ] 
 select mno, mid , memail, mimg from member where mid = 'qwer';
 
+# 5. 회원탈퇴 [ 누구(mno)를 탈퇴할건지 , 검증(탈퇴할 회원의 패스워드) ] 
+delete from member where mno = 1 and mpwd = 'asdf1'; # 1번 회원의 패스워드가 'asdf1'이면 레코드삭제
+
+# 6. 프로필 수정 [ 누구(mno)를 수정할건지 , 수정할 내용(사진명) ]
+update member set mimg = 'asdf.jpg' where mno = 1; # 1번 회원의 이미지명 변경
+
+# 6. 프로필 비밀번호 추가 수정
+update member set mimg = 'asdf.jpg' , mpwd ='qwer2' where mno = 1 and mpwd='qwer1';
+
+select * from member;
 
 #------------------------과제3 : 인사관리 -------------------------------------
 use jspweb;

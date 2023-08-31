@@ -58,6 +58,7 @@ a{	color: black;	text-decoration: none; }
 	display: flex;
 	font-size: 13px;
 	align-items: center;
+	gap: 10px;
 }
 
 .hmimg{ /* 회원의 프로필 이미지 */

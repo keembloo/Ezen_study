@@ -79,7 +79,7 @@ function idcheck(){ /* 실행조건 : 아이디 입력창에 입력할때마다 
 
 // 2. 비밀번호 유효성검사 [ 1. 정규표현식 검사 2. 비밀번호와 비밀번호확인 일치여부 ]
 function pwcheck(){
-	console.log('패드워드입력중');
+	//console.log('패드워드입력중');
 	
 	let pwcheckbox = document.querySelector('.pwcheckbox');
 	
