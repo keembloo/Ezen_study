@@ -153,11 +153,13 @@ public class Memberinfocontroller extends HttpServlet {
 		MemberDto memberDto = (MemberDto)object;	// 2. 타입변환한다.
 		int loginMno = memberDto.getMno();	// 3. 로그인객체에 회원번호만 호출한다.
 		//System.out.println("memberDto : "+memberDto);
-		String loginpw = memberDto.getMpwd();
 		//System.out.println("비번"+loginpw);
 		// 만약에 수정할 첨부파일 이미지 없으면 
 		if (mimg == null ) { // 기존 이미지 그대로 사용
 			mimg = memberDto.getMimg(); // 세션에 있던 이미지 그대로 대입
+		}
+		if (newmpwd == null ) {
+			newmpwd = mpwd;
 		}
 		//System.out.println("memberDto.getMpwd() : "+memberDto.getMpwd());
 

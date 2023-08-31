@@ -34,26 +34,30 @@ function mupdate(){
 	//let mpwd = document.querySelector('.mpwd').value;
 	//let newmpwd = document.querySelector('.newmpwd').value;
 	console.log(formdata);
+	let pw = document.querySelector('.mpwd');
+	if (pw.value == ''){
+		alert('정보 수정시 비밀번호를 입력해주세요');
+	} else {
+		// * form 전송 ajax
+		$.ajax({
+			url : "/jspweb/Memberinfocontroller" ,
+			method : "put",
+			data : formdata ,
+			// 폼 전송타입 : 문자 x ,JSON x , 첨부파일o
 	
-	// * form 전송 ajax
-	$.ajax({
-		url : "/jspweb/Memberinfocontroller" ,
-		method : "put",
-		data : formdata ,
-		// 폼 전송타입 : 문자 x ,JSON x , 첨부파일o
-
-		contentType : false ,  // 전송타입 form 
-		processData : false ,
-		success : r => {
-			if (r){ 
-				alert('수정성공[다시 로그인해주세요]');
-				logout();
-			} else {
-				alert('수정실패');
-			}
-		} ,
-		error : e => {}
-	})
+			contentType : false ,  // 전송타입 form 
+			processData : false ,
+			success : r => {
+				if (r){ 
+					alert('수정성공[다시 로그인해주세요]');
+					logout();
+				} else {
+					alert('수정실패');
+				}
+			} ,
+			error : e => {}
+		})
+	}
 }
 
 
