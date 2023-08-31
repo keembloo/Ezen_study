@@ -152,9 +152,9 @@ public class Memberinfocontroller extends HttpServlet {
 		Object object = request.getSession().getAttribute("loginDto"); // 1. 로그인 세션 호출한다.
 		MemberDto memberDto = (MemberDto)object;	// 2. 타입변환한다.
 		int loginMno = memberDto.getMno();	// 3. 로그인객체에 회원번호만 호출한다.
-		System.out.println("memberDto : "+memberDto);
+		//System.out.println("memberDto : "+memberDto);
 		String loginpw = memberDto.getMpwd();
-		System.out.println("비번"+loginpw);
+		//System.out.println("비번"+loginpw);
 		// 만약에 수정할 첨부파일 이미지 없으면 
 		if (mimg == null ) { // 기존 이미지 그대로 사용
 			mimg = memberDto.getMimg(); // 세션에 있던 이미지 그대로 대입
@@ -170,7 +170,7 @@ public class Memberinfocontroller extends HttpServlet {
 	// 4. 회원삭제
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 요청한다
-		String mpw = request.getParameter("mpw"); System.out.println("mpw : "+mpw);
+		String mpw = request.getParameter("mpw"); //System.out.println("mpw : "+mpw);
 		// 2. 유효성검사/객체화
 		// 3. DAO처리 [ 현재 로그인된 회원번호[pk] ,입력받은 패스워드[mpwd]]
 			// 1.현재로그인된 회원정보 => 세션
