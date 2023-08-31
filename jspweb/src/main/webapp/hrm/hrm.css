@@ -121,3 +121,6 @@ th {
 td {
 	border-bottom: 1px solid #845EC2;
 }
+td img {
+	width: 100px;
+}

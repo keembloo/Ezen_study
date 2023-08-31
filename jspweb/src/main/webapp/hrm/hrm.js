@@ -75,7 +75,7 @@ function view(){
 			for(let i =0; i <r.length; i++){
 				html += `<tr class="content">
 					    <td>${r[i].hno}</td>
-					    <td>${r[i].himg}</td>
+					    <td><img alt="등록사진" src="img//${r[i].himg}"></td>
 					    <td>${r[i].hname}</td>
 					    <td>${r[i].hphone}</td>
 					    <td>${r[i].hlevel}</td>
