@@ -30,11 +30,18 @@ public class BoardInfoController extends HttpServlet {
 
     // 전체글출력
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ArrayList<BoardDto> list = new BoardDto
-				
+		// 1. 요청
 				
 		ArrayList<BoardDto> result = BoardDao.getInstence().onView();
+		System.out.println(result);
+			// java 객체 => js객체형식[json]형식의 문자열로 변환
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonArray = objectMapper.writeValueAsString(result);
+		
+		// 4. 응답
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(jsonArray);
+		
 	}
 
 	// 글등록

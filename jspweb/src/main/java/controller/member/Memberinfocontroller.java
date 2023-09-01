@@ -158,9 +158,13 @@ public class Memberinfocontroller extends HttpServlet {
 		if (mimg == null ) { // 기존 이미지 그대로 사용
 			mimg = memberDto.getMimg(); // 세션에 있던 이미지 그대로 대입
 		}
-		if (newmpwd == null ) {
+		//System.out.println("newmpwd : "+newmpwd);
+		//System.out.println("mpwd : "+mpwd);
+		if (newmpwd.length() == 0 ) {
 			newmpwd = mpwd;
+			//System.out.println("if문안 newmpwd : "+newmpwd);
 		}
+		//System.out.println("변경후 newmpwd : "+newmpwd);
 		//System.out.println("memberDto.getMpwd() : "+memberDto.getMpwd());
 
 		boolean result = MemberDao.getInstence().mupdate(loginMno, mimg , mpwd , newmpwd);

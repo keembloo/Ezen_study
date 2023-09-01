@@ -1,3 +1,4 @@
+
 drop database if exists jspweb;
 create database jspweb;
 use jspweb;
@@ -129,8 +130,27 @@ select * from board;
 # 1. 글등록
 insert into board( btitle , bcontent , bfile , mno , bcno) values ('sdfsdf' , 'sdfsdf' , 'sdfsdf' , 12 , 1);
 
-# 2. 글출력
+# 2. 글출력 
 select bno , btitle , mid , bdate , bview from member natural join board order by bno desc;
+	# 게시물 테이블과 회원 테이블 조인[테이블합치기 / pk - fk ]
+    # 게시물 테이블내 작성자번호와 회원테이블의 작성자번호와 같으면
+select * from board b natural join member m ; 
+select b.bno , b.btitle , b.bfile , b.bdate , b.bview from board b natural join member m ; 
+select b.bno , b.btitle , b.bfile , b.bdate , b.bview , m.mid from board b natural join member m ; 
+	#게시물테이블, 회원테이블, 게시물카테고리테이블
+select * from board b natural join bcategory bc natural join member m; # 자연조인
+	#게시물 테이블 모든 필드 , 회원테이블의 아이디/프로필 , 게시물카테고리테이블의 카테고리명
+select b.bno , b.btitle , b.bcontent , b.bfile , b.bdate , b.bview , b.mno, b.bcno, m.mid , bc.bcname
+	from board b
+		natural join bcategory bc
+        natural join member m;
+        
+select b.* , m.mid , m.mimg , bc.bcname 
+   from board b 
+      natural join bcategory bc 
+      natural join member m 
+   order by b.bdate desc; 
+
 
 
 #------------------------과제3 : 인사관리 -------------------------------------

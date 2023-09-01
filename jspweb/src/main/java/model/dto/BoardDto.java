@@ -15,7 +15,7 @@ public class BoardDto { /* 게시물 , 카테고리 */
     // - 게시물에 추가적으로 표시할 필드들
     private String mid; // 작성자 회원아이디 [ 사용자는 게시물 조회시 작성자회원번호보다 회원아이디 원하는 경우 ] 
     private String bcname; // 카테고리명 [ 사용자는 게시물의 카테고리번호보다 카테고리 이름 원하는 경우 다수 ]
-    
+    private String mimg;
 
     // 생성자 [ 1. 빈생성자 2.풀생성자 3.(추후에)작업하면서 필요한 생성자들 ]
     public BoardDto() {}
@@ -45,12 +45,37 @@ public class BoardDto { /* 게시물 , 카테고리 */
 		this.mno = mno;
 		this.bcno = bcno;
 	}
-	// 글출력시 사용되는 생성자
 	
-
+	// 전체글 조회시 사용되는 생성자
+	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int mno, int bcno,
+			String mid, String bcname, String mimg) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.bdate = bdate;
+		this.bview = bview;
+		this.mno = mno;
+		this.bcno = bcno;
+		this.mid = mid;
+		this.bcname = bcname;
+		this.mimg = mimg;
+	}
+	
+	
 	//메소드
 	public int getBno() {
 		return bno;
+	}
+
+	public String getMimg() {
+		return mimg;
+	}
+
+
+	public void setMimg(String mimg) {
+		this.mimg = mimg;
 	}
 
 
@@ -153,8 +178,8 @@ public class BoardDto { /* 게시물 , 카테고리 */
 	public String toString() {
 		return "BoardDto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bfile=" + bfile
 				+ ", bdate=" + bdate + ", bview=" + bview + ", mno=" + mno + ", bcno=" + bcno + ", mid=" + mid
-				+ ", bcname=" + bcname + "]";
+				+ ", bcname=" + bcname + ", mimg=" + mimg + "]";
 	}
 
-    
+
 }

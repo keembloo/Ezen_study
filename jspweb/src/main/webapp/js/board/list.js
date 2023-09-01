@@ -11,13 +11,15 @@ function onWrite(){
 	// 로그인이면
 }
 
-//
+//2. 모든글 조회 [ js 열렸을때 1회 자동실행 ]
 onView();
 function onView(){
 	let sample = `<tr>
 				<th>글번호</th>
+				<th>카테고리</th>
 				<th>제목</th>
 				<th>작성자</th>
+				<th>조회수</th>
 				<th>글작성일</th>
 			</tr>`;
 	let html=``;
@@ -27,9 +29,21 @@ function onView(){
 		url : "/jspweb/BoardInfoController" , 
 		method : "get" ,
 		data : {},
-		contentType : false , 
-		processData : false ,
-		success : r => {} , 
+		success : r => { console.log(r);
+			// 배열명.forEach  // java -> , js => 
+			r.forEach( b => {
+				html+= `<tr>
+							<td>${b.bno}</td>
+							<td>${b.bcname}</td>
+							<td>${b.btitle}</td>
+							<td>${b.mid}<img src="/jspweb/member/img/${b.mimg}"/></td>
+							<td>${b.bview}</td>
+							<td>${b.bdate}</td>
+						</tr>`;
+			});
+			// 3. 구성된 html내용 출력 
+			table.innerHTML = sample+html;
+		} , 
 		error : e => {}		
 	})
 }
