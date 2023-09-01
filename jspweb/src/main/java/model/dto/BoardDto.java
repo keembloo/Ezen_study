@@ -13,8 +13,8 @@ public class BoardDto { /* 게시물 , 카테고리 */
     private int bcno;
     // - DB에는 없지만 추가하면 좋은것
     // - 게시물에 추가적으로 표시할 필드들
-    private String mid; // 작성자 회원아이디
-    private String bcname; // 카테고리명
+    private String mid; // 작성자 회원아이디 [ 사용자는 게시물 조회시 작성자회원번호보다 회원아이디 원하는 경우 ] 
+    private String bcname; // 카테고리명 [ 사용자는 게시물의 카테고리번호보다 카테고리 이름 원하는 경우 다수 ]
     
 
     // 생성자 [ 1. 빈생성자 2.풀생성자 3.(추후에)작업하면서 필요한 생성자들 ]
