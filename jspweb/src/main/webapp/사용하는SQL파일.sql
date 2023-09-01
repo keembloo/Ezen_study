@@ -126,11 +126,11 @@ create table board(
 );
 
 select * from board;
+# 1. 글등록
+insert into board( btitle , bcontent , bfile , mno , bcno) values ('sdfsdf' , 'sdfsdf' , 'sdfsdf' , 12 , 1);
 
-
-
-
-
+# 2. 글출력
+select bno , btitle , mid , bdate , bview from member natural join board order by bno desc;
 
 
 #------------------------과제3 : 인사관리 -------------------------------------
