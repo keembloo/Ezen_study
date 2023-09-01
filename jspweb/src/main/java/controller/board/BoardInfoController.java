@@ -1,6 +1,8 @@
 package controller.board;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,9 +28,13 @@ public class BoardInfoController extends HttpServlet {
         super();
     }
 
-
+    // 전체글출력
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		ArrayList<BoardDto> list = new BoardDto
+				
+				
+		ArrayList<BoardDto> result = BoardDao.getInstence().onView();
 	}
 
 	// 글등록

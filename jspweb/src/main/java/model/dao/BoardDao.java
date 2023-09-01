@@ -24,7 +24,14 @@ public class BoardDao extends Dao{
 		return false;
 	}
 	// 2. 모든 글 출력
-	
+	public void onView() {
+		try {
+			String sql="select bno , btitle , mid , bdate , bview from member natural join board order by bno desc";
+			ps = conn.prepareStatement(sql);
+			
+		}catch (Exception e) {System.out.println(e);}
+		return null;
+	}
 	// 3. 개별 글 출력
 	
 	// 4. 게시물 수정

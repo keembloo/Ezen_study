@@ -11,6 +11,22 @@
 	<%@include file ="../header.jsp" %>
 	<div class="webcontainer">
 		<button onclick="onWrite()" type="button">글쓰기</button>
+		
+		<table class="table">
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>글작성일</th>
+			</tr>
+			
+			<tr>
+				<td>10</td>
+				<td>하잉</td>
+				<td>asdf9</td>
+				<td>2023-09-01 13:51:23</td>
+			</tr>
+		</table>
 	</div>
 
 

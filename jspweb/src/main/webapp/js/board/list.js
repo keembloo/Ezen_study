@@ -10,3 +10,26 @@ function onWrite(){
 	// 만약에 비로그인이면
 	// 로그인이면
 }
+
+//
+onView();
+function onView(){
+	let sample = `<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>글작성일</th>
+			</tr>`;
+	let html=``;
+	let table = document.querySelector('.table');
+	
+	$.ajax({
+		url : "/jspweb/BoardInfoController" , 
+		method : "get" ,
+		data : {},
+		contentType : false , 
+		processData : false ,
+		success : r => {} , 
+		error : e => {}		
+	})
+}
