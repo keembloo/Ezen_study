@@ -93,6 +93,46 @@ update member set mimg = 'asdf.jpg' , mpwd ='qwer2' where mno = 1 and mpwd='qwer
 
 select * from member;
 
+#------------------------ 회원제 게시판 --------------------------------------
+use jspweb;
+drop table if exists bcategory;
+create table bcategory(
+	bcno int auto_increment ,
+    bcname varchar(30) not null,
+    primary key (bcno)
+);
+
+insert into bcategory(bcname) values ('공지사항');
+insert into bcategory(bcname) values ('자유게시판');
+insert into bcategory(bcname) values ('노하우');
+select * from bcategory;
+
+
+drop table if exists board;
+create table board(
+	bno int auto_increment ,
+    btitle varchar(20) not null ,
+    bcontent longtext ,
+    bfile longtext ,
+    bdate datetime default now() ,
+    bview int default 0 , 
+    primary key (bno) ,
+    mno int ,
+    foreign key (mno) references member(mno) on delete cascade , 
+    -- 회원탈퇴시 게시물도 같이 삭제 [ 제약조건 ]
+    bcno int ,
+    foreign key (bcno) references bcategory(bcno) on delete cascade on update cascade 
+    -- 카테고리 삭제시 게시물 삭제 , 카테고리 번호 변경시 fk도 같이 변경
+);
+
+select * from board;
+
+
+
+
+
+
+
 #------------------------과제3 : 인사관리 -------------------------------------
 use jspweb;
 drop table if exists hrm;
@@ -112,3 +152,5 @@ insert into hrm (himg , hname, hphone, hlevel , hdate) values( 'asdf' , 'asdf' ,
 
 select * from hrm order by hdate desc;
 select * from hrm order by hno desc;
+
+
