@@ -22,8 +22,10 @@ function bwrite(){
 		processData : false ,
 		success : r => {
 			console.log(r);
+			if (r) {alert('글등록완료');}
+			else {alert('글등록실패');}
 		} ,
-		error : e=> {}
+		error : e=> {console.log(e)}
 	})
 	
 	// 2.form 객체화 하기
