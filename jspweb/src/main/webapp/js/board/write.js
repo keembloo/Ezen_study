@@ -22,7 +22,10 @@ function bwrite(){
 		processData : false ,
 		success : r => {
 			console.log(r);
-			if (r) {alert('글등록완료');}
+			if (r) {
+				alert('글등록완료');
+				location.href="/jspweb/board/list.jsp";
+			}
 			else {alert('글등록실패');}
 		} ,
 		error : e=> {console.log(e)}

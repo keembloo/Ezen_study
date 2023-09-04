@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.IntSequenceGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mysql.cj.protocol.a.MultiPacketReader;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -49,6 +51,16 @@ public class BoardInfoController extends HttpServlet {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			// 2. Dao처리
 			BoardDto result = BoardDao.getInstence().getBoard(bno);
+			
+				// 3. 만약에 (로그인 혹은 비로그인 ) 요쳥한사람과 게시물작성한사람과 동일하면
+			Object object = request.getSession().getAttribute("loginDto");
+			if ( object == null ) { //비로그인
+				result.setIshost(false); // 남이쓴글
+			} else { // 로그인
+				MemberDto login = (MemberDto)object;
+				result.setIshost(true);
+			}
+			
 			// 3. 응답
 			json = objectMapper.writeValueAsString(result);
 			
@@ -98,14 +110,45 @@ public class BoardInfoController extends HttpServlet {
 
 	}
 
+	// 3. 수정 
+		protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			// 1. 수정할 첨부파일 업로드 
+			MultipartRequest multi = new MultipartRequest(
+					request,request.getServletContext().getRealPath("/board/upload"), 
+					1024 * 1024 *1024 ,  "UTF-8" , new DefaultFileRenamePolicy() );
+			
+			// 2. 수정할 데이터 내용 요청 
+			int bcno = Integer.parseInt( multi.getParameter("bcno") );
+			String btitle = multi.getParameter("btitle") ;
+			String bcontent = multi.getParameter("bcontent") ;
+			String bfile = multi.getFilesystemName("bfile") ; // 파일명 호출 !![ getFilesystemName ]
+			
+			// 2* 수정할 게시물 식별키 
+			int bno = Integer.parseInt( multi.getParameter("bno") );
+			BoardDto updateDto = 
+					new BoardDto(bno, btitle, bcontent, bfile, bcno); System.out.println("수정dto : " + updateDto );
+			// * 만약에 수정할 첨부파일이 없으면 기존 첨부파일 그대로 사용
+			if( updateDto.getBfile() == null ) {
+				// 기존첨부파일 호출해서 수정dto에 저장하기.
+				updateDto.setBfile( 
+						BoardDao.getInstence().getBoard(bno).getBfile() 
+						) ;
+			}
+			// 3. DAO
+			boolean result = BoardDao.getInstence().onUpdate( updateDto );
+			// 4. 응답 
+			response.setContentType("application/json; charset=UTF-8"); 
+			response.getWriter().print(result);
+		}
+		
 
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-
+	// 글삭제
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		boolean result = BoardDao.getInstence().ondelete(bno);
+		
+		response.setContentType("application/json;charset=UTF-8");
+    	response.getWriter().print(result);
 	}
 
 }
