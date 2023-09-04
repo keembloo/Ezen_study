@@ -29,21 +29,40 @@ public class BoardInfoController extends HttpServlet {
     }
 
     // 전체글출력
+    // type : 1 . 전체조회 , 2.개별조회
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 요청
-				
-		ArrayList<BoardDto> result = BoardDao.getInstence().onView();
-		System.out.println(result);
-			// java 객체 => js객체형식[json]형식의 문자열로 변환
-		ObjectMapper objectMapper = new ObjectMapper();
-		String jsonArray = objectMapper.writeValueAsString(result);
+		String type = request.getParameter("type");
 		
-		// 4. 응답
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = "";
+		
+		if ( type.equals("1")) { // 전체 조회 로직
+			ArrayList<BoardDto> result = BoardDao.getInstence().onView();
+
+				// java 객체 => js객체형식[json]형식의 문자열로 변환
+			json = objectMapper.writeValueAsString(result);
+
+		} else if (type.equals("2")) { //개별조회로직
+			// 1. 매개변수 요청
+			
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			// 2. Dao처리
+			BoardDto result = BoardDao.getInstence().getBoard(bno);
+			// 3. 응답
+			json = objectMapper.writeValueAsString(result);
+			
+		}
+		
+		// 공통 로직
+			// 1. 전체조회 , 개별조회하던 응답 로직 공통 
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().print(jsonArray);
+		response.getWriter().print(json);
 		
 	}
 
+	
+	
 	// 글등록
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("연결완료");
