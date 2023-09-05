@@ -151,6 +151,84 @@ select b.* , m.mid , m.mimg , bc.bcname
       natural join member m 
    order by b.bdate desc; 
 
+# 3. 개별 글 출력 [ 6번 게시물 조회 ]
+select * from board where bno = 6;
+#-- 게시물 모든 정보(board) + 작성자아이디(member) + 작성자프로필(member) + 카테고리이름(bcategory)
+# -- board fk 필드를 이용한 fk필드와 연결된 pk필드의 다른 필드정보 호출
+		# 1. board mno <--> member mno
+select b.* ,m.mid, m.mimg from board b natural join member m;
+		# 2. board bcno <--> bcategory bcno
+select b.* ,m.mid, m.mimg , bc.bcname
+	from board b 
+    natural join member m
+    natural join bcategory bc;
+		# 3.조건
+ select b.* ,m.mid, m.mimg , bc.bcname
+	from board b 
+    natural join member m
+    natural join bcategory bc
+    where b.bno= 2;       
+
+# 4.조회수 증가 [ 6번 게시물의 조회수 필드를 1 증가 ]
+update board set bview = bview+1 where bno = 2;
+
+#5. 레코드 삭제 [ 3번 게시물 삭제 ]
+delete from board where bno = 3;
+
+# 6.게시물 수정 [ 5번 게시물의 제목, 내용 , 카테고리번호 , 첨부팡리명 수정 ]
+update board 
+	set btitle = 'asdf' , bcontent = 'asdf' , bcno = 1 , bfile = '첨부파일명'
+    where bno = 5;
+
+#2-2 전체조회 [카테고리별 (조건) ] 
+select b.* , m.mid , m.mimg , bc.bcname 
+	from board b 
+		natural join bcategory bc 
+		natural join member m 
+	where b.bcno = 1  # 게시물의 카테고리가 공지사항이면
+	order by b.bdate desc; 
+
+#2-3 전체 조회시 게시물수 제한두기 [ limit 레코드수 ]
+select b.* , m.mid , m.mimg , bc.bcname 
+	from board b 
+		natural join bcategory bc 
+		natural join member m 
+	where b.bcno = 1  # 게시물의 카테고리가 공지사항이면
+	order by b.bdate desc limit 10; 
+    
+#2-4 전체 조회시 게시물수 제한두기 [ limit 시작번호(0~) , 레코드수 : 시작번호 레코드부터 레코드수만큼 조회 ]
+select b.* , m.mid , m.mimg , bc.bcname 
+	from board b 
+		natural join bcategory bc 
+		natural join member m 
+	where b.bcno = 1  # 게시물의 카테고리가 공지사항이면
+	order by b.bdate desc limit 10; 
+    
+    #예) 페이지별 5개씩 출력한다는 가정하에 1페이지
+    select b.* , m.mid , m.mimg , bc.bcname from board b 
+		natural join bcategory bc natural join member m 
+		order by b.bdate desc limit 0 , 5; # 1페이지
+    select b.* , m.mid , m.mimg , bc.bcname from board b 
+		natural join bcategory bc natural join member m 
+		order by b.bdate desc limit 5, 5; # 2페이지
+    select b.* , m.mid , m.mimg , bc.bcname from board b 
+		natural join bcategory bc natural join member m 
+		order by b.bdate desc limit 10, 5; # 3페이지   
+# -- 페이지별 게시물 5개씩일때 시작번호 : 0 , 5 , 10
+# -- 페이지별 게시물 10개씩일때 시작번호 : 0 , 10 , 20 , 30
+
+# 7. 레코드수 구하기
+	# 7-1 전체 레코드수
+select count(*) from board;
+
+	#7-2 카테고리별 레코드수 # 카테고리별 게시물수
+select count(*) from board b where b.bcno = 2; # '자유게시판'의 게시물수
+
+
+
+
+
+
 
 
 #------------------------과제3 : 인사관리 -------------------------------------
