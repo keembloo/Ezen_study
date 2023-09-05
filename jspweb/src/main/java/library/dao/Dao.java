@@ -15,7 +15,7 @@ public class Dao {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/JSPWEB", "root", "1234");
+			this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sns", "root", "1234");
 			
 		}catch (Exception e) {
 			System.out.println("Dao 예외 발생 " +e);

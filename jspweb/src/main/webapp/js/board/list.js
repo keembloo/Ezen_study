@@ -34,13 +34,14 @@ function onView(){
 			r.forEach( b => {
 				html+= `<tr>
 							<td>${b.bno}</td>
-							<td>${b.bcname}</td>
+							<td>${b.bcname}"/></td>
 							<td> <a href="/jspweb/board/view.jsp?bno=${b.bno}"> ${b.btitle} </a> </td>
-							<td>${b.mid}<img src="/jspweb/member/img/${b.mimg}"/></td>
+							<td>${b.mid} <img src="/jspweb/member/img/${b.mimg}"/></td>
 							<td>${b.bview}</td>
 							<td>${b.bdate}</td>
 						</tr>`;
 			});
+			//<img src="/jspweb/member/img/${b.mimg}"/>
 			// 3. 구성된 html내용 출력 
 			table.innerHTML = sample+html;
 		} , 

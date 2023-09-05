@@ -51,7 +51,7 @@ public class MemberFindController extends HttpServlet {
 			request.getSession().setAttribute("loginDto", loginDto );
 			// 세션 상태 확인
 			MemberDto dto = (MemberDto)request.getSession().getAttribute("loginDto");
-			System.out.println("세션 상태 : "+dto);
+			//System.out.println("세션 상태 : "+dto);
 			
 		}
 		

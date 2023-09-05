@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="../css/board/list.css" rel="stylesheet">
+	<link href="/jspweb/css/board/list.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file ="../header.jsp" %>
@@ -13,18 +13,12 @@
 		<button onclick="onWrite()" type="button">글쓰기</button>
 		
 		<table class="table">
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>글작성일</th>
+			<tr> <!-- 테이블 제목 -->
+
 			</tr>
 			
-			<tr>
-				<td>10</td>
-				<td>하잉</td>
-				<td>asdf9</td>
-				<td>2023-09-01 13:51:23</td>
+			<tr> <!-- 테이블 내용 -->
+
 			</tr>
 		</table>
 	</div>
