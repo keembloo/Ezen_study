@@ -40,7 +40,12 @@ public class BoardInfoController extends HttpServlet {
 		String json = "";
 		
 		if ( type.equals("1")) { // 전체 조회 로직
-			ArrayList<BoardDto> result = BoardDao.getInstence().onView();
+			// ---------------------1 카테고리 ------------------- //
+			int bcno = Integer.parseInt(request.getParameter("bcno"));
+			// ---------------------2 출력할 게시물수/하나의 페이지의 최대 게시물수 ------------------- //
+			int listsize = Integer.parseInt(request.getParameter("listsize"));
+			
+			ArrayList<BoardDto> result = BoardDao.getInstence().onView(bcno , listsize);
 
 				// java 객체 => js객체형식[json]형식의 문자열로 변환
 			json = objectMapper.writeValueAsString(result);
