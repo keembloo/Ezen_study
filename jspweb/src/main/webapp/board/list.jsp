@@ -22,7 +22,7 @@
 					<option>15</option>
 					<option>20</option>
 				</select>
-				<span class="boardcount">전체 게시물수 : 17 </span> <!-- 전체 게시물 수  -->
+				<span class="boardcount"> </span> <!-- 전체 게시물 수  -->
 			</div>
 			<button class="bbtn" onclick="onWrite()" type="button">글쓰기</button>
 		</div>
@@ -48,13 +48,7 @@
 		<div class="boardbottom">
 			<!-- 5. 페이징처리 구역 -->
 			<div class="pagebox">
-				<button type="button"> < </button> <!-- 이전버튼 -->
-					<button type="button"> 1 </button>
-					<button type="button" class="selectpage"> 2 </button>
-					<button type="button"> 3 </button>
-					<button type="button"> 4 </button>
-					<button type="button"> 5 </button>
-				<button type="button"> > </button> <!-- 다음버튼 -->
+
 			</div>
 			
 			<!-- 6. 검색 구역  -->
