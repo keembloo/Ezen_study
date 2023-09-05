@@ -54,8 +54,12 @@
 }
 	/* 1-6. 행 호버(마우스올렸을때) */
 .table tr:hover {
-	background-color: #00746C;
+	background-color: #B87CC2;
 	vertical-align: middle;
+	color: white;
+}
+.table tr:hover a {
+	color: white;
 }
 	/* 1-7. 작성자 프로필 */
 .table img {
