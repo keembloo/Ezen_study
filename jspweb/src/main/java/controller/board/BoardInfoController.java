@@ -19,6 +19,7 @@ import model.dao.BoardDao;
 import model.dto.BoardDto;
 import model.dto.MemberDto;
 import model.dto.PageDto;
+import service.FileService;
 
 /**
  * Servlet implementation class BoardInfoController
@@ -213,9 +214,18 @@ public class BoardInfoController extends HttpServlet {
 
 	// 글삭제
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 1. 요청
 		int bno = Integer.parseInt(request.getParameter("bno"));
+		// 파일이 삭제되기전에 파일 이름 꺼내놔야 한다. 삭제후 파일을 불러올수없음.
+		String filename =BoardDao.getInstence().getBoard(bno).getBfile();
+		// 2. dao
 		boolean result = BoardDao.getInstence().ondelete(bno);
+			// 게시물 삭제시 삭제된 게시물의 업로드파일도 같이 삭제
+			if(result) { // 만약에 게시물 삭제 성공이면
+				FileService.fileDelete(filename);
+			}
 		
+		// 3. 응답
 		response.setContentType("application/json;charset=UTF-8");
     	response.getWriter().print(result);
 	}
