@@ -1,6 +1,18 @@
 
-// write , update , delete : js 내장함수들 존재하기 때문에 충돌
+/* 썸머노트 실행 */
+$(document).ready(function() {
+	let option = {
+		lang : 'ko-KR' ,
+		height : 500 , 
+		placeholder : '여기에 내용작성' 
+	}
+	
+  $('#summernote').summernote(option);
+});
 
+
+
+// write , update , delete : js 내장함수들 존재하기 때문에 충돌
 //console.log('글쓰기 실행');
 function bwrite(){
 	//1.form 가져오기
@@ -30,11 +42,6 @@ function bwrite(){
 		} ,
 		error : e=> {console.log(e)}
 	})
-	
-	// 2.form 객체화 하기
-	
-	
-	// 3. ajax로 대용량 form전송하기
-	
-	
 }
+
+

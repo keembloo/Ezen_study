@@ -26,8 +26,11 @@ function getBoard(){
 			let html =  `부가정보 : <div> ${r.bcname} , ${r.bview} , ${r.bdate} </div>
 						부가정보2 : <div> ${r.mid} , <img src="/jspweb/member/img/${r.mimg}" width: "50px"> </div>
 						제목 : <div> ${r.btitle} </div>
-						내용 : <div> ${r.bcontent} </div>`;
-					
+						내용 : <div> ${r.bcontent} </div>
+						첨부파일 : <div> <a href="/jspweb/FileDownLoad?filename=${r.bfile}"> ${r.bfile}</a></div>`;
+					/* <a href=" HTTP get 메소드 방식 "> </a> */
+			
+			
 			html += '<a href="list.jsp"><button type="button">목록보기</button></a>';
 			// 3. 만약에 본인글 인지 제어 [본인글이면 수정/삭제버튼 표시 / 아니면 표시x]
 			if (r.ishost){
