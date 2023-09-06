@@ -224,9 +224,13 @@ select count(*) from board;
 	#7-2 카테고리별 레코드수 # 카테고리별 게시물수
 select count(*) from board b where b.bcno = 2; # '자유게시판'의 게시물수
 
-
-
-
+# 8. 검색
+	# 8-1 조건에 따른 데이터 찾기
+select * from board b where b.btitle = '안녕';	# 게시물 제목이 '안녕'인 레코드 검색
+	# 8-2 조건에 따른 데이터가 포함되었을때 찾기
+select * from board b where b.btitle like '%f%'; #게시물 제목이 '안녕'이 포함된 레코드 검색
+	# 8-3 필드와 키워드에 따른 자바 SQL
+select * from board b where key like '%keyword%'; 
 
 
 
