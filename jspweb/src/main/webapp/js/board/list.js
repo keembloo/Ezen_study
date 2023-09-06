@@ -15,15 +15,29 @@ function onWrite(){
 /* 게시물 조회 조건 객체 */
 let pageObject = {
 	type : 1 , bcno : 0 , listsize : 3 , 
-	page : 1 // * page : 조회할 페이지번호
+	page : 1 , key : '' , keyword : '' 
+	// * page : 조회할 페이지번호 // key : 검색할 기준 필드명 // keyword : 검색할 데이터
 }
 	// * type: 1:전체출력, 2:개별조회
 	// * bcno : 조회할 카테고리번호 [ 기본값은 전체보기 ]
 	// * listsize : 하나의 페이지에 최대 표시할 게시물수 [ 기본값은 10개 ]
+	
+// 5. 검색 버튼을 클릭했을때
+function onSearch(){
+	pageObject.key = document.querySelector('.key').value;
+		//console.log(pageObject.key);
+	pageObject.keyword = document.querySelector('.keyword').value;
+		//console.log(pageObject.keyword);
+	onView(1);
+} 
+	
+	
 // 3. 카테고리 버튼을 클릭했을때
 function onCategory(bcno){
 	console.log('클릭된 카테고리 : '+bcno);
 	pageObject.bcno = bcno; // 조회 조건객체내 카테고리번호를 선택한 카테고리로 변경
+	pageObject.key = '';
+	pageObject.keyword = '' // 검색해제
 	onView(1);
 } // f end
 
@@ -42,7 +56,9 @@ onView(1);
 function onView(page){
 	pageObject.page = page;
 	// 클릭된 페이지번호를 조건객체에 대입
-
+	//console.log("온뷰함수에서 오브젝트 : "+pageObject.key);
+	//console.log("온뷰함수에서 오브젝트 : "+pageObject.keyword);
+	
 	let sample = `<tr>
 				<th>글번호</th>
 				<th>카테고리</th>
@@ -88,7 +104,7 @@ function pageboxView(page , r){
 	let html = ``;
 	let before = `<button onclick="onView(${page<=1? page: page-1})" type="button"> < </button>`;
 	// 페이지 번호 버튼 [ * 페이지 개수만큼 반복 ]
-	for (let i=1; i <= r.totalpage ; i++){
+	for (let i= r.startbtn; i <= r.endbtn ; i++){
 		// 만약에 현재페이지와 i번째 페이지가 일치하면 버튼태그에 class="selectpage" 추가
 		html += `<button class="${page==i ? 'selectpage' : '' }" onclick="onView(${i})" type="button"> ${i} </button>`;
 	}
@@ -100,7 +116,15 @@ function pageboxView(page , r){
 	
 	// ----------------------------- 3. 게시물 수 출력 --------------------------- 
 	let boardcount = document.querySelector('.boardcount');
-	boardcount.innerHTML = `총 게시물 수 : ${r.totalsize}`;
+		// 1. 검색이 없을때
+		if(pageObject.key == '' && pageObject.keyword== '' ){
+			boardcount.innerHTML = `총 게시물 수 : ${r.totalsize}`;
+		} else { // 2. 있을때
+			boardcount.innerHTML = `검색된 게시물 수 : ${r.totalsize}`;
+		}
+		
+		
+	
 	
 }
 

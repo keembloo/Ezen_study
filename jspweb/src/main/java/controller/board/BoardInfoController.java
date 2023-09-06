@@ -40,7 +40,14 @@ public class BoardInfoController extends HttpServlet {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = "";
 		
+		
 		if ( type.equals("1")) { // 전체 조회 로직
+			// ---------------------7 검색처리 ------------------- //
+			String key = request.getParameter("key");
+			String keyword = request.getParameter("keyword");
+			
+			System.out.println("key : "+ key);
+			System.out.println("keyword : "+ keyword);
 			// ---------------------1 카테고리 ------------------- //
 			int bcno = Integer.parseInt(request.getParameter("bcno"));
 			// ---------------------2 출력할 게시물수/하나의 페이지의 최대 게시물수 ------------------- //
@@ -55,17 +62,53 @@ public class BoardInfoController extends HttpServlet {
 			// ---------------------4 마지막 페이지번호 ------------------- //
 				// 1 .마지막페이지번호 / 총페이지수 = 전체게시물수 / 페이지별 최대 게시물수 
 				// 2. 전체 게시물수
-			int totalsize = BoardDao.getInstence().getTotalSize(bcno);
+			int totalsize = BoardDao.getInstence().getTotalSize(bcno , key , keyword);
 				// 3. 마지막페이지번호/총페이지수
-			int totalpate = totalsize%listsize == 0 ? 	// 만약에 나머지가 없으면
+			int totalpage = totalsize%listsize == 0 ? 	// 만약에 나머지가 없으면
 							totalsize/listsize : 		// 몫
 							totalsize/listsize+1;		// 몫 +1
 				// 게시물수 : 10 , 페이지별 2개씩 출력 => 총페이지수 5[몫]
 				// 게시물수 : 20 , 페이지별 3개식 출력 => 총페이지수 6[몫] +1 나머지 2
-
-			ArrayList<BoardDto> result = BoardDao.getInstence().onView(bcno , listsize , startrow);
+			// ---------------------5 페이지번호버튼 시작번호 , 마지막번호 ------------------- //
+			// 게시물수 : 10 , 페이지별 2개씩 출력  => 총페이지수 5페이지[몫]
+			// 게시물수 : 20 , 페이지별 3개씩 출력  => 총페이지수 6페이지[몫] + 1 ( 나머지[2] ) => 7페이지
+	
+	// ----------------------- 5. 페이지번호버튼 시작번호 , 마지막번호 ----------------- */ 
+		// 5개씩 	:	1~5페이지( 1 , 5 ) 6~10페이지( 6 , 10 ) 11~15페이지(11,15)
+		// 10개씩	:	1~10페이지 ( 1 , 10 ) 11~20페이지( 11,20) 21~30(21,30)
+		// 15개씩:	1~15페이지 ( 1 , 15 )	 16~30페이지( 16,30) 31~45(31,45)
+		/*
+		 	페이지		시작		마지막		시작계산식 [int btnsize = 5;]
+		 	1페이지		1		5			page/btnsize 	=> 0
+		 	2			1		5			(page/btnsize)*btnsize => 0
+		  	3			1		5			(page/btnsize)*btnsize +1  => 1
+		  	4			1		5			page/btnsize	
+		  	5			1		5			(page/btnsize)*btnsize +1  => 6	 / (page-1/btnsize)*btnsize +1  => 1	
+		  	6			6		10				
+		  	7			6		10
+		  	8			6		10
+		  	9			6		10
+		  	10			6		10
+		  	11			11		15
+		  	~~~~~~~~~~~~~~~~~~~~~~~
+		  	21			21		25*/
+			
+				// 1. 페이지버튼 번호의 최대개수
+			int btnsize = 5;
+				// 2. 페이지버튼 번호의 시작번호
+			int startbtn = ((page-1)/btnsize) * btnsize +1; //System.out.println(startbtn);
+	
+				// 3. 페이지버튼 번호의 마지막번호
+			int endbtn = startbtn+(btnsize-1);
+				// * 단 마지막번호는 총페이지수보다 커질 수 없음
+				// 만약에 마지막번호가 총 페이지수보다 크면 총페이지수로 제한두기
+			if (endbtn >= totalpage) endbtn = totalpage;
+			
+			
+			
 			// ---------------------6 pageDto 구성 ------------------- //
-			PageDto pageDto = new PageDto(page, listsize, startrow, totalsize, totalpate, result);
+			ArrayList<BoardDto> result = BoardDao.getInstence().onView(bcno , listsize , startrow , key , keyword);
+			PageDto pageDto = new PageDto(page, listsize, startrow, totalsize, totalpage, startbtn , endbtn , result);
 			
 			
 				// java 객체 => js객체형식[json]형식의 문자열로 변환
