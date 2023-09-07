@@ -71,6 +71,7 @@ function api1(){
 
 */
 
+/*
 // 1. 접속한 브라우저 GPS 좌표 얻기 [ geolocation ]
 navigator.geolocation.getCurrentPosition(pos=>{
 	console.log(pos); 
@@ -105,13 +106,115 @@ marker.setMap(map);
 
 })
 
+*/
+
+// ------------------- 1. 카카오 지도 출력하는 객체 -----------------------
+var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+    center : new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표 
+    level : 14 // 지도의 확대 레벨 
+});
+
+// ------------------ 마커 이미지 설정
+// 마커 이미지의 주소
+var markerImageUrl = '/jspweb/datago/img/lightning.png',  // 마커 이미지의 주소
+    markerImageSize = new kakao.maps.Size(40, 42), // 마커 이미지의 크기
+    markerImageOptions = { 
+        offset : new kakao.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+};
+		    
+// --------------- 마커 이미지를 생성한다
+var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+//-------------------- 2. 마커 클러스터러를 생성합니다 ----------------------
+var clusterer = new kakao.maps.MarkerClusterer({
+    map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+    averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+    minLevel: 10, // 클러스터 할 최소 지도 레벨 
+})
+
+//---------------------- 3. 마커 클러스터에 추가할 여러개 마커를 생성 -----------------------
+// $.get("공공데이터 요청URL", function(data) { } );
+$.get("https://api.odcloud.kr/api/15090398/v1/uddi:6fe0e3f2-0285-4999-9edf-995afe19a6ea?page=1&perPage=96&serviceKey=z427Q0DLkQqM0SDOc1Lz8jPzk%2BKj0ng%2Bvz7h3I8CpVs3T90219bWi2o%2BmStIxJW%2B9lwayA%2FsAT6apxsxuvydQg%3D%3D",
+	function( response ) {  console.log( response );
+	// response : 공공데이터 응답 객체 
+	// response.data : 응답객체내 검색된 전기차충전소 목록/배열/리스트
+    var markers = $( response.data ).map(function(i, position) {
+		console.log( i ); // 반복 인덱스   
+		console.log( position ); // 목록내 하나씩 대입되는 반복 변수명 
+		// 개별 마커 생성후 
+		 	// let marker = new kakao.maps.Marker ({   })
+		let marker = new kakao.maps.Marker ( {  
+			position : new kakao.maps.LatLng( position['위도(WGS84)'] , position['경도(WGS84)'] ) , 
+			image : markerImage, // 마커의 이미지
+		})
+		// 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
+		kakao.maps.event.addListener(marker, 'click', function() {
+		  	
+		  	let html = ``
+		  	html += `<div> 충전소명 : ${  position.충전소명 }</div>`
+		  	html += `<div> 충전소명 : ${  position.충전기타입명 }</div>`
+		  	html += `<div> 충전소명 : ${  position.운영기관명 }</div>`
+		  	html += `<div> 충전소명 : ${  position.소재지도로명주소 }</div>`
+		  	
+		  	document.querySelector('.detailbox').innerHTML = html;
+		});
+		// 생성된 마커 리턴 
+        return marker;
+    });
+    // 클러스터러에 마커들을 추가합니다
+    clusterer.addMarkers(markers);
+});
+
+
+/*
+	$.ajax({ url : "" , method:"" , data : {} , success : ()=>{}  } );
+	$.method( url , data , ()=>{} )
+	
+	객체내 속성 호출 
+		객체명.속성명
+		객체명['속성명']  : 속성명에 특수문자가 있는경우
+		
+	
+*/
 
 
 
+/*
+// 1. 접속한 브라우저의 GPS 좌표 얻기  [ geolocation ] - 엣지브라우저
+navigator.geolocation.getCurrentPosition( pos => {  console.log( pos ); 
+	let lat = pos.coords.latitude;
+	let lng = pos.coords.longitude;
+	// 카카오지도 출력 
+	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	var options = { //지도를 생성할 때 필요한 기본 옵션
+		center: new kakao.maps.LatLng( lat , lng ), //지도의 중심좌표.
+		level: 3 //지도의 레벨(확대, 축소 정도)
+	};
+	
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng( lat ,  lng); 
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
 
+}) // f end 
+*/
 
+/*
+	// 카카오지도 출력 
+	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	var options = { //지도를 생성할 때 필요한 기본 옵션
+		center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+		level: 3 //지도의 레벨(확대, 축소 정도)
+	};
+	
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	
 
-
-
-
-
+*/
