@@ -176,7 +176,48 @@ $.get("https://api.odcloud.kr/api/15090398/v1/uddi:6fe0e3f2-0285-4999-9edf-995af
 	
 */
 
+/*
 
+	- for 문
+		- 배열명 : arrayList
+		
+		1. for(let i =0; i<arrayList.length; i++){ }
+		
+		2. 배열의 첫번째 데이터부터 마지막 인덱스까지 반복
+		for( let 인덱스변수 in arrayList ){ }
+		
+		3. 배열의 첫번째 데이터부터 마지막 데이터까지 반복
+		for( let 반복변수 of arrayList ){ }
+
+		4. 배열의 반복변수 or 인덱스를 첫번째부터 마지막 반복 [반환값 x]
+		arrayList.forEach( (반복변수) => { })
+		arrayList.forEach( (반복변수,인덱스변수) => { })
+
+		5. 배열의 반복변수 or 인덱스를 첫번째부터 마지막 반복 [반환값 o] => 새로운 배열에 저장할 수 있다.
+		
+
+*/
+let arrayList = [ 'a' , 'b' , 'c' , 'd']
+console.log("------------------");
+for(let i=0; i<arrayList.length; i++){ console.log( i + arrayList[i]);}
+
+console.log("------------------");
+for(let index1 in arrayList){console.log(index1);}
+
+console.log("------------------");
+for(let data2 of arrayList){console.log(data2);}
+
+console.log("--------forEach1----------");
+arrayList.forEach( (data3) => {console.log(data3);})
+
+console.log("---------forEach2---------");
+arrayList.forEach( (data3,index4) => {console.log(data3);})
+
+console.log("---------map1---------");
+arrayList.map( (data5) => {console.log(data5);})
+
+console.log("---------map1---------");
+let newArrayList = arrayList.map( (data5) => {return data5+"map";})
 
 /*
 // 1. 접속한 브라우저의 GPS 좌표 얻기  [ geolocation ] - 엣지브라우저
