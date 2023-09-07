@@ -61,3 +61,57 @@ function api1(){
 		error : e => {}
 	})
 }
+
+/*
+	카카오 개발자 센터
+	https://developers.kakao.com/
+	1. 애플리케이션 추가
+	2. 플랫폼 web -> 사이트 도메인 등록
+	https://apis.map.kakao.com/
+
+*/
+
+// 1. 접속한 브라우저 GPS 좌표 얻기 [ geolocation ]
+navigator.geolocation.getCurrentPosition(pos=>{
+	console.log(pos); 
+	let lat = pos.coords.latitude;
+	let leg = pos.coords.longitude;
+
+
+//카카오지도출력
+var container = document.getElementById('map'); // 지도를 담을 영역의 dom레퍼런스
+var options = { // 지도를 생성할때 필요한 기본 옵션
+	center: new kakao.maps.LatLng(lat, leg), // 지도의 중심좌표
+	level: 3 // 지도의 레벨(확대,축소정도)
+};
+var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+
+
+
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(lat, leg); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+
+})
+
+
+
+
+
+
+
+
+
+
+
