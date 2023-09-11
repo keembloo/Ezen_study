@@ -36,7 +36,41 @@ function onSend(){
 	
 // 4. 메세지를 받았을때 추후행동 ( 메소드 )선언
 function onMsg(e){
-	console.log(e);
+	console.log(e); // e : 메세지 받았을때 발생한 이벤트 정보가 들어있는 객체
+	console.log(e.data); // .data 속성에 전달받은 메세지 내용
+	
+	let msg = JSON.parse(e.data);
+		// JSON.parse() : 문자열타입의 JSON형식을 JSON타입으로 변환
+		// JSON.stringify() : JSON타입을 문자열타입 (JSON형식 유지)으로 변환
+		
+		
+	// 1. 어디에
+	let chatcont = document.querySelector('.chatcont');
+	
+	// 2. 무엇을
+	let html = '';
+		// 2-2 만약에 내가 보냈으면 [ 보낸사람 아이디와 로그인된 사람의 아이디가 같으면 ]
+		if (msg.frommid == loginMid ){
+			html = `<div class="rcont">
+						<div class="subcont">
+							<div class="date">오전 10:02</div>
+							<div class="content">${msg.msg}</div>
+						</div>
+					</div>`;
+	}else { // 2-2 내가 보낸 내용이 아니면
+		html = `<div class="lcont">
+					<img class="pimg" src="/jspweb/member/img/default.webp">
+					<div class="tocont">
+						<div class="name">${msg.frommid}</div> 
+						<div class="subcont">
+							<div class="content">${msg.msg}</div>
+							<div class="date"> 오전 10:10 </div>
+						</div>
+					</div>
+				</div>`;
+	}
+	// 3. 누적 대입 [ 기존 채팅에 이어서 추가 += ]
+	chatcont.innerHTML += html;
 }
 	
 	
