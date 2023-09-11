@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+
+/* 채팅전체구역 */
+.chatbox{
+	width: 40%;
+	margin : 20px auto;
+	box-shadow: 0px 0px 3px red;
+	/* 구역 그림자 : x축 y축 그림자흐림정도 색상 */
+}
+
+/* 채팅내용 목록 */
+.chatcont{
+	height: 650px; 
+	background-color: #BACEE0;
+	padding: 20px;
+}
+
+/* 채팅입력창, 전송버튼 구역 */
+.chatbottom{
+	height: 50px;
+	display: flex;
+}
+
+.chatbottom textarea { /* 채팅입력창 */
+	width: 80%;
+	border: 1px solid #e8e8e8;
+	padding: 15px;
+	resize: none;
+}
+.chatbottom button { /* 전송버튼 */
+	width: 20%;
+	border: none;
+	border-radius: 5px;
+	background-color: #FFEB33;
+}
+
+/* ------------------------------------------------- */
+
+.subcont{
+	display: flex;
+	align-items: flex-end;
+}
+
+.content{ /* 메시지 내용 */
+	background-color: #FFFFFF;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.date { /* 메시지 시간 */
+	font-size: 10px;
+	margin: 0 5px;
+}
+
+
+/* 보냈을때 = 우측배치 , 흰배경 */
+.rcont{ 
+	display: flex; 
+	justify-content: flex-end; 
+	margin: 10px 0;
+}
+.rcont .content {
+	background-color: #FFEB33;
+}
+
+/* 받을때 = 좌측배치 , 노란배경 */
+.lcont{ 
+	display: flex; 
+	justify-content: flex-start; 
+	margin: 10px 0;
+}
+
+.lcont .content {
+	background-color: #FFFFFF;
+}
+
+.lcont .pimg {
+	width: 35px; 
+	height: 35px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+
+.alarm{ /* 알람 메시지 */
+	width : 70%;
+	margin : 20px auto;
+	background-color: #B1C3D5;
+	text-align: center;
+	border-radius: 10px;
+	padding: 8px;
+}
