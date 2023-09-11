@@ -1,5 +1,6 @@
 package controller.chatting;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 
@@ -20,7 +21,7 @@ public class ServerSocket {
 	public static List<ClientDto> clientList = new Vector<>();
 	
 	// 1. 클라이언트소켓으로부터 접속 받았을때
-	@OnOpen
+	@OnOpen		// 매개변수 : 1. 접속된 클라이언트소켓(세션) 2.접속된 회원아이디
 	public void onOpen( Session session , @PathParam("mid") String mid ) {
 		System.out.println("클라이언트 소켓이 입장했습니다."+session);
 		System.out.println("접속한 회원아이디 : "+mid);
@@ -31,10 +32,30 @@ public class ServerSocket {
 		System.out.println("접속된 클라이언트들 : "+clientDto);
 	}
 	
+	// 3.
+	//@OnError
+	
+	// 4.
+	//@OnClose
+	
+	
+	// 2.
+	@OnMessage		// 매개변수 : 1. 메세지를 보낸 클라이언트소켓(세션) 2.메세지 내용 [문자열]
+	public void onMessage( Session session , String msg) throws IOException {
+		System.out.println("보낸 클라이언트 : "+session );
+		System.out.println("보낸 내용 : "+msg );
+		// 2-1 받은 메시지를 접속된 회원들에게 모두 전송
+		for( ClientDto clientDto : clientList ) { // 회원목록에서 하나씩 회원 꺼내기
+			clientDto.getSession().getBasicRemote().sendText(msg); // 예외처리 필수! 
+		}
+	}
 	
 
 	
 }
+
+
+
 /*
 
 	* WebSocket 서버소켓 라이브러리 제공
@@ -53,5 +74,7 @@ public class ServerSocket {
 			@OnClose
 			@OnError
 			@OnMessage
-	
+				public void onMessage( Session session , String msg) {}
+				
+				클라이언트소켓.getBasicRemote().sendText(msg)
 */

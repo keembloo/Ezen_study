@@ -12,9 +12,32 @@ console.log('채팅방에 입장한 아이디 : '+ loginMid);
 let clientSocket = new WebSocket(`ws://localhost:8080/jspweb/serversocket/${loginMid}`);
 	// - 클라이언트 소켓이 생성되었을때 자동으로 서버소켓에 접속 ---> 서버 소켓의 @OnOpen
 	// - 서버소켓URL에 매개변수 전달하기 [ - 주로 식별자 전달 ] 서버소켓URL/데이터1/데이터2/데이터3
+	// --- 메소드 4가지 메소드 자동으로 실행
+		// 1.(자동실행) 클라이언트소켓이 정상적으로 서버소켓 접속했을때
+	clientSocket.onopen = e => {console.log('서버와 접속 성공')};
+		// 2.(자동실행) 클라이언트소켓이 서버소켓과 연결에서 오류가 발생했을때
+	clientSocket.onerror = e => {console.log('서버와 오류 발생'+e)};
+		// 3.(자동실행) 클라이언트소켓이 서버소켓과 연결이 끊겼을때
+	clientSocket.onclose = e => {console.log('서버와 연결 끊김'+e)};
+		// 4.(자동실행) 클라이언트소켓이 메세지를 받았을때
+	clientSocket.onmessage = e => onMsg(e);
 	
 	
+// 3. 서버에게 메시지 전송
+function onSend(){
+	let msg = document.querySelector('.msg').value;
+	if (msg == '' ){
+		alert('내용을 입력해주세요');
+		return;
+	}
+	// 3-2 메시지 전송
+	clientSocket.send(msg); // 클라이언트소켓과 연결된 서버소켓에게 메시지 전송 -> 서버소켓의 @OnMessage 로 이동
+}
 	
+// 4. 메세지를 받았을때 추후행동 ( 메소드 )선언
+function onMsg(e){
+	console.log(e);
+}
 	
 	
 /*
@@ -34,6 +57,10 @@ let clientSocket = new WebSocket(`ws://localhost:8080/jspweb/serversocket/${logi
 		* 소켓 관련된 함수들을 제공하는 클래스 
 		1. 웹소켓 객체 생성
 			new WebSocket("ws://ip주소:port번호/프로젝트명/서버소켓경로");
+		
+		2. 메소드 제공 
+			.send() : 클라이언트소켓이 연결된 서버소켓에게 메시지를 전송 메소드
+			
 			
 	* 동기화 vs 비동기화
 	
