@@ -72,11 +72,11 @@ public class ServerSocket {
 				}
 				// - msgDto를 JSON 사용할수 있도록 형변환
 			ObjectMapper objectMapper = new ObjectMapper();
-			String jwonMsg = objectMapper.writeValueAsString(msgDto);
+			String jsonMsg = objectMapper.writeValueAsString(msgDto);
 		
 		// 2-1 받은 메시지를 접속된 회원들에게 모두 전송
 		for( ClientDto clientDto : clientList ) { // 회원목록에서 하나씩 회원 꺼내기
-			clientDto.getSession().getBasicRemote().sendText(jwonMsg); // 예외처리 필수! 
+			clientDto.getSession().getBasicRemote().sendText(jsonMsg); // 예외처리 필수! 
 		}
 	}
 	
