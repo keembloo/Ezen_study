@@ -20,7 +20,7 @@
 				<div class="rcont">
 					<div class="subcont">
 						<div class="date">오전 10:02</div>
-						<div class="content">안녕하세요 ㅋㅋㅋ</div>
+						<div class="content">안녕하세요 ㅋㅋㅋ 안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ안녕하세요 ㅋㅋㅋ</div>
 					</div>
 				</div>
 			
@@ -36,7 +36,7 @@
 					<div class="tocont">
 						<div class="name">강호동</div> <!-- 보낸 사람 -->
 						<div class="subcont">
-							<div class="content"> 그래안녕 ㅋㅋㅋ </div>
+							<div class="content"> 그래안녕 ㅋㅋㅋ 그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ그래안녕 ㅋㅋㅋ</div>
 							<div class="date"> 오전 10:10 </div>
 						</div>
 					</div>

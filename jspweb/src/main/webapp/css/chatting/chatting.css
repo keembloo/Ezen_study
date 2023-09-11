@@ -14,6 +14,8 @@
 	height: 650px; 
 	background-color: #BACEE0;
 	padding: 20px;
+	/* 만약에 내용물이 구역보다 커졌을때 */
+	overflow-y: scroll; /* y축 스크롤 */
 }
 
 /* 채팅입력창, 전송버튼 구역 */
@@ -43,9 +45,9 @@
 }
 
 .content{ /* 메시지 내용 */
-	background-color: #FFFFFF;
 	padding: 10px;
 	border-radius: 5px;
+	max-width: 80%;
 }
 
 .date { /* 메시지 시간 */
@@ -63,6 +65,9 @@
 .rcont .content {
 	background-color: #FFEB33;
 }
+.rcont .subcont {
+	justify-content: flex-end;
+}
 
 /* 받을때 = 좌측배치 , 노란배경 */
 .lcont{ 
@@ -74,7 +79,9 @@
 .lcont .content {
 	background-color: #FFFFFF;
 }
-
+.lcont .subcont {
+	justify-content: flex-start;
+}
 .lcont .pimg {
 	width: 35px; 
 	height: 35px;
