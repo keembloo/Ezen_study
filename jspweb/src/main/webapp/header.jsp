@@ -6,6 +6,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="/jspweb/css/header.css" rel="stylesheet">
+	<!-- 폰트어썸 css -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 </head>
 <body>
 	<!-- 헤더 -->

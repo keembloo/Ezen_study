@@ -25,13 +25,19 @@ let clientSocket = new WebSocket(`ws://localhost:8080/jspweb/serversocket/${logi
 	
 // 3. 서버에게 메시지 전송
 function onSend(){
-	let msg = document.querySelector('.msg').value;
-	if (msg == '' ){
+	let msaValue = document.querySelector('.msg').value;
+	if (msaValue == '' ){
 		alert('내용을 입력해주세요');
 		return;
 	}
+	console.log(msg);
 	// 3-2 메시지 전송
-	clientSocket.send(msg); // 클라이언트소켓과 연결된 서버소켓에게 메시지 전송 -> 서버소켓의 @OnMessage 로 이동
+	let msg = {type : 'message' , content : msaValue };
+	
+	clientSocket.send(msg);
+	// 클라이언트소켓과 연결된 서버소켓에게 메시지 전송 -> 서버소켓의 @OnMessage 로 이동
+	// 3-3 메시지 전송 성공시 입력상자 초기화
+	document.querySelector('.msg').value = '';
 }
 	
 // 4. 메세지를 받았을때 추후행동 ( 메소드 )선언
@@ -42,8 +48,14 @@ function onMsg(e){
 	let msg = JSON.parse(e.data);
 		// JSON.parse() : 문자열타입의 JSON형식을 JSON타입으로 변환
 		// JSON.stringify() : JSON타입을 문자열타입 (JSON형식 유지)으로 변환
+		console.log(msg.msg);	// java,js console내 출력시 줄바꿈 \n 맞음 html에서의 줄바꿈 <br>
 		
-		
+		// 1. 특정 문자열 찾아서 1개 치환/바꾸기/교체
+		let content = msg.msg.replace('\n' , '<br>'); // replace( '변경할문자열|정규표현식', '새로운문자' )
+		console.log(content);
+		// 2. 특정 문자열 찾아서 찾은 문자열 모두 치화/바꾸기/교체 => java : .replaceAll();	js : 정규표현식
+		content = msg.msg.replace(/\n/gi , '<br>'); // g: 발생할 모든패턴대한 전역 검색 / i : 대소문자 구분안함
+		console.log(content);
 	// 1. 어디에
 	let chatcont = document.querySelector('.chatcont');
 	
@@ -54,7 +66,7 @@ function onMsg(e){
 			html = `<div class="rcont">
 						<div class="subcont">
 							<div class="date">${msg.date}</div>
-							<div class="content">${msg.msg}</div>
+							<div class="content">${content}</div>
 						</div>
 					</div>`;
 	}else { // 2-2 내가 보낸 내용이 아니면
@@ -63,7 +75,7 @@ function onMsg(e){
 					<div class="tocont">
 						<div class="name">${msg.frommid}</div> 
 						<div class="subcont">
-							<div class="content">${msg.msg}</div>
+							<div class="content">${content}</div>
 							<div class="date">${msg.date}</div>
 						</div>
 					</div>
@@ -83,8 +95,44 @@ function onMsg(e){
 	chatcont.scrollTop = chatcont.scrollHeight;
 	
 }
+
+// 5. textarea 입력창에서 입력할때마다 이벤트 발생함수
+function onEnterKey(){
+	// 2. 만약에 ctrl + 엔터이면 줄바꿈
+	if (window.event.keyCode == 13 && window.event.ctrlKey){ // 조합키 : 한번에 두개 이상 입력가능한 키 [컨트롤,쉬프트,알트]
+		document.querySelector('.msg').value += `\n`; 
+		return;
+	}
 	
+	// 1. 만약에 입력한 키가 엔터이면
+	if (window.event.keyCode == 13){
+		onSend();
+		return;
+	}
+}
 	
+// 6. 이모티콘 출력하기
+getemo();
+function getemo(){
+	let emolistbox = document.querySelector('.emolistbox');
+	// - 
+	for(let i =1; i<=43; i++){
+		emolistbox.innerHTML += `<img onclick="onEmoSend(${i})" src="/jspweb/img/imoji/emo${i}.gif">`;
+	}
+}
+
+// 7. 클릭한 이모티콘 서버로 전송하기
+function onEmoSend(i){
+	let msg = {type : 'emo' , content : i }; 
+		// type : msg[메세지] , emo[이모티콘] , img[사진]
+		// content : 내용물
+		
+	// 2. 보내기
+	clientSocket.send( JSON.stringify(msg));
+		// JSON 타입을 String 타입으로 변환해주는 함수 
+}
+
+
 /*
 	JS[ HTML파일 종속된 파일 - HTML 안에서 실행되는 구조 ]
 	
