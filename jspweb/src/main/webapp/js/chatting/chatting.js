@@ -14,7 +14,17 @@ let clientSocket = new WebSocket(`ws://localhost:8080/jspweb/serversocket/${logi
 	// - 서버소켓URL에 매개변수 전달하기 [ - 주로 식별자 전달 ] 서버소켓URL/데이터1/데이터2/데이터3
 	// --- 메소드 4가지 메소드 자동으로 실행
 		// 1.(자동실행) 클라이언트소켓이 정상적으로 서버소켓 접속했을때
-	clientSocket.onopen = e => {console.log('서버와 접속 성공')};
+	clientSocket.onopen = e => {
+		
+		// 1-2: 만약에 접속을 성공하면 알림메시지 전송
+		let msg = {
+			type: "alarm" ,
+			content : `${loginMid}님이 입장했습니다.`
+		};
+		//clientSocket.send(msg); 	// 문제발생 : 해당 메세지를 받는 JAVA는 JSON타입 몰라서 문자열으로 변환
+		clientSocket.send(JSON.stringify(msg));
+		
+	};
 		// 2.(자동실행) 클라이언트소켓이 서버소켓과 연결에서 오류가 발생했을때
 	clientSocket.onerror = e => {console.log('서버와 오류 발생'+e)};
 		// 3.(자동실행) 클라이언트소켓이 서버소켓과 연결이 끊겼을때
@@ -26,8 +36,8 @@ let clientSocket = new WebSocket(`ws://localhost:8080/jspweb/serversocket/${logi
 // 3. 서버에게 메시지 전송
 function onSend(){
 	let msaValue = document.querySelector('.msg').value;
-	if (msaValue == '' ){
-		alert('내용을 입력해주세요');
+	if (msaValue == '' || msaValue =='\n' ){
+		document.querySelector('.msg').value = '';
 		return;
 	}
 	// 3-2 메시지 전송
@@ -42,40 +52,43 @@ function onSend(){
 // 4. 메세지를 받았을때 추후행동 ( 메소드 )선언
 function onMsg(e){
 	console.log(e); // e : 메세지 받았을때 발생한 이벤트 정보가 들어있는 객체
-	console.log(e.data); // .data 속성에 전달받은 메세지 내용
+	console.log(e.data); // e.data 속성에 전달받은 메세지 내용
 	
-	let msg = JSON.parse(e.data);
-		// JSON.parse() : 문자열타입의 JSON형식을 JSON타입으로 변환
-		// JSON.stringify() : JSON타입을 문자열타입 (JSON형식 유지)으로 변환
-		console.log(msg.msg);	// java,js console내 출력시 줄바꿈 \n 맞음 html에서의 줄바꿈 <br>
+	// 1. 전달받은 내용물을 JSON타입으로 형변환
+	let msgBox = JSON.parse(e.data);	//e.data : 서버로부터 전달받은 내용물 e.data 속성에 있는
+	msgBox.msg = JSON.parse(msgBox.msg); 
 		
-		// 1. 특정 문자열 찾아서 1개 치환/바꾸기/교체
-		let content = msg.msg.replace('\n' , '<br>'); // replace( '변경할문자열|정규표현식', '새로운문자' )
-		console.log(content);
-		// 2. 특정 문자열 찾아서 찾은 문자열 모두 치화/바꾸기/교체 => java : .replaceAll();	js : 정규표현식
-		content = msg.msg.replace(/\n/gi , '<br>'); // g: 발생할 모든패턴대한 전역 검색 / i : 대소문자 구분안함
-		console.log(content);
+	// 2. msg속성내 content 속성의 \n -> <br> 치환후 결과를 content 속성에 대입[ = ]
+		// replace( ) 문자열 교체/치환/바꾸기 함수 (숫자는안됨)
+	msgBox.msg.content = msgBox.msg.content.replace(/\n/gi , '<br>'); 
+	// 정규표현식 g: 발생할 모든패턴대한 전역 검색 / i : 대소문자 구분안함
+	
 	// 1. 어디에
 	let chatcont = document.querySelector('.chatcont');
 	
 	// 2. 무엇을
 	let html = '';
+		// 만약에 메시지 타입이 알림이면
+		if(msgBox.msg.type == 'alarm'){
+			html = `${typeHTML(msgBox.msg)}`;
+		}
+		//  만약에 메시지 타입이 알림이 아니면 [ 메시지, 이모티콘 ]
 		// 2-2 만약에 내가 보냈으면 [ 보낸사람 아이디와 로그인된 사람의 아이디가 같으면 ]
-		if (msg.frommid == loginMid ){
+		else if (msgBox.frommid == loginMid ){
 			html = `<div class="rcont">
 						<div class="subcont">
-							<div class="date">${msg.date}</div>
-							<div class="content">${content}</div>
+							<div class="date">${msgBox.date}</div>
+							${typeHTML(msgBox.msg)}
 						</div>
 					</div>`;
 	}else { // 2-2 내가 보낸 내용이 아니면
 		html = `<div class="lcont">
-					<img class="pimg" src="/jspweb/member/img/${msg.frommimg}">
+					<img class="pimg" src="/jspweb/member/img/${msgBox.frommimg}">
 					<div class="tocont">
-						<div class="name">${msg.frommid}</div> 
+						<div class="name">${msgBox.frommid}</div> 
 						<div class="subcont">
-							<div class="content">${content}</div>
-							<div class="date">${msg.date}</div>
+							${typeHTML(msgBox.msg)}
+							<div class="date">${msgBox.date}</div>
 						</div>
 					</div>
 				</div>`;
@@ -86,10 +99,10 @@ function onMsg(e){
 	// ---------------------------- 스크롤 최하단으로 내리기 ( 스크롤 이벤트 )------------------- //
 	// 1. 현재 스크롤의 상단 위치 좌표
 	let topHeight = chatcont.scrollTop; // dom객체.scrollTop : 해당 div의 스크롤 상단위치
-	console.log( topHeight );	// 30px;
+	//console.log( topHeight );	// 30px;
 	// 2. 현재 dom객체의 전체 높이
 	let scrollHeight = chatcont.scrollHeight; // dom객체.scrollHeight : 해당 div의 스크롤 전체 높이 
-	console.log(scrollHeight);	// 600px;
+	//console.log(scrollHeight);	// 600px;
 	// 3. 전체 높이 값을 현재 스크롤 상단위치에 대입
 	chatcont.scrollTop = chatcont.scrollHeight;
 	
@@ -122,7 +135,7 @@ function getemo(){
 
 // 7. 클릭한 이모티콘 서버로 전송하기
 function onEmoSend(i){
-	let msg = {type : 'emo' , content : i }; 
+	let msg = {type : 'emo' , content : i+"" };  // 문자로 i를 바꿔줘야한다. 위에 replace 함수사용 하기위해
 		// type : msg[메세지] , emo[이모티콘] , img[사진]
 		// content : 내용물
 		
@@ -131,6 +144,26 @@ function onEmoSend(i){
 		// JSON 타입을 String 타입으로 변환해주는 함수 
 }
 
+//8. msg 타입에 따른 html 반환 함수
+function typeHTML(msg){
+	
+	let html = ``;
+	
+	// 1. 메세지 타입일때는 <div> 반환
+	if (msg.type == 'message'){
+		html += `<div class="content">${msg.content}</div>`;
+	}
+	// 2. 이모티콘 타입일때는 <img> 반환
+	else if (msg.type =='emo'){
+		console.log("msg.content : "+msg.content);
+		html += `<img src="/jspweb/img/imoji/emo${msg.content}.gif">`; 
+	}
+	// 3. 만약에 알림 타입일때는 <div> 반환
+	else if(msg.type =='alarm'){
+		html += `<div class="alarm"> ${msg.content}</div>`;
+	}
+	return html;	
+}
 
 /*
 	JS[ HTML파일 종속된 파일 - HTML 안에서 실행되는 구조 ]

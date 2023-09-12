@@ -16,6 +16,7 @@
 	padding: 20px;
 	/* 만약에 내용물이 구역보다 커졌을때 */
 	overflow-y: scroll; /* y축 스크롤 */
+	word-break: break-all; /* 자동줄바꿈 */
 }
 
 /* 채팅입력창, 전송버튼 구역 */
