@@ -30,11 +30,10 @@ function onSend(){
 		alert('내용을 입력해주세요');
 		return;
 	}
-	console.log(msg);
 	// 3-2 메시지 전송
 	let msg = {type : 'message' , content : msaValue };
 	
-	clientSocket.send(msg);
+	clientSocket.send(JSON.stringify(msg));
 	// 클라이언트소켓과 연결된 서버소켓에게 메시지 전송 -> 서버소켓의 @OnMessage 로 이동
 	// 3-3 메시지 전송 성공시 입력상자 초기화
 	document.querySelector('.msg').value = '';
