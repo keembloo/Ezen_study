@@ -53,24 +53,35 @@ function onMsg(e){
 		if (msg.frommid == loginMid ){
 			html = `<div class="rcont">
 						<div class="subcont">
-							<div class="date">오전 10:02</div>
+							<div class="date">${msg.date}</div>
 							<div class="content">${msg.msg}</div>
 						</div>
 					</div>`;
 	}else { // 2-2 내가 보낸 내용이 아니면
 		html = `<div class="lcont">
-					<img class="pimg" src="/jspweb/member/img/default.webp">
+					<img class="pimg" src="/jspweb/member/img/${msg.frommimg}">
 					<div class="tocont">
 						<div class="name">${msg.frommid}</div> 
 						<div class="subcont">
 							<div class="content">${msg.msg}</div>
-							<div class="date"> 오전 10:10 </div>
+							<div class="date">${msg.date}</div>
 						</div>
 					</div>
 				</div>`;
 	}
 	// 3. 누적 대입 [ 기존 채팅에 이어서 추가 += ]
 	chatcont.innerHTML += html;
+	
+	// ---------------------------- 스크롤 최하단으로 내리기 ( 스크롤 이벤트 )------------------- //
+	// 1. 현재 스크롤의 상단 위치 좌표
+	let topHeight = chatcont.scrollTop; // dom객체.scrollTop : 해당 div의 스크롤 상단위치
+	console.log( topHeight );	// 30px;
+	// 2. 현재 dom객체의 전체 높이
+	let scrollHeight = chatcont.scrollHeight; // dom객체.scrollHeight : 해당 div의 스크롤 전체 높이 
+	console.log(scrollHeight);	// 600px;
+	// 3. 전체 높이 값을 현재 스크롤 상단위치에 대입
+	chatcont.scrollTop = chatcont.scrollHeight;
+	
 }
 	
 	
