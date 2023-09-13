@@ -256,3 +256,51 @@ select * from hrm order by hdate desc;
 select * from hrm order by hno desc;
 
 
+
+
+
+
+#------------------------------------------ 제품 ----------------------------------------------#
+use jspweb;
+# 1. 제품 카테고리
+drop table if exists pcategory;
+create table category(
+	pcno int auto_increment ,
+    pcname varchar(20) unique ,
+    primary key (pcno)
+);
+
+insert pcategory(pcname) values('스니커즈');
+insert pcategory(pcname) values('샌들');
+insert pcategory(pcname) values('로퍼');
+insert pcategory(pcname) values('부츠');
+
+
+# 2. 제품
+drop table if exists product;
+create table product(
+	pno int auto_increment,
+    pname varchar(100) not null ,
+    pcontent longtext , 
+    pprice int unsigned default 0 not null ,	-- signed(기본값:음수사용 +-21억) / unsigned(음수사용x-음수만큼의 메모리를 양수로 사용 0~42억정도 ) : 음수 사용여부 
+    pstate tinyint default 0 not null , -- [ 0 : 판매중(기본값), 1 : 거래중 , 2 : 판매대기 , 3 : 판매완료 ]
+    pdate datetime default now() not null ,
+    plat varchar(30) not null ,
+    plng varchar(30) not null ,
+    pcno int , 
+    mno int ,
+    primary key(pno) ,
+    foreign key(pcno) references pcategory(pcno) on delete set null on update cascade ,
+    foreign key(mno) references member(mno) on delete cascade on update cascade
+);
+
+# 3. 제품 이미지
+drop table if exists productimg;
+create table productimg(
+	pimgno int auto_increment , 
+    pimg longtext , 
+    pno int ,
+	primary key (pimgno) ,
+    foreign key(pno) references product(pno) on delete cascade on update cascade
+);
+

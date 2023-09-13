@@ -23,6 +23,7 @@
 			<li> <a href="/jspweb/board/list.jsp">게시판</a></li>
 			<li> <a href="/jspweb/datago/datago.jsp">공공데이터</a></li>
 			<li> <a href="/jspweb/chatting/chatting.jsp">채팅</a></li>
+			<li> <a href="/jspweb/product/register.jsp">제품</a></li>
 			
 			<li> <a href="/jspweb/accountbook/accountbook.jsp">과제1:가계부</a></li>
 			<li> <a href="/jspweb/library/library.jsp">과제2:도서관열람실</a></li>
