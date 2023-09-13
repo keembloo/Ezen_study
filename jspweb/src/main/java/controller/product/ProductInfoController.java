@@ -132,4 +132,21 @@ public class ProductInfoController extends HttpServlet {
 			// .getFilesystemName("input name") : 첨부된 하나의 파일명 호출
 			// .getFileNames() : 첨부된 input 태그들의 
 
+
+
+	//[ form 태그 없는경우 1 ]  
+	// 1. ajax 전달한 data의 객체 속성명을 이용한 호출 
+	/*
+	String pname1 = request.getParameter("pname1");
+	String pcontent1 = request.getParameter("pcontent1");
+		System.out.println( pname1 ) ; System.out.println( pcontent1 ) ;
+	*/
+	/*
+	//[ form 태그 이용하는 경우 2 - form 전송시 ]
+	MultipartRequest multi = new MultipartRequest(request , request.getServletContext().getRealPath("/product") );
+	
+	String pname2 = multi.getParameter("pname2");
+	String pcontent2 = multi.getParameter("pcontent2");
+		System.out.println( pname2 ) ; System.out.println( pcontent2) ;
+	
 */
