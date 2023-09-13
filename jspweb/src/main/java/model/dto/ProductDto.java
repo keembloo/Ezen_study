@@ -5,23 +5,35 @@ import java.util.Map;
 
 public class ProductDto {
 
-	private int pcno;
-	private String pcname;
-	private int pno;
-	private String pname;
-	private String pcontent;
-	private int pprice;
-	private int pstate;
-	private String pdate;
-	private String plat;
-	private String plng;
-	private int mno;
-	private Map<Integer, String> imgList = new HashMap<>(); // 제품별 여러개 이미지 
-	private String mid;	// * 제품 등록한 회원 아이디
+	int pcno;
+	String pcname;
+	int pno	;
+	String pname;
+	String pcontent; 
+	int pprice;
+	int pstate;
+	String pdate;
+	String plat;
+	String plng;	
+	int mno;
+	Map< Integer , String > imgList = new HashMap<>(); // 제품별 여러개 이미지 
+	String mid; // * 제품 등록한 회원 아이디 
 
 
 	public ProductDto() {}
-
+	// 1. 제품 등록시 생성자 
+	public ProductDto(int pcno, String pname, String pcontent, int pprice, String plat, String plng, int mno,
+	         Map<Integer, String> imgList) {
+	      super();
+	      this.pcno = pcno;
+	      this.pname = pname;
+	      this.pcontent = pcontent;
+	      this.pprice = pprice;
+	      this.plat = plat;
+	      this.plng = plng;
+	      this.mno = mno;
+	      this.imgList = imgList;
+	   }
 
 	public ProductDto(int pcno, String pcname, int pno, String pname, String pcontent, int pprice, int pstate,
 			String pdate, String plat, String plng, int mno, Map<Integer, String> imgList, String mid) {
