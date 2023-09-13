@@ -52,12 +52,12 @@ public class ProductInfoController extends HttpServlet {
 		itemFactory.setSizeThreshold(1024*1024*1024); // 3.용량
 		itemFactory.setDefaultCharset("UTF-8"); // 4.한글인코딩
 		
-		// 3. 파일 업로드 객체 
+		// 3. 파일 업로드 객체  [ import org.apache.commons.fileupload.servlet.ServletFileUpload; ] 
 		ServletFileUpload fileUpload = new ServletFileUpload(itemFactory);
 		
 		// 4. 파일 업로드 요청 [ 요청방식 : request ]
 		try {
-			Map< Integer , String > imgList = new HashMap<>();
+			Map< Integer , String > imgList = new HashMap<>(); // 업로드된 파일명 들을 저장하기 위한 map컬렉션
 						// form 전송시 input태그 모든 데이터 한번에 요청해서 결과를 List 반환
 			List<FileItem> fileList =  fileUpload.parseRequest(request);
 				// FileItem : 각 요청한 데이터 
