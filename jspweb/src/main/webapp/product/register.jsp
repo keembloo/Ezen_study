@@ -11,7 +11,7 @@
 
 	<div class="webcontainer">
 		<form class="registerForm">
-			카테고리 : <select>
+			카테고리 : <select name="pcno">
 						<option value="1">스니커즈</option>
 						<option value="2">샌들</option>
 						<option value="3">로퍼</option>

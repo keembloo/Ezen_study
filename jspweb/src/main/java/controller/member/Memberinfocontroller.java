@@ -115,7 +115,7 @@ public class Memberinfocontroller extends HttpServlet {
 			// 4. 응답
 	    	response.setContentType("application/json;charset=UTF-8");
 	    	response.getWriter().print(json);
-				} else if (type.equals("logout")) {
+		} else if (type.equals("logout")) {
 			// 세션에 저장된 로그인객체를 없애기/초기화/지우기/삭제
 			// 방법1 : (세션의 모든 속성) 초기화하는 함수
 					//request.getSession().invalidate(); // 로그인 정보뿐만 아니라 모두 삭제

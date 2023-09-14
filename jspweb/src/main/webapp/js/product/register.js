@@ -36,12 +36,19 @@ function onRegister(e){
 		url : "/jspweb/ProductInfoController",
 		method : "post" ,
 		data : formData ,
-		contentType : false , 
+		contentType : false ,  // ajax 전송타입 :  multipart/form-data 
 		processData : false , 
-		success : result => {console.log(result);} ,
-		error : e => {console.log(e);}
+		success : result => {
+		
+			if( result == true ){
+				alert('제품등록성공');
+				location.href="/jspweb/index.jsp";
+			}else{
+				alert('제품등록실패');
+			}
+		}
 	})
-} // f end
+} //f end 
 
 // 2. 드래그 앤 드랍
 	// 1. 드래그 앤 드랍할 구역 dom 객체 호출
@@ -119,6 +126,13 @@ function fileListPrint(){
 		fileList.splice(i , 1);
 		fileListPrint();
 }
+
+// 제품등록은 회원제이므로 비로그인시 접근 제한
+if (loginState == false){
+	alert('로그인후 사용가능한 페이지');
+	location.href="/jspweb/member/login.jsp";
+}
+
 
 // 6. ------------------- 카카오 지도 표시 ----------------------- //
 

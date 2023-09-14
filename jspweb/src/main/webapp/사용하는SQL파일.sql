@@ -259,7 +259,6 @@ select * from hrm order by hno desc;
 
 
 
-
 #------------------------------------------ 제품 ----------------------------------------------#
 use jspweb;
 # 1. 제품 카테고리
@@ -270,6 +269,7 @@ create table category(
     primary key (pcno)
 );
 
+select * from pcategory;
 insert pcategory(pcname) values('스니커즈');
 insert pcategory(pcname) values('샌들');
 insert pcategory(pcname) values('로퍼');
@@ -304,3 +304,14 @@ create table productimg(
     foreign key(pno) references product(pno) on delete cascade on update cascade
 );
 
+# -----------------------------------------------------------------------------
+
+# 1.제품 등록 [ 제품정보등록 후에 이미지등록 / 이미지 등록시 제품번호[pk] 필요하니까  ] 
+	# 1-1제품테이블내 제품 정보 등록
+insert into product(pcno , pname , pcontent , pprice , plat , plng , mno)
+	values ( 1, '여름로퍼' , '2023여름신상' , 30000 , 12 , 12, 3);
+    
+    # 1-2제품등록후 해당 제품 pk번호를 반환해서 이미지테이블에 이미지와 같이 등록
+insert into productimg( pimg , pno ) values ( '신발사진' , 1 );
+
+select * from product;
