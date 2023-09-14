@@ -78,27 +78,35 @@ public class ProductInfoController extends HttpServlet {
 						// 파일명에 중복이 있을때 식별 생성
 						UUID uuid = UUID.randomUUID();
 							// UUID 클래스 : 고유성을 보장하는 id를 만들기 위한 식별자 표준 규약 [ - 하이픈 4개 구역 ]
-						String filename = uuid+"-"+ item.getName().replaceAll("-", "_");
+						String filename = (uuid) +"-"+ (item.getName().replaceAll("-", "_"));
 										// 만약에 파일명에 - 하이픈 존재하면 _언더바로 변경
 										// 파일명과 UUID간의 식별하기 위해 구분 -하이픈 사용하기 때문에
 						// UUID[ - - - ] - 파일명
+						System.out.println("item.getName() : "+item.getName());
+						System.out.println("filename : "+filename);
 					File fileuploadPath = new File( uploadPath + "/"+filename);
 					System.out.println("업로드경로와 파일명이 조합된 경로 : "+fileuploadPath);
 					item.write(fileuploadPath); // .write("저장할경로[파일명포함]") 파일 업로드할 경로를 file타입으로 제공 
 					
 					// 7. 업로드된 파일명을 Map에 저장 [ -DB에 저장하려고]
 					i++;
-					imgList.put( i , item.getName()  ); // 저장시에는 이미지번호가 필요 없음
+					imgList.put( i , filename ); // 저장시에는 이미지번호가 필요 없음
 				}
 			}
+			// ------------------------------------- 업로드 끝 --> DB처리 --------------------- //
+			// FileItem 으로 가져온 데이터들을 각 필드에 맞춰서 제품Dto 에 저장하기
+			
 			ProductDto productDto = new ProductDto(
+						// fileList.get(0) : name = pcno 호출 
 		               Integer.parseInt(fileList.get(0).getString()),
 		               fileList.get(1).getString(),
 		               fileList.get(2).getString(),
 		               Integer.parseInt(fileList.get(3).getString()),
-		               null,
-		               null, 
+		               fileList.get(4).getString(),
+		               fileList.get(5).getString(), 
 		               0,
+		               // 여러개 이미지는 위에서 리스트로 구성후 대입
+		               // 업로드한 파일명의 개수만큼 MAP 리스트
 		               imgList
                );
 			System.out.println( productDto );
