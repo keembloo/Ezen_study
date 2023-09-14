@@ -51,6 +51,7 @@ public class ProductDao extends Dao {
 					ps.setString(1, img );
 					ps.setInt(2, rs.getInt(1)); // 위에서 insert된 제품번호
 					ps.executeUpdate();
+					//System.out.println("dto.getImgList().values()"+dto.getImgList().values());
 				}
 				return true;
 			}
