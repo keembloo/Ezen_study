@@ -20,13 +20,26 @@
 			제품명 : <input name="pname" type="text"> <br/>
 			제품설명 : <textarea name="pcontent"></textarea> <br/>
 			제품가격 : <input name="pprice" type="number"> <br/>
+			
 			<!-- 1. 첨부파일 1개일때 -->
 			<!-- 제품이미지 : <input name="pimg" type="file"> <br/> -->
+			
 			<!-- 2. 첨부파일 여러개일때 -->
 			제품이미지 : <input name="pimg" type="file" multiple="multiple"> <br/>
 				<!-- multiple="multiple" 속성 사용시 cos.jar에서는 여러개 파일명 호출 불가능 -->
 				<!-- 해결방안 : 1 . multiple="multiple" 사용하지 않고 input 여러개 사용 -->
 				<!-- 해결방안 : 2. multiple="multiple" 사용하고  -->
+				
+			<!-- 3. 드래그앤드랍 -->
+			<div class="fileDropBox" style="width: 200px; height: 200px; border: 1px solid red;">
+				여기에 드래그해서 파일을 올려주세요.
+				
+				
+				
+				
+			</div>
+			
+			
 			<button onclick="onRegister()" type="button">등록</button>
 		</form>
 	</div>

@@ -6,6 +6,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -73,7 +74,15 @@ public class ProductInfoController extends HttpServlet {
 					// 만약에 파일 필드이면 업로드 진행
 					System.out.println("업로드할 파일명 : "+ item.getName()); // .getName()
 					// 6.업로드 경로 + 파일명 [ 조합 ]
-					File fileuploadPath = new File( uploadPath + "/"+item.getName());
+					
+						// 파일명에 중복이 있을때 식별 생성
+						UUID uuid = UUID.randomUUID();
+							// UUID 클래스 : 고유성을 보장하는 id를 만들기 위한 식별자 표준 규약 [ - 하이픈 4개 구역 ]
+						String filename = uuid+"-"+ item.getName().replaceAll("-", "_");
+										// 만약에 파일명에 - 하이픈 존재하면 _언더바로 변경
+										// 파일명과 UUID간의 식별하기 위해 구분 -하이픈 사용하기 때문에
+						// UUID[ - - - ] - 파일명
+					File fileuploadPath = new File( uploadPath + "/"+filename);
 					System.out.println("업로드경로와 파일명이 조합된 경로 : "+fileuploadPath);
 					item.write(fileuploadPath); // .write("저장할경로[파일명포함]") 파일 업로드할 경로를 file타입으로 제공 
 					
