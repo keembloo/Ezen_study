@@ -13,7 +13,7 @@ $.ajax({
 //2.
 $.ajax({
 	url : "/jspweb/Sample",
-	data:{ type: 2 , slat , slng , elat , elng },
+	data:{ type: 2 , slat : slat , slng : slng , elat : elat , elng :elng },
 	method:"get",
 	success : r => {
 		console.log('성공');

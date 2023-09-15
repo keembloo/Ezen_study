@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.Statement;
+import java.util.List;
 
 import model.dto.ProductDto;
 
@@ -60,12 +61,20 @@ public class ProductDao extends Dao {
 		return false;
 	}
 	// 2. 제품 전체 출력
-	
+	public List<ProductDto> findByTop(int count) {
+		return null;
+	}
 	// 3. 제품 개별 조회
-	
+	public List<ProductDto> findByLatLng( String east , String west , String south , String north ) {
+		return null;
+	}
 	// 4. 제품 수정
-	
+	public ProductDto findByPno(int pno) {
+		return null;
+	}
 	// 5. 제품 삭제 
-	
+	public List<ProductDto> findByAll() {
+		return null;
+	}
 	
 }
