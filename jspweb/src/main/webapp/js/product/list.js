@@ -18,30 +18,6 @@ var clusterer = new kakao.maps.MarkerClusterer({
 });
 
 
-// 데이터를 가져오기 위해 jQuery를 사용합니다
-// 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-$.ajax({
-	url : "/jspweb/ProductInfoController" ,
-	method : "get" ,
-	data : { type : "findByAll" } , 
-	success : jsonArray => {console.log(jsonArray);
-	    // 데이터에서 좌표 값을 가지고 마커를 표시합니다
-        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-	    var markers = jsonArray.map( (p) => {
-			console.log(p);
-	        return new kakao.maps.Marker({
-	            position : new kakao.maps.LatLng(p.plat, p.plng)
-        	});
-   		});
-	    // 클러스터러에 마커들을 추가합니다
-    clusterer.addMarkers(markers);
-	}
-})
-
-
-
-
-
 // 마커 클러스터러에 클릭이벤트를 등록합니다
 // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
 // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
@@ -54,10 +30,67 @@ kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
     map.setLevel(level, {anchor: cluster.getCenter()});
 });
 
+// 1. 현재 보고 있는 지도의 동서남북 좌표 얻기
+getInfo();
+
+function getInfo() {
+    // 지도의 현재 영역을 얻어옵니다 
+    var bounds = map.getBounds();
+    console.log(bounds); // 남 , 서 , 북 , 동 순으로 필드가 저장
+    
+    // 영역의 남서쪽 좌표를 얻어옵니다 
+    var swLatLng = bounds.getSouthWest(); 
+    console.log(swLatLng);
+    
+    // 영역의 북동쪽 좌표를 얻어옵니다 
+    var neLatLng = bounds.getNorthEast(); 
+    console.log(neLatLng);
+    
+    // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
+    var boundsStr = bounds.toString();
+    console.log(boundsStr);
+    
+    let 동 = neLatLng.getLat(); // 동
+    let 서 = swLatLng.getLat(); // 서 
+    let 남 = swLatLng.getLng(); // 남 
+    let 북 = neLatLng.getLng(); // 북 
+    
+    console.log("동 : "+동);
+    console.log("서 : "+서);
+    console.log("남 : "+남);
+    console.log("북 : "+북);
+    //
+    findByLatLng( 동 , 서 , 남 , 북 );
+}
+
+// 2. 해당 동서남북 좌표 범위내 제품만 출력하기
+function findByLatLng( east , west , south , north ){
+	$.ajax({
+		url : "/jspweb/ProductInfoController",
+		async : false , /* ajax 동기화 설정 [비동기 통신 anync : true ] / [동기통신 anync : false ] */
+		method:"get",
+		data:{ type: "findByLatLng" ,
+				east : east , west : west , 
+				south : south , north : north },
+		success : jsonArray => {
+			//console.log(jsonArray);
+			 var markers = jsonArray.map( (p) => {
+				console.log(p);
+		        return new kakao.maps.Marker({
+		            position : new kakao.maps.LatLng(p.plat, p.plng)
+	        	});
+	   		});
+		    // 클러스터러에 마커들을 추가합니다
+	    clusterer.addMarkers(markers);
+		}
+	})
+}
 
 
-
-
+// 3. 카카오지도에서 드래그를 하고 끝났을때  1번함수 재실행
+kakao.maps.event.addListener(map, 'dragend', function() {
+    getInfo()
+});
 
 
 
