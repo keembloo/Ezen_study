@@ -38,43 +38,8 @@
  
  	<!-- 카드 : 다양한 컨텐츠를 표시하는 컨테이너[구역] -->
  	<div class="container"> <!-- container : 컨테이너 구역 -->
-		<div class="row row-cols-1 row-cols-md-4 g-4">
-		  <div class="col">
-		    <div class="card">
-		      <img src="/jspweb/img/card01.jpg" class="card-img-top" alt="...">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col">
-		    <div class="card">
-		      <img src="/jspweb/img/card01.jpg" class="card-img-top" alt="...">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col">
-		    <div class="card">
-		      <img src="/jspweb/img/card01.jpg" class="card-img-top" alt="...">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col">
-		    <div class="card">
-		      <img src="/jspweb/img/card01.jpg" class="card-img-top" alt="...">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		      </div>
-		    </div>
-		  </div>
+		<div class="productBox row row-cols-1 row-cols-md-4 g-4">
+		  <!-- js에서 html 출력 -->
 		</div>
 	</div>
  

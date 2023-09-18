@@ -66,7 +66,7 @@ public class ProductInfoController extends HttpServlet {
 			json = mapper.writeValueAsString(result);
 		}
 		
-		response.setCharacterEncoding("application/json;charset=UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(json);
 	}
 
