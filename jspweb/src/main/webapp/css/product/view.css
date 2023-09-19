@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.productBox{
+	width:30%;
+	margin: 0 auto;
+}
+.imgbox {
+	height: 300px;
+}
+.imgbox img {
+	object-fit : cover;
+}
