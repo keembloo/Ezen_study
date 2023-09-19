@@ -21,7 +21,7 @@ html, body {
 .mapcontent{
 	display: flex; 
 	width: 100%; 
-	height: 75%;
+	height: 800px;
 }
 
 #map{
@@ -30,4 +30,16 @@ html, body {
 
 .sidebar{
 	width:20%;
+	height: 800px;
+	overflow-y: scroll; 
+}
+.card{
+	margin: 10px;
+	height: 130px !important;
+	overflow: hidden;
+}
+/* 부트스트랩[다른] css 충돌시 !important;*/
+.card img {
+	object-fit : cover;
+	height: 100%;
 }
