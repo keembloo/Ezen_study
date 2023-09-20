@@ -24,7 +24,33 @@ function findByPno(pno){
 			})
 			
 			imgbox.innerHTML = html;
+			
+			// -------------- 각 위치에 데이터 넣어주기
+			document.querySelector('.mid').innerHTML = `판매자 : ${jsonObject.mid}`;
+			document.querySelector('.pcname').innerHTML = `카테고리 : ${jsonObject.pcname}`;
+			document.querySelector('.pdate').innerHTML = `등록일 : ${jsonObject.pdate}`;
+			document.querySelector('.pname').innerHTML = `${jsonObject.pname}`;
+			document.querySelector('.pprice').innerHTML = `${jsonObject.pprice.toLocaleString()}`;
+			document.querySelector('.pcontent').innerHTML = `${jsonObject.pcontent}`;
 		}
 	})	
 }
 
+// 2. 찜하기 등록 [비회원제 : ip주소 / 디바이스식별번호 , 회원제 : header.js 회원번호 ]
+function setWish(){
+	// 1. 회원제 유효성검사
+	if (loginState == false){
+		alert('로그인후 가능한 기능입니다.');
+		return;
+	}
+	// 2. 
+	$.ajax({
+		url : "/jspweb/PwishListController",
+		method:"post",
+		data:{ pno : pno },
+		success : r => { console.log(r); 
+		
+		}
+		
+	});
+}

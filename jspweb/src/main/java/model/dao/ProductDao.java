@@ -157,6 +157,42 @@ public class ProductDao extends Dao {
 	}
 	
 	
+	// 3. 제품 찜하기 등록(찜하기상태가 아닐때 = 조건에따른 레코드가 없을때)/취소(찜하기상태일때 = 조건에 따른 레코드가 있을때)
+	public boolean setWish( int mno , int pno ) {
+		try {
+				String sql = getWish(mno, pno)? // getWish rs가 사용끝난 후에 실행하기때문에 또 rs를 만들필요x
+						"delete from pwishlist where mno = ? and pno = ?" : 
+						"insert into pwishlist values( ? , ? )";	
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, mno);
+				ps.setInt(2, pno);
+				int count = ps.executeUpdate();
+				if(count ==1) {
+					return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getStackTrace());
+		}
+		return false;
+	}
+	
+	
+
+		
+	// 4. 제품 찜하기 상태 출력
+	public boolean getWish( int mno , int pno ) {
+		try {
+			String sql = "select * from pwishlist where mno = ? and pno = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, mno);
+			ps.setInt(2, pno);
+			rs = ps.executeQuery();
+			if(rs.next()){ return true;}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
 	
 	
 }
