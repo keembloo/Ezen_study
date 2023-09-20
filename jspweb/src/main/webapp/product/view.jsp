@@ -42,7 +42,7 @@
 			<div class="pcontent">내용 : 최신유행하는 국민템 없으면 아쉬움</div>
 			
 			<div class="etcbtnbox">
-				<button onclick="setWish()" type="button">찜하기♥</button>
+				<button onclick="setWish()" type="button">찜하기<span class="wish">♡</span></button>
 				<button type="button">바로구매</button>
 			</div>
 			

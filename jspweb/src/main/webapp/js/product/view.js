@@ -36,7 +36,7 @@ function findByPno(pno){
 	})	
 }
 
-// 2. 찜하기 등록 [비회원제 : ip주소 / 디바이스식별번호 , 회원제 : header.js 회원번호 ]
+// 2. 찜하기 등록/취소 [비회원제 : ip주소 / 디바이스식별번호 , 회원제 : header.js 회원번호 ]
 function setWish(){
 	// 1. 회원제 유효성검사
 	if (loginState == false){
@@ -47,10 +47,38 @@ function setWish(){
 	$.ajax({
 		url : "/jspweb/PwishListController",
 		method:"post",
+		async : false , // 동기화
 		data:{ pno : pno },
 		success : r => { console.log(r); 
-		
+			if(r){
+				getWish();
+			} else {
+				
+			}
 		}
-		
+	});
+}
+
+getWish();
+// 3. 찜하기 상태호출
+function getWish(){
+	let wish = document.querySelector('.wish'); // 하트 구역 가져오기
+	// 1. 비회원이면
+	if(localStorage == false){
+		wish.innerHTML = '♡';
+	}
+	// 2. 
+	$.ajax({
+		url : "/jspweb/PwishListController",
+		method:"get",
+		async : false , // 동기화
+		data:{ type : "findByWish" , pno : pno },
+		success : r => { console.log(r); 
+			if (r){
+				wish.innerHTML='♥';
+			} else {
+				wish.innerHTML='♡';
+			}
+		}
 	});
 }
