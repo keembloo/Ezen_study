@@ -109,7 +109,7 @@ public class MemberDao extends Dao{
 		return false; // 회원번호 또는 입력받은 패스워드 일치하지 않거나
 	}
 	
-	
+	      
 	
 	// 9. 포인트 지급/사용에 대한 함수
 	public boolean setPoint( MpointDto dto ) {
