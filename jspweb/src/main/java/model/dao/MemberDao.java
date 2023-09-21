@@ -118,9 +118,8 @@ public class MemberDao extends Dao{
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,dto.getMpno());
 			ps.setInt(2,dto.getMno());
-			ps.setString(3,dto.getMpcomment());
+			ps.setLong(3,dto.getMpamount());
 			ps.setString(4,dto.getMpcomment());
-			
 			int result = ps.executeUpdate();
 				if (result == 1) {
 					return true;
@@ -128,7 +127,8 @@ public class MemberDao extends Dao{
 					return false;
 				}
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
+			e.getStackTrace();
+			//System.out.println(e);
 		}
 		return false;
 	}
@@ -138,12 +138,13 @@ public class MemberDao extends Dao{
 		try { 	// sum(필드명) : 총합계를 계산할 필드명 인수로 대입 // avg // count
 			String sql = "select sum(mpamount) from mpoint where mno = ?"; // 합계구하기
 			ps = conn.prepareStatement(sql);
+			ps.setInt( 1 , mno );
 			rs = ps.executeQuery();
 			if ( rs.next()) {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
+			e.getStackTrace();
 		}
 		return 0;
 	}
@@ -154,16 +155,76 @@ public class MemberDao extends Dao{
 		try {
 			String sql = "select * from mpoint where mno = ?";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, mno);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				
-				
-				list.add( );
+				MpointDto dto = new MpointDto(
+						rs.getString(1), rs.getInt(2), rs.getLong(3), 
+						rs.getString(4), rs.getString(5));
+				list.add(dto);
 			}
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
+			e.getStackTrace();
 		}
-		return null;
+		return list;
 	}
 	
 }
+
+/*
+
+JDBC : JAVA 와 DB 간의 연동 라이브러리 [ mysql-connector-j-8.1.0.jar ]
+		1. Connection	
+		2. PreparedStatement
+		3. ResultSet		
+		- DriverManager.getConnection(연동할 DB주소)
+		
+		
+		1. 연동 :  new MemberDao();싱글톤생성
+			-------------------------------------
+					스트림[ 데이터 다니는 통로 ] 					DB서버
+JAVA					DriverManager.getConnection					localhost:3306
+			-------------------------------------
+			
+		2. 연동 결과 [ 싱글톤이 사라기전까지는 연동중 ]
+			-------------------------------------
+JAVA						Connection conn						DB서버
+			-------------------------------------
+			
+		3. 연동 결과 [ SQL 대입해서 PreparedStatement   ]
+			-------------------------------------
+JAVA						prepareStatement(SQl)				DB서버
+			-------------------------------------	
+			
+		4. SQL 조작/준비 [ SQL 대입해서 PreparedStatement   ]
+			-------------------------------------
+JAVA	ps														DB서버
+			-------------------------------------	
+	SQL 가공
+	set( 1 , ~~ );		
+	
+		5. SQL 실행 [ SQL 대입해서 PreparedStatement   ]
+			-------------------------------------
+JAVA	ps			ps.executeQuery();	ResultSet						DB서버
+				ps.executeUpdate();	int
+			-------------------------------------	
+
+
+		5. SQL 실행에 SQL결과값/ 레코드 반환 [ SQL 대입해서 PreparedStatement   ]
+			-------------------------------------
+JAVA	ResultSet	ResultSet[ 질의한 결과의 여러개레코드 ]										DB서버
+				int[ update 레코드 개수 반환 ]
+			-------------------------------------	
+
+ResultSet 
+	null --- rs.next()---> 찾은1행 레코드 ----rs.next()--> 찾은2행 레코드 ---rs.next()---> 찾은3행 레코드
+							로그인														
+							제품1개														여러개 출력 
+							아이디찾기
+							비밀번호찾기 
+	if( rs.next() ) 
+	while( rs.next() )
+	
+
+
+*/
